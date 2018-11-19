@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_165256) do
+ActiveRecord::Schema.define(version: 2018_11_19_173649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: :cascade do |t|
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_availabilities_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.bigint "location_id"
+    t.integer "price"
+    t.boolean "confirmed"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+    t.index ["location_id"], name: "index_bookings_on_location_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.float "longitude"
+    t.float "latitude"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +56,22 @@ ActiveRecord::Schema.define(version: 2018_11_19_165256) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "sport"
+    t.integer "price_per_hour"
+    t.string "abilities_taught"
+    t.text "bio"
+    t.string "photo"
+    t.boolean "is_client"
+    t.float "rating"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "availabilities", "users"
+  add_foreign_key "bookings", "locations"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "bookings", "users", column: "client_id"
+  add_foreign_key "locations", "users"
 end
