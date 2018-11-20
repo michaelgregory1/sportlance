@@ -1,0 +1,8 @@
+<% if @messages.empty? %>
+  <h1>Sorry, no messages yet</h1>
+<% end %>
+<% @messages.each do |message| %>
+  <%= message.body %>
+<% end %>
+
+
