@@ -1,0 +1,52 @@
+.grid-item {
+  display: grid;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.grid-item-last {
+  display: grid;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.last-row {
+  border-bottom: 0px solid black !important;
+}
+
+.header-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+}
+
+.calendar-headers {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  font-size: 0.8em;
+  height: 40px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: min-content;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid;
+  height: 300px;
+  overflow: scroll;
+    p {
+      margin: 0 !important;
+      font-size: 0.7em;
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
