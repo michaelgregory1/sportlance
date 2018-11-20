@@ -1,11 +1,25 @@
-<div class="topbar-placeholder">
-  <nav class="topbar visible">
-    <h1 class="logo">SportLance</h1>
-    <div class="button-wrap">
-    <a class="button">Log In / Sign Up</a>
-    <a class="button">About Us</a>
-    <a class="button">New Instructor</a>
+<% unless user_signed_in? %>
+  <div class="topbar-placeholder">
+    <nav class="topbar visible">
+      <h1 class="logo">SportLance</h1>
+      <div class="button-wrap">
+        <a class="button">Log In / Sign Up</a>
+        <a class="button">About Us</a>
+        <a class="button">New Instructor</a>
+      </div>
+    </nav>
   </div>
-  </nav>
-</div>
+<% end %>
+<% if user_signed_in? %>
+  <div class="topbar-placeholder">
+    <nav class="topbar visible">
+      <h1 class="logo">SportLance</h1>
+      <div class="button-wrap">
+        <a class="button">Dashboard</a>
+        <a class="button">About Us</a>
+        <a><%= image_tag('phelps', class: "avatar-medium") %></a>
+      </div>
+    </nav>
+  </div>
+<% end %>
 

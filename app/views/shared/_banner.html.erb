@@ -1,19 +1,10 @@
-<div class="banner hidden-xs hidden-sm" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(129,64,64,0.5) 50%), url(<%= image_path 'banner_image.jpg' %>);">
-    <div class="topbar-placeholder">
-    <nav class="topbar visible">
-      <h1 class="logo">SportLance</h1>
-      <div class="button-wrap">
-      <a class="button">Log In / Sign Up</a>
-      <a class="button">About Us</a>
-      <a class="button">New Instructor</a>
-    </div>
-    </nav>
-  </div>
+<div class="banner hidden-xs hidden-sm" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(129,64,64,0.5) 50%), url(<%= image_path 'swimmer_1.jpg' %>);">
+  <%= render 'shared/navbar' %>
   <div class="banner-content">
     <h2>Find your local instructor</h2>
-    <p>Private lessons from the best sport instructors in the business.</p>
+    <span class="typed"></span>
             <!-- Search form -->
-    <form class="nav-form">
+    <form class="nav-form search-box">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
       </div>
@@ -21,20 +12,17 @@
   </div>
 </div>
 
-<div class="banner hidden-md hidden-lg" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(129,64,64,0.5) 50%), url(<%= image_path 'banner_image.jpg' %>);">
-    <div class="topbar-placeholder">
-    <nav class="topbar visible">
-      <h1 class="logo">SportLance</h1>
-    </nav>
-  </div>
+<div class="banner hidden-md hidden-lg" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(129,64,64,0.5) 50%), url(<%= image_path 'swimmer_1.jpg' %>);">
+  <%= render 'shared/navbar' %>
   <div class="banner-content">
     <h2>Find your local instructor</h2>
-    <p>Private lessons from the best sport instructors in the business.</p>
+    <span class="typed"></span>
             <!-- Search form -->
-    <form class="nav-form">
+    <form class="nav-form search-box">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
       </div>
     </form>
   </div>
 </div>
+
