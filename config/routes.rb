@@ -13,11 +13,14 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :new, :create]
   end
-  
+
   resources :bookings, except: [:index]
+
   resources :users, only: [:index] do
     resources :bookings, only: [:index]
   end
+
   resources :locations
+
   resources :users, only: [:show]
 end
