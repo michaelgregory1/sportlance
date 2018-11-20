@@ -9,6 +9,7 @@ class AvailabilitiesController < ApplicationController
 
   def create
     @availability = Availability.new(availability_params)
+    @availability.user = current_user
     if @availability.save
       redirect_to root_path
     else
@@ -24,7 +25,7 @@ class AvailabilitiesController < ApplicationController
   private
 
   def availability_params
-    params.require(:availability).permit(:date_start, :date_end, :user)
+    params.require(:availability).permit(:date_start, :date_end)
   end
 
 end
