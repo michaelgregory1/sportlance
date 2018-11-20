@@ -10,14 +10,12 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @user = find_user
-    @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user = find_user
-    @booking.client = current_user
+    @booking.client_id = current_user.id
+    @booking.price = calculate_total_price
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -26,12 +24,16 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @user = find_user
   end
 
   def update
     @booking.update(booking_params)
-    # redirect_to TBC
+    @booking.price = calculate_total_price
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -47,10 +49,6 @@ class BookingsController < ApplicationController
 
   def find_booking
     @booking = Booking.find(params[:id])
-  end
-
-  def find_user
-    User.find(params[:user_id])
   end
 
   def calculate_total_price

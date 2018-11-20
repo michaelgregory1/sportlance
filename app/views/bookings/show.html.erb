@@ -17,4 +17,12 @@
 <p>
   date end: <%= @booking.date_end.strftime("%b %e, %l:%M %p")  %>
 </p>
-<%= @price %>
+<p>
+  price: <%= @price %>
+</p>
+
+<% if !current_user.is_client %>
+  <%= link_to 'Reschedule', edit_booking_path(params[:id]) %>
+<% end %>
+
+<%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "btn" %>
