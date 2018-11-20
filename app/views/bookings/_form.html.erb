@@ -1,0 +1,8 @@
+<%= simple_form_for [@user, @booking] do |f| %>
+  <%= f.input :date_start %>
+  <%= f.input :date_end %>
+  <div class="form-group">
+    <label class="form-control-label text optional" for="bicycle_description"></label>
+  <%= f.submit class: "update-booking-btn" %>
+  </div>
+<% end %>

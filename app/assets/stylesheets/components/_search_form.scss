@@ -1,0 +1,26 @@
+.nav-form input::placeholder {
+  color: white;
+}
+
+.form-control {
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 1px solid #4dd0e1;
+    font-family: Raleway, Helvetica, sans-serif;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+    border: none;
+  }
+
+  input.form-control[type=text] {
+    box-shadow: 0 1px 0 0 #4dd0e1;
+    border: none;
+    border-bottom: 1px solid #4dd0e1;
+    background-color: transparent;
+    color: white;
+  }
+
+.form-group input[type=text] {
+  border-bottom: 1px solid #4dd0e1;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+  font-family: Raleway, Helvetica, sans-serif;
+}
