@@ -1,8 +1,7 @@
-<%= simple_form_for [@user, @booking] do |f| %>
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: @booking.user_id } %>
+  <%= f.input :location_id %>
   <%= f.input :date_start %>
   <%= f.input :date_end %>
-  <div class="form-group">
-    <label class="form-control-label text optional" for="bicycle_description"></label>
-  <%= f.submit class: "update-booking-btn" %>
-  </div>
+  <%= f.submit class: "btn" %>
 <% end %>
