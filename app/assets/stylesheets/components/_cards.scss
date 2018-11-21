@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .card-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -8,13 +14,54 @@
   .card-item {
   display: flex;
   padding: 20px 15px;
-  background-color: black;
 
-    @media(min-width: 40rem) {
-      width: 50%;
-    }
-    @media(min-width: 56rem) {
-      width: 33.3333%;
+    .card {
+      display: flex;
+      background-color: white;
+      box-shadow: 0 10px 20px -14px rgba(0,0,0,0.25);
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      width: 250px;
+      flex-direction: column;
+      overflow: hidden;
+        &:hover {
+          filter: contrast(100%);
+        }
+
+        .card-title {
+          color: #696969;
+          font-size: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        .card-content {
+          display: flex;
+          flex: 1 1 auto;
+          flex-direction: column;
+          padding: 1rem;
+        }
+
+        .card-text {
+          flex: 1 1 auto;
+          font-size: 14px;
+          line-height: 1.5;
+          margin-bottom: 1.25rem;
+        }
+
+        .btn {
+          background-color: white;
+          border: 1px solid #cccccc;
+          //border-radius: 1rem;
+          color: #cccccc;
+          padding: 0.5rem;
+          text-transform: lowercase;
+
+          .btn-block {
+            display: block;
+            width: 100%;
+          }
+        }
     }
   }
 }
