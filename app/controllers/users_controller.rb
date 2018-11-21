@@ -9,16 +9,24 @@ class UsersController < ApplicationController
     @booking.user_id = params[:id]
   end
 
-  def map
+  def search_results
+    @query = params[:query]
+    @users = User.global_search(params[:query])
+    map(@users)
+    redirect_to no_results_path if @users.empty?
+  end
 
+  private
 
-    @locations = Location.where(user_id: @user.id)
-
-    @markers = @locations.map do |location|
-      {
-        lng: location.longitude,
-        lat: location.latitude
-      }
+  def map(users)
+    users.each do |user|
+      @markers = user.locations.map do |place|
+        {
+          lng: place.longitude,
+          lat: place.latitude,
+          infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
+        }
+      end
     end
   end
 end

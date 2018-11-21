@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :users, only: [:show]
+
+  get 'users-search', to: 'users#search_results'
+  get 'no-results', to: 'users#no_results'
 end
