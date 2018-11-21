@@ -39,3 +39,12 @@ if (mapElement) { mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     map.fitBounds(bounds, { duration: 0, padding: 75 })
   }
 }
+
+const addressInput = document.getElementById("query");
+
+if (addressInput) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInput
+  });
+}

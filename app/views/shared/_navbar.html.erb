@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
   <div class="topbar-placeholder">
     <nav class="topbar visible">
-      <h1 class="logo">SportLance</h1>
+      <a href="/">
+        <h1 class="logo">SportLance</h1>
+      </a>
       <div class="button-wrap hidden-xs">
         <a class="button">Dashboard</a>
         <a class="button">About Us</a>
@@ -21,7 +23,9 @@
 <% else %>
   <div class="topbar-placeholder">
     <nav class="topbar visible">
-      <h1 class="logo">SportLance</h1>
+      <a href="/">
+        <h1 class="logo">SportLance</h1>
+      </a>
       <div class="button-wrap">
         <%= link_to("Log In / Sign Up", new_user_session_path, method: "get", class: "button") %>
         <a class="button">About Us</a>
