@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :locations
   has_many :availabilities
   has_many :reviews
+  mount_uploader :photo, PhotoUploader
 end
