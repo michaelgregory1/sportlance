@@ -2,13 +2,13 @@
 
   .button {
   background: none;
-  border: 1px solid white;
+  border: 1px solid #6AC5DB;
   font-family: Raleway, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1;
   margin: 5px;
   padding: 8px;
-  color: #white;
+  color: #6AC5DB;
   transition: 0.25s;
   text-decoration: none;
   border-radius: 3px;
@@ -24,5 +24,6 @@
 
 .button:hover {
   box-shadow: 0 0.5em 0.5em -0.4em;
+  color: #6AC5DB;
   }
 }
