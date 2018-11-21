@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
   def index
     @users = User.where(is_client: false)
-    map(@users)
   end
 
   def show
     @user = User.find(params[:id])
     @booking = Booking.new
     @booking.user_id = params[:id]
+  end
+
+  def search_results
+    @query = params[:query]
+    @users = User.global_search(params[:query])
+    map(@users)
+    redirect_to no_results_path if @users.empty?
   end
 
   private

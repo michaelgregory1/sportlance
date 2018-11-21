@@ -10,4 +10,13 @@ class User < ApplicationRecord
   has_many :availabilities
   has_many :reviews
   mount_uploader :photo, PhotoUploader
+  include PgSearch
+  pg_search_scope :global_search,
+    against: [:first_name, :last_name, :sport, :price_per_hour, :abilities_taught],
+    associated_against: {
+      locations: [:address]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
