@@ -12,7 +12,7 @@ john = User.create(email: "john@swim.com", password: "123456", first_name: 'John
 mary = User.create(email: "Mary@swim.com", password: "123456", first_name: 'Mary', last_name: 'Meister', photo: "swimmer_2.jpg", is_client: true)
 
 puts 'Creating Location'
-greenwich = Location.create(longitude: -0.0076589, latitude: 51.4825766, user_id: john.id)
+greenwich = Location.create(address: "King William Walk, London SE10 9HT", user_id: john.id)
 
 puts 'Creating booking'
 Booking.create(user_id: john.id, client_id: mary.id, date_start: "2018-11-21 13:00:00", date_end: "2018-11-21 14:00:00", location_id: greenwich.id)
