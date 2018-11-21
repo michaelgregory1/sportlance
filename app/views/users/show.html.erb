@@ -1,78 +1,97 @@
 <%= render 'shared/navbar.html.erb' %>
 
-<div class="show-page">
-  <div class="bio_container">
-    <div class="instructor_info">
-      <div class="left-info">
-        <div>
-          <%= image_tag('phelps', class: "avatar-xl") %>
-        </div>
-        <div class="instructor_summary">
-           <p>Name:<%= @user.first_name %><%= @user.last_name %></p>
-           <p>Activity:<%= @user.sport %></p>
-           <p>Price ph:<%= @user.price_per_hour %></p>
-           <div class="avg_review">
-             <span><i class="fas fa-star"></i></span>
-             <span><i class="fas fa-star"></i></span>
-             <span><i class="fas fa-star"></i></span>
-             <span><i class="fas fa-star"></i></span>
-             <span><i class="fas fa-star"></i></span>
-           </div>
-        </div>
-        <div class="instructor_gallery">
-          <%= image_tag('phelps', class: "gallery") %>
+
+<div class="container">
+  <div class="row">
+    <div class="bio_container col-sm-12 col-md-9">
+      <div class="instructor_info">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="left-info">
+              <div>
+                <%= image_tag('phelps', class: "avatar-xl") %>
+              </div>
+              <div class="instructor_summary">
+                 <p>Name:<%= @user.first_name %><%= @user.last_name %></p>
+                 <p>Activity:<%= @user.sport %></p>
+                 <p>Price ph:<%= @user.price_per_hour %></p>
+                 <div class="avg_review">
+                   <span><i class="fas fa-star"></i></span>
+                   <span><i class="fas fa-star"></i></span>
+                   <span><i class="fas fa-star"></i></span>
+                   <span><i class="fas fa-star"></i></span>
+                   <span><i class="fas fa-star"></i></span>
+                 </div>
+              </div>
+              <div class="instructor_gallery">
+                <%= image_tag('phelps', class: "gallery") %>
+              </div>
+              <button type="button" class="btn btn-primary message_button"><%= "Message #{@user.first_name}" %></button>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="instructor_bio">
+              <div class="instructor_description">
+                <h3>Bio</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur </p>
+                <h3>Cancelation Policy:</h3>
+              </div>
+              <div class="instructor_availability">
+                <h3>Availability</h3>
+                <h4>Starting 21/12/18</h4>
+                <p>Monday: N/A</p>
+                <p>tuesday: N/A</p>
+                <p>Wednesday: N/A</p>
+                <p>Thursday: N/A</p>
+                <p>Friday: N/A</p>
+                <p>Saturday: N/A</p>
+                <p>sunday: N/A</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-      <div class="instructor_bio">
-        <div class="instructor_description">
-          <h3>Bio</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur </p>
-          <h3>Cancelation Policy:</h3>
+      <div class="instructor_reviews">
+        <h1>Reviews</h1>
+        <div class="review">
+          <h3>Excellent teacher</h3>
+          <h4>5 stars</h4>
         </div>
-        <div class="instructor_availability">
-           <h3>Availability</h3>
-           <h4>Starting 21/12/18</h4>
-           <p>Monday: N/A</p>
-           <p>tuesday: N/A</p>
-           <p>Wednesday: N/A</p>
-           <p>Thursday: N/A</p>
-           <p>Friday: N/A</p>
-           <p>Saturday: N/A</p>
-           <p>sunday: N/A</p>
+        <div class="review">
+          <h3>Excellent teacher</h3>
+          <h4>5 stars</h4>
+        </div>
+        <div class="review">
+          <h3>Excellent teacher</h3>
+          <h4>5 stars</h4>
+        </div>
+        <div class="review">
+          <h3>Excellent teacher</h3>
+          <h4>5 stars</h4>
         </div>
       </div>
     </div>
-    <div class="instructor_reviews">
-      <h1>Reviews</h1>
-      <div class="review">
-        <h3>Excellent teacher</h3>
-        <h4>5 stars</h4>
-      </div>
-      <div class="review">
-        <h3>Excellent teacher</h3>
-        <h4>5 stars</h4>
-      </div>
-      <div class="review">
-        <h3>Excellent teacher</h3>
-        <h4>5 stars</h4>
-      </div>
-      <div class="review">
-        <h3>Excellent teacher</h3>
-        <h4>5 stars</h4>
-      </div>
-    </div>
-  </div>
-  <div class="booking_container">
-    <div class="book_instructor">
-      <button type="button" class="btn btn-primary"><%= "Message #{@user.first_name}" %></button>
+    <div class="book_instructor hidden-md hidden-lg">
       <h3>Book with <%= @user.first_name %></h3>
       <br>
       <div class="form-wrapper" style="width: 200px; margin: 0 auto;">
         <%= render 'bookings/new.html.erb' %>
       </div>
     </div>
+    <div class="col-sm-12 col-md-3">
+      <div class="book_instructor position-fixed">
+        <h3>Book with <%= @user.first_name %></h3>
+        <br>
+        <div class="form-wrapper" style="width: 200px; margin: 0 auto;">
+          <%= render 'bookings/new.html.erb' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 
 
 
