@@ -12,6 +12,7 @@
     <%= stylesheet_pack_tag 'application' %>
   </head>
   <body>
+    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <% unless current_page?(root_path) %>
       <div class="fake-navbar"></div>
