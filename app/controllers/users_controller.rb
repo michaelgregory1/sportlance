@@ -20,13 +20,27 @@ class UsersController < ApplicationController
 
   def map(users)
     users.each do |user|
-      @markers = user.locations.map do |place|
-        {
-          lng: place.longitude,
-          lat: place.latitude,
-          infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
-        }
+      if Location.where(address: @query).exists?
+        search_place = Location.where(address: @query)
+        @markers = user.locations.map do |place|
+          if place.address == search_place[0].address
+            {
+              lng: place.longitude,
+              lat: place.latitude,
+              infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
+            }
+          end
+        end
+      else
+        @markers = user.locations.map do |place|
+          {
+            lng: place.longitude,
+            lat: place.latitude,
+            infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
+          }
+        end
       end
     end
+    @markers.compact!
   end
 end
