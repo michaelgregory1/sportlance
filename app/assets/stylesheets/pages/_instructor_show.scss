@@ -1,38 +1,31 @@
 .instructor_info {
-  border: 1px solid orange;
   border-radius: 3px;
   margin: 10px;
   padding: 10px;
 }
 
-.instructor_reviews {
-  border: 1px solid orange;
-  border-radius: 3px;
+.full-height {
+  height: 100%;
+}
+
+.instructor_reviews {  border-radius: 3px;
   margin: 10px;
   padding: 10px;
 }
 
 .book_instructor {
-  border: 1px solid orange;
   border-radius: 3px;
   margin-left: 20px;
   margin: 10px;
   padding: 10px;
-  width: calc(25vw - 10px);
-  min-width: 250px;
   text-align: center;
+}
+
+.position-fixed {
   position: fixed;
-    bottom: 0px;
-    top: 75px;
-    right: 0;
 }
 
-.bio_container {
-  width: 75vw;
-  height: 100vh;
-}
-
-.show-page {
+.flex-box {
   display: flex;
 }
 
@@ -44,13 +37,13 @@
 .left-info {
  display: flex;
  flex-direction: column;
- justify-content: center;
+ justify-content: space-between;
  align-items: center;
  margin-right: 10px;
 }
 
 .instructor_summary {
-  background-color: grey;
+  background-color: rgba(220,220,220,0.4);
   margin: 10px 0px;
   border-radius: 3px;
   width: 100%;
@@ -60,21 +53,19 @@
 
 .instructor_bio {
   display: flex;
-  width: 100%;
-  background-color: rgba(120, 120, 120, 0.2);
+  background-color: rgba(220,220,220,0.4);
   border-radius: 3px;
+  flex-direction: column;
 }
 
 .instructor_availability {
-  border-left: 1px solid grey;
   padding: 10px;
   text-align: center;
-  width: 50%;
 }
+
 
 .instructor_description {
   padding: 10px;
-  width: 50%;
 }
 
 .review {
@@ -85,6 +76,14 @@
   color: orange;
 }
 
+.message_button {
+  margin-top: 20px;
+}
+
 .instructor_gallery {
   border-radius: 3px;
+}
+
+.gallery {
+  margin-bottom: 10px;
 }
