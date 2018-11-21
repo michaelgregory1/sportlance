@@ -10,4 +10,11 @@ class User < ApplicationRecord
   has_many :availabilities
   has_many :reviews
   mount_uploader :photo, PhotoUploader
+
+  def check_available(time)
+    availabilities.each do |a|
+      return "available hour-block grid-item" if time.between?(a.date_start, a.date_end)
+    end
+    return "unavailable hour-block grid-item"
+  end
 end

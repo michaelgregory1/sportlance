@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :users, only: [:show]
+
+  post '/toggle-availability', to: 'availabilities#toggle_availability'
+
 end
