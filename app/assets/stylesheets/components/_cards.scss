@@ -1,0 +1,20 @@
+.card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .card-item {
+  display: flex;
+  padding: 20px 15px;
+  background-color: black;
+
+    @media(min-width: 40rem) {
+      width: 50%;
+    }
+    @media(min-width: 56rem) {
+      width: 33.3333%;
+    }
+  }
+}

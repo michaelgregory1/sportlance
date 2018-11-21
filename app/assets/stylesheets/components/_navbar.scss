@@ -27,18 +27,43 @@
       text-decoration: none;
     }
   }
+  .avatar-medium {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+  }
+
+  .banner {
+    background-position: center;
+  }
+
+  .logo {
+    color: #6AC5DB;
+  }
+  .dropdown-menu {
+    right: 0px;
+    left: auto;
+    background-color: transparent;
+    border: none;
+
+    &.dropdown-menu:hover {
+      opacity: 0.5;
+      border: none!important;
+    }
+
+    a {
+      color: white;
+    }
+  }
+
+  .dropdown-toggle {
+    background-color: transparent!important;
+    color: white!important;
+    border: none!important;
+
+  }
 }
 
-.avatar-medium {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-}
 
-.banner {
-  background-position: center;
-}
 
-.logo {
-  color: #6AC5DB;
-}
+

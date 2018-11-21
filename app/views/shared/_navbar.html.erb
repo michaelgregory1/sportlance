@@ -14,11 +14,19 @@
   <div class="topbar-placeholder">
     <nav class="topbar visible">
       <h1 class="logo">SportLance</h1>
-      <div class="button-wrap">
+      <div class="button-wrap hidden-xs">
         <a class="button">Dashboard</a>
         <a class="button">About Us</a>
         <a><%= image_tag('phelps', class: "avatar-medium") %></a>
       </div>
+      <div class="dropdown visible-xs">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">About Us</a></li>
+    </ul>
+</div>
     </nav>
   </div>
 <% end %>
