@@ -1,0 +1,33 @@
+.map-card {
+  height: 150px;
+  width: 250px;
+  background-size: cover;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.user-description {
+  color: white;
+  position: absolute;
+  left: 10px;
+  margin-top: 1px !important;
+}
+
+.user-price {
+  color: white;
+  position: absolute;
+  left: 10px;
+  bottom: 1px;
+  margin-bottom: 1px !important;
+}
+
+.user-rating {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+.mapboxgl-popup-close-button {
+  padding: 0px 1px 0px 1px;
+  line-height: 10px;
+}
