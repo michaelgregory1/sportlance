@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   def index
+    @users = User.all
     all_conversations = Conversation.all
     @conversations = find_conversations(all_conversations)
   end
@@ -19,7 +20,7 @@ class ConversationsController < ApplicationController
   private
 
   def conversation_params
-    params.require(:conversation).permit(:recipient_id)
+    params.permit(:sender_id, :recipient_id)
   end
 
   def find_conversations(all_conversations)
