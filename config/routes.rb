@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'users#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   post '/toggle-availability', to: 'availabilities#toggle_availability'
+
+  get 'users-search', to: 'users#search_results'
+  get 'no-results', to: 'users#no_results'
 
 end

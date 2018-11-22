@@ -21,4 +21,15 @@ class User < ApplicationRecord
   def id_set(time)
     return time.to_s
   end
+
+  include PgSearch
+  pg_search_scope :global_search,
+    against: [:first_name, :last_name, :sport, :price_per_hour, :abilities_taught],
+    associated_against: {
+      locations: [:address]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end

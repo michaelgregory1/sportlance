@@ -1,0 +1,95 @@
+.instructor_info {
+  border-radius: 3px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.instructor_reviews {  border-radius: 3px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.book_instructor {
+  border-radius: 3px;
+  margin-left: 20px;
+  margin: auto 10px;
+  padding: 10px;
+  text-align: center;
+  height: 100%;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.flex-box {
+  display: flex;
+}
+
+.instructor_info {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.left-info {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ align-items: center;
+ margin-right: 10px;
+}
+
+.instructor_summary {
+  background-color: rgba(220,220,220,0.4);
+  margin: 10px 0px;
+  border-radius: 3px;
+  width: 350px;
+  text-align: center;
+  padding: 10px;
+}
+
+.height-max {
+  height: 100%;
+}
+.instructor_bio {
+  display: flex;
+  background-color: rgba(220,220,220,0.4);
+  border-radius: 3px;
+  flex-direction: column;
+}
+
+.instructor_availability {
+  padding: 10px;
+  text-align: center;
+}
+
+
+.instructor_description {
+  padding: 10px;
+}
+
+.review {
+  border-bottom: 1px solid #6BC5DB;
+}
+
+.fa-star {
+  color: orange;
+}
+
+.message_button {
+  margin-top: 20px;
+}
+
+.instructor_gallery {
+  border-radius: 3px;
+}
+
+.gallery {
+  margin-bottom: 10px;
+  width: 350px;
+}
