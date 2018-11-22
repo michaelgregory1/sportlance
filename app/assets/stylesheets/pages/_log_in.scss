@@ -16,7 +16,7 @@
     width: 500px;
     border-radius: 10px;
     overflow: hidden;
-    padding: 55px 55px 37px 55px;
+    padding: 25px 55px 37px 55px;
     background-color: #fff;
   }
 
@@ -31,6 +31,7 @@
     text-transform: uppercase;
     line-height: 1.2;
     display: block;
+    margin-bottom: 10px;
   }
 
   .simple_form {
@@ -40,7 +41,7 @@
     box-sizing: border-box;
 
       .form-group:last-child {
-        margin-bottom: 0px;
+        margin-bottom: 20px;
       }
 
       label {
@@ -72,6 +73,20 @@
       font-family: Raleway, Helvetica, sans-serif;
       box-shadow: none;
     }
+
+    .style-input-bio {
+      font-size: 16px;
+      line-height: 1.2;
+      display: block;
+      height: 45px;
+      background: transparent;
+      width: 100%;
+      padding: 0 5px 0 38px;
+      border: none;
+      border: 1px solid #4dd0e1;
+      font-family: Raleway, Helvetica, sans-serif;
+      box-shadow: none;
+    }
   }
     .links-login {
       text-decoration: none;
@@ -84,6 +99,7 @@
 
     .button-blue {
       margin-left: 0px;
+
     }
 }
 
