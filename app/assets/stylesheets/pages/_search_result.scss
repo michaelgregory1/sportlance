@@ -1,0 +1,28 @@
+.container-map {
+  margin: 30px;
+
+  .search_results_flex {
+    display: flex;
+    margin-right: 50px;
+  }
+
+  .card-map-container {
+    width: 60%;
+  }
+
+  .map-search-form-container {
+    width: 45%;
+    margin-bottom: 10px;
+    margin-left: 30px;
+
+
+  }
+
+  .results-found {
+      font-family: Raleway, Helvetica, sans-serif;
+      font-size: 18px;
+      margin-left: 30px;
+      border-bottom: 1px solid #E8E7E4;
+      width: 50%;
+    }
+}

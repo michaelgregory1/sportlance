@@ -4,26 +4,24 @@
 
 .nav-form form {
   display: flex;
-
 }
-
 
 .form-control {
     width: 100%;
     background-color: transparent;
-    border-bottom: 1px solid #4dd0e1;
+    border-bottom: 1px solid #FB5607;
     font-family: Raleway, Helvetica, sans-serif;
-    box-shadow: 0 1px 0 0 #4dd0e1;
+    box-shadow: 0 1px 0 0 #FB5607;
     border: none;
     margin-right: 10px;
   }
 
   input.form-control[type=text] {
-    box-shadow: 0 1px 0 0 #4dd0e1;
+    box-shadow: 0 1px 0 0 #FB5607;
     border: none;
-    border-bottom: 1px solid #4dd0e1;
+    border-bottom: 1px solid #FB5607;
     background-color: transparent;
     font-family: Raleway, Helvetica, sans-serif;
-    color: white;
+    color: #242423;
   }
 

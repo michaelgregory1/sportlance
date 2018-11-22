@@ -18,14 +18,18 @@
     .card {
       display: flex;
       background-color: white;
-      box-shadow: 0 10px 20px -14px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 20px -15px rgba(0,0,0,0.25);
       border: 1px solid #cccccc;
       border-radius: 3px;
       width: 250px;
       flex-direction: column;
       overflow: hidden;
+      max-height: 300px;
+      transition: 0.5s;
         &:hover {
           filter: contrast(100%);
+          box-shadow: 0 10px 20px -10px rgba(0,0,0,0.25);
+
         }
 
       .card-title {
