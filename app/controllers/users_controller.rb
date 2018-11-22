@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :search_results]
+
   def index
     @users = User.where(is_client: false)
   end
