@@ -15,6 +15,9 @@ class User < ApplicationRecord
     availabilities.each do |a|
       return "available hour-block grid-item" if time.between?(a.date_start, a.date_end)
     end
+    bookings.each do |b|
+      return "booked hour-block grid-item" if time.between?(b.date_start, b.date_end)
+    end
     return "unavailable hour-block grid-item"
   end
 

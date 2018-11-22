@@ -1,8 +1,17 @@
-<% if !current_user.is_client %>
-  <%= render 'components/instructor_sidebar' %>
-<% else %>
-  <%= render 'components/client_sidebar' %>
-<% end %>
+<div class="calendar-dash">
+  <% if !current_user.is_client %>
+    <%= render 'components/instructor_sidebar' %>
+    <%= render 'components/calendar' %>
+  <% else %>
+    <%= render 'components/client_sidebar' %>
+  <% end %>
+</div>
+
+
+
+
+
+
 <% @bookings.each do |booking| %>
   <p>
     Instructor: <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   post '/toggle-availability', to: 'availabilities#toggle_availability'
+  post '/redirect-to-show', to: 'bookings#redirect_to_show'
 
   get 'users-search', to: 'users#search_results'
   get 'no-results', to: 'users#no_results'

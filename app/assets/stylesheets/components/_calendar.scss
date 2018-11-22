@@ -8,7 +8,7 @@
 
 .grid-item-last {
   border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  border-right: 2px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,34 +19,48 @@
 }
 
 .header-item {
+  border-right: 1px solid black;
+  padding: 4px;
+}
+
+.flex-it {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid black;
+}
+
+.header-item-last {
+  border-right: 2px solid black;
+  border-top-right-radius: 7px;
+  padding: 4px;
 }
 
 .calendar-headers {
   margin-top: 40px;
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
   font-size: 0.8em;
-  height: 40px;
 }
 
 .calendar {
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-auto-rows: min-content;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
   height: 300px;
   overflow: scroll;
     p {
       margin: 0 !important;
       font-size: 0.7em;
+      font-family: "Raleway", "Helvetica", "sans-serif";
     }
 }
 
@@ -54,16 +68,34 @@
     display: none;
 }
 
-// CELL STATES
-
-.unavailable {
-  background-color: #ef1f1f;
-}
-
-.available {
-  background-color: #2acc0e;
-}
-
 .hour-block p {
   pointer-events: none
 }
+
+.calendar-dash {
+  display: flex;
+}
+
+.the-calendar {
+  margin: 30px auto;
+  width: 75%;
+}
+
+.time-label {
+  padding: 4px;
+}
+
+// CELL STATES
+
+.unavailable {
+  background-color: #abacb2;
+}
+
+.available {
+  background-color: #4cc962;
+}
+
+.booked {
+  background-color: #6BC4D9;
+}
+
