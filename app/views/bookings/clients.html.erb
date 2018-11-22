@@ -4,7 +4,10 @@
     <ul>
       <% @bookings.each do |booking| %>
         <% if booking.user == current_user  %>
-          <li><%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %></li>
+          <li>
+            <%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %>
+            <%= link_to 'Send Message', '/', class: "btn book-btn" %>
+          </li>
         <% end %>
       <% end %>
     </ul>
