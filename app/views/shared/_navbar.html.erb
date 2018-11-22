@@ -1,35 +1,55 @@
 <% if user_signed_in? %>
   <div class="topbar-placeholder">
-    <nav class="topbar visible">
+    <nav class="navbar-wagon">
+
       <a href="/">
         <h1 class="logo">SportLance</h1>
       </a>
-      <div class="button-wrap hidden-xs">
-        <a class="button">Dashboard</a>
-        <a class="button">About Us</a>
-        <%= link_to("Log out", destroy_user_session_path, method: "delete", class: "button") %>
-        <a><%= image_tag('phelps', class: "avatar-medium") %></a>
+
+      <div class="clickable">
+        <div class="button-wrap hidden-xs">
+          <div>
+            <%= link_to("Dashboard", user_bookings_path(current_user), method: "get", class: "button") %>
+          </div>
+          <div>
+            <a class="button">About Us</a>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true""><%= image_tag('phelps', class: "avatar-medium") %></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">My reviews</a></li>
+              <li><a href="#">Account Settings</a></li>
+              <li><%= link_to("Log out", destroy_user_session_path, method: "delete") %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dropdown visible-xs">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"  ></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+            <li><%= link_to("Dashboard", user_bookings_path(current_user), method: "get") %></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">My Reviews</a></li>
+            <li><%= link_to("Acount Settings", edit_user_registration_path, method: "get") %></li>
+            <li><%= link_to("Log out", destroy_user_session_path, method: "delete") %></li>
+          </ul>
+        </div>
       </div>
-      <div class="dropdown visible-xs">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-menu-hamburger"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-      </div>
+
+
     </nav>
   </div>
 <% else %>
   <div class="topbar-placeholder">
-    <nav class="topbar visible">
+    <nav class="navbar-wagon">
       <a href="/">
         <h1 class="logo">SportLance</h1>
       </a>
       <div class="button-wrap">
-        <%= link_to("Log In / Sign Up", new_user_session_path, method: "get", class: "button") %>
         <a class="button">About Us</a>
-        <%= link_to("New Instructor", users_new_instructor_path, method: "get", class: "button") %>
+
+        <%= link_to("New Instructor", new_user_registration_path, method: "get", class: "button") %>
+        <%= link_to("Log in/Sign up", new_user_session_path, method: "get", class: "button") %>
       </div>
     </nav>
   </div>
