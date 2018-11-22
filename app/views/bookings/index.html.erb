@@ -1,16 +1,11 @@
-<div class="calendar-dash">
-  <% if !current_user.is_client %>
+<% if !current_user.is_client %>
+  <div class="calendar-dash">
     <%= render 'components/instructor_sidebar' %>
     <%= render 'components/calendar' %>
-  <% else %>
-    <%= render 'components/client_sidebar' %>
-  <% end %>
-</div>
-
-
-
-
-
+  </div>
+<% else %>
+  <%= render 'components/client_sidebar' %>
+<% end %>
 
 <% @bookings.each do |booking| %>
   <p>

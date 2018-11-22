@@ -4,9 +4,8 @@
 
 .nav-form form {
   display: flex;
-
+  margin-top: 25px;
 }
-
 
 .form-control {
     width: 100%;
@@ -16,6 +15,7 @@
     box-shadow: 0 1px 0 0 #4dd0e1;
     border: none;
     margin-right: 10px;
+
   }
 
   input.form-control[type=text] {
@@ -24,6 +24,6 @@
     border-bottom: 1px solid #4dd0e1;
     background-color: transparent;
     font-family: Raleway, Helvetica, sans-serif;
-    color: white;
+    color: #242423;
   }
 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :search_results]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search_results, :new_instructor]
 
   def index
     @users = User.where(is_client: false)
@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     @users = User.global_search(params[:query])
     map(@users)
     redirect_to no_results_path if @users.empty?
+  end
+
+  def new_instructor
+    @user = User.new
   end
 
   private
@@ -43,6 +47,6 @@ class UsersController < ApplicationController
         end
       end
     end
-    @markers.compact!
+    @markers.compact! if @markers != nil
   end
 end
