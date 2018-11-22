@@ -1,13 +1,17 @@
 .grid-item {
-  display: grid;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid-item-last {
-  display: grid;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .last-row {
@@ -50,3 +54,16 @@
     display: none;
 }
 
+// CELL STATES
+
+.unavailable {
+  background-color: #ef1f1f;
+}
+
+.available {
+  background-color: #2acc0e;
+}
+
+.hour-block p {
+  pointer-events: none
+}

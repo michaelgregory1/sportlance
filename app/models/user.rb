@@ -10,6 +10,18 @@ class User < ApplicationRecord
   has_many :availabilities
   has_many :reviews
   mount_uploader :photo, PhotoUploader
+
+  def check_available(time)
+    availabilities.each do |a|
+      return "available hour-block grid-item" if time.between?(a.date_start, a.date_end)
+    end
+    return "unavailable hour-block grid-item"
+  end
+
+  def id_set(time)
+    return time.to_s
+  end
+
   include PgSearch
   pg_search_scope :global_search,
     against: [:first_name, :last_name, :sport, :price_per_hour, :abilities_taught],
@@ -19,4 +31,5 @@ class User < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
 end
