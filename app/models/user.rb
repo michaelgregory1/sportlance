@@ -17,4 +17,8 @@ class User < ApplicationRecord
     end
     return "unavailable hour-block grid-item"
   end
+
+  def id_set(time)
+    return time.to_s
+  end
 end

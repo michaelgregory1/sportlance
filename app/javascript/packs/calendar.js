@@ -15,7 +15,6 @@ changeText()
 
 blocks.forEach(function(element) {
   element.addEventListener("click", (event) => {
-
     mydata = `time[value]=${event.toElement.id}`
     Rails.ajax({
       type: "POST",
@@ -27,6 +26,8 @@ blocks.forEach(function(element) {
     changeText();
   });
 });
+
+
 
 
 
