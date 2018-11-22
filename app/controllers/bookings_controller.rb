@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy, :new]
-  before_action :find_user, only: [:show]
 
   def index
     @bookings = Booking.all
@@ -9,10 +8,6 @@ class BookingsController < ApplicationController
 
   def show
     calculate_total_price
-    @availabilities = []
-    @user.availabilities.each do |availability|
-      @availabilities << availability
-    end
   end
 
   def new
