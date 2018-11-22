@@ -2,13 +2,13 @@
   <div id="dashboard-title">
     <h4>Dashboard</h4>
   </div>
-  <a class="tab active" href="#">
+  <a class="tab active" href="<% link_to user_bookings_path(current_user) %>">
     <div class ="icon">
       <i class="far fa-calendar-check"></i>
     </div>
     <span class="span-dashboard">Schedule</span>
   </a>
-  <a class="tab" href="#">
+  <a class="tab" href="<% link_to user_clients_path(current_user) %>">
     <div class ="icon">
       <i class="fas fa-users"></i>
     </div>
