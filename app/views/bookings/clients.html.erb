@@ -1,8 +1,12 @@
-<%= render 'components/instructor_sidebar' %>
-<ul>
-  <% @bookings.each do |booking| %>
-    <% if booking.user == current_user  %>
-      <li><%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %></li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="calendar-dash">
+  <%= render 'components/instructor_sidebar' %>
+  <div>
+    <ul>
+      <% @bookings.each do |booking| %>
+        <% if booking.user == current_user  %>
+          <li><%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -3,31 +3,35 @@
 <% else %>
   <%= render 'components/client_sidebar' %>
 <% end %>
-<p>
-  Instructor: <%= User.find(@booking.user_id).first_name %> <%= User.find(@booking.user_id).last_name %>
-</p>
-<p>
-  Client: <%= User.find(@booking.client_id).first_name %> <%= User.find(@booking.client_id).last_name %>
-</p>
-<p>Location</p>
-<p>
-  Longitude: <%= Location.find(@booking.location_id).longitude %>
-</p>
-<p>
-  Latitude: <%= Location.find(@booking.location_id).latitude %>
-</p>
-<p>
-  date start: <%= @booking.date_start.strftime("%b %e, %l:%M %p")  %>
-</p>
-<p>
-  date end: <%= @booking.date_end.strftime("%b %e, %l:%M %p")  %>
-</p>
-<p>
-  price: <%= @price %>
-</p>
+<div class="calendar-dash">
+  <div>
+    <p>
+      Instructor: <%= User.find(@booking.user_id).first_name %> <%= User.find(@booking.user_id).last_name %>
+    </p>
+    <p>
+      Client: <%= User.find(@booking.client_id).first_name %> <%= User.find(@booking.client_id).last_name %>
+    </p>
+    <p>Location</p>
+    <p>
+      Longitude: <%= Location.find(@booking.location_id).longitude %>
+    </p>
+    <p>
+      Latitude: <%= Location.find(@booking.location_id).latitude %>
+    </p>
+    <p>
+      date start: <%= @booking.date_start.strftime("%b %e, %l:%M %p")  %>
+    </p>
+    <p>
+      date end: <%= @booking.date_end.strftime("%b %e, %l:%M %p")  %>
+    </p>
+    <p>
+      price: <%= @price %>
+    </p>
 
-<% if !current_user.is_client %>
-  <%= link_to 'Reschedule', edit_booking_path(params[:id]) %>
-<% end %>
+    <% if !current_user.is_client %>
+      <%= link_to 'Reschedule', edit_booking_path(params[:id]) %>
+    <% end %>
 
-<%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "btn" %>
+    <%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "btn" %>
+  </div>
+</div>
