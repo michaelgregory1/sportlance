@@ -18,6 +18,15 @@
 
   }
 
+  input.form-control-white[type=text] {
+    box-shadow: 0 1px 0 0 #4dd0e1;
+    border: none;
+    border-bottom: 1px solid #4dd0e1;
+    background-color: transparent;
+    font-family: Raleway, Helvetica, sans-serif;
+    color: #fff;
+  }
+
   input.form-control[type=text] {
     box-shadow: 0 1px 0 0 #4dd0e1;
     border: none;

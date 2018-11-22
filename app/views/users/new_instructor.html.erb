@@ -1,55 +1,60 @@
-<h2>Sign up</h2>
+<div class="container-login" style="background-image: linear-gradient(-225deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.6) 50%), url(<%= image_path 'swimmer_1.jpg' %>);">
+  <div class="wrap-login">
+    <div class="login-form">
+    <span class="login-title">Sign up</span>
 
-<%= simple_form_for(@user, url: registration_path(@user)) do |f| %>
-  <%= f.error_notification %>
+        <%= simple_form_for(@user, url: registration_path(@user)) do |f| %>
+          <%= f.error_notification %>
 
-  <div class="form-inputs">
+          <div class="form-inputs">
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "First name", class: "style-input" }%>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "Last name", class: "style-input" }%>
+        <%= f.input :sport,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "Sport", class: "style-input" }%>
+        <%= f.association :locations,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "Location(s)", class: "style-input" }%>
+        <%= f.input :price_per_hour,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "Price / hour", class: "style-input" }%>
+        <%= f.input :abilities_taught,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "Abilities taught", class: "style-input" }%>
+        <%= f.input :bio,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "Bio", class: "style-input-bio" }%>
+        <%= f.input :photo, class: "style-input" %>
+        <%= f.input :photo_cache, as: :hidden, class: "style-input" %>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true ,
+                    input_html: { autocomplete: "email", class: "style-input" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password", class: "style-input" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password", class: "style-input" } %>
+      </div>
 
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "First name" }%>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "Last name" }%>
-    <%= f.input :sport,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "Sport" }%>
-    <%= f.association :locations,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "Location(s)" }%>
-    <%= f.input :price_per_hour,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "Price / hour" }%>
-    <%= f.input :abilities_taught,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "Abilities taught" }%>
-    <%= f.input :bio,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "Bio" }%>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: "button-blue" %>
+      </div>
+    <% end %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+</div>
 

@@ -1,10 +1,19 @@
-<h1>My conversations</h1>
-
-<% @conversations.each do |conversation| %>
-  <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
+<div class="calendar-dash">
+  <% if !current_user.is_client %>
+    <%= render 'components/instructor_sidebar' %>
   <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
+    <%= render 'components/client_sidebar' %>
   <% end %>
-  <p><%= link_to recipient.first_name, conversation_messages_path(conversation)%><p>
-<% end %>
+  <div>
+    <h1>My conversations</h1>
+
+    <% @conversations.each do |conversation| %>
+      <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+      <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+      <% end %>
+      <p><%= link_to recipient.first_name, conversation_messages_path(conversation)%><p>
+    <% end %>
+  </div>
+</div>

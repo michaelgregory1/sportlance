@@ -2,16 +2,19 @@
   <div id="dashboard-title">
     <h4>Dashboard</h4>
   </div>
-  <a class="tab active" href="#">
+
+  <%= link_to(user_bookings_path(current_user), class: "tab active") do %>
     <div class ="icon">
       <i class="far fa-calendar-check"></i>
     </div>
     <span class="span-dashboard">Bookings</span>
-  </a>
-  <a class="tab" href="#">
+  <% end %>
+
+  <%= link_to(conversations_path, class: "tab") do %>
     <div class ="icon">
       <i class="far fa-envelope"></i>
     </div>
     <span class="span-dashboard">Messages</span>
-  </a>
+  <% end %>
+
 </div>
