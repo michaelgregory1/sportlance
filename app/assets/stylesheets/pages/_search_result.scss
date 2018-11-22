@@ -8,9 +8,13 @@
 
   .card-map-container {
     width: 60%;
+    border-right: 1px solid #E8E7E4;
+    border-top: 1px solid #E8E7E4;
+    margin-right: 80px;
   }
 
   .map-search-form-container {
+    top: 50px;
     width: 45%;
     margin-bottom: 10px;
     margin-left: 30px;
@@ -22,7 +26,6 @@
       font-family: Raleway, Helvetica, sans-serif;
       font-size: 18px;
       margin-left: 30px;
-      border-bottom: 1px solid #E8E7E4;
       width: 50%;
     }
 }
