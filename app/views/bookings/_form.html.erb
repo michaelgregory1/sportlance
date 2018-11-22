@@ -1,9 +1,8 @@
-
-    <%= simple_form_for :search, method: "get" do |f| %>
-      <%= f.input :date_start, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :location_id %>
-      <%= f.input :date_start %>
-      <%= f.input :client_note %>
-      <%= f.button :submit, "Book your lesson", class: "btn btn-primary" %>
-    <% end %>
+<%= simple_form_for [@user, @booking] do |f| %>
+  <%= f.input :date_start, as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.association :location, label_method: :address %>
+  <%= f.select :date_start, @availabilities %>
+  <%= f.input :client_note %>
+  <%= f.button :submit, "Book your lesson", class: "btn btn-primary" %>
+<% end %>
 
