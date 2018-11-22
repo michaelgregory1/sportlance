@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resources :bookings, except: [:index]
 
   resources :users, only: [:index] do
-    resources :bookings, only: [:index]
+    resources :bookings, only: [:index, :clients]
+    get 'clients', to: 'bookings#clients'
   end
 
   resources :locations

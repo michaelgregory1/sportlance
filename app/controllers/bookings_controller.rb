@@ -49,6 +49,10 @@ class BookingsController < ApplicationController
     render js: "window.location = '/bookings/#{booking.id}'"
   end
 
+  def clients
+    @bookings = Booking.all
+  end
+
   private
 
   def booking_params
