@@ -4,6 +4,7 @@
 
 .nav-form form {
   display: flex;
+  margin-top: 25px;
 }
 
 .form-control {
@@ -14,6 +15,7 @@
     box-shadow: 0 1px 0 0 #FB5607;
     border: none;
     margin-right: 10px;
+
   }
 
   input.form-control[type=text] {
