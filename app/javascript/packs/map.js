@@ -40,11 +40,16 @@ if (mapElement) { mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   }
 }
 
-const addressInput = document.getElementById("query");
-
-if (addressInput) {
-  const places = require('places.js');
-  const placesAutocomplete = places({
-    container: addressInput
-  });
+function autoComplete(addressId) {
+  const addressInput = document.getElementById(addressId);
+  if (addressInput) {
+    const places = require('places.js');
+    const placesAutocomplete = places({
+      container: addressInput
+    });
+  }
 }
+const searchId = "query"
+autoComplete(searchId)
+const userAddressId = "user_locations_address"
+autoComplete(userAddressId)

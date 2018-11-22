@@ -19,10 +19,9 @@
                     required: true,
                     autofocus: true ,
                     input_html: { autocomplete: "Sport", class: "style-input" }%>
-        <%= f.association :locations,
-                    required: true,
-                    autofocus: true ,
-                    input_html: { autocomplete: "Location(s)", class: "style-input" }%>
+        <%= f.simple_fields_for :locations do |p| %>
+          <%= p.input :address, required: true, autofocus: true, label: "Location(s)" %>
+        <% end %>
         <%= f.input :price_per_hour,
                     required: true,
                     autofocus: true ,
