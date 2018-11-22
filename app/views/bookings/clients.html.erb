@@ -6,7 +6,7 @@
         <% if booking.user == current_user  %>
           <li>
             <%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %>
-            <%= link_to 'Send Message', '/', class: "btn book-btn" %>
+            <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: User.find(booking.client_id)), method: 'post', class: "btn book-btn"%>
           </li>
         <% end %>
       <% end %>

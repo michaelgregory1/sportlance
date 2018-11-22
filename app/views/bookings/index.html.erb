@@ -27,6 +27,7 @@
         <p>
           date end: <%= booking.date_end.strftime("%b %e, %l:%M %p")  %>
         </p>
+        <%= link_to("Booking details", booking_path(booking), method: "get") %>
       <% end %>
     </div>
   </div>
