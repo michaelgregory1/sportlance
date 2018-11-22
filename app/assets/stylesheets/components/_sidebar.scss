@@ -73,3 +73,10 @@
   width: 30px;
   text-align: center;
 }
+
+.stick-to-left {
+  position: sticky !important;
+  left: 0;
+  top: 70px;
+  height: calc(100vh - 70px);
+}
