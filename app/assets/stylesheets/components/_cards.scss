@@ -1,3 +1,8 @@
+.container {
+  padding: 20px;
+}
+
+
 *,
 *::before,
 *::after {
@@ -18,14 +23,18 @@
     .card {
       display: flex;
       background-color: white;
-      box-shadow: 0 10px 20px -14px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 20px -15px rgba(0,0,0,0.25);
       border: 1px solid #cccccc;
       border-radius: 3px;
       width: 250px;
       flex-direction: column;
       overflow: hidden;
+      max-height: 300px;
+      transition: 0.5s;
         &:hover {
           filter: contrast(100%);
+          box-shadow: 0 10px 20px -10px rgba(0,0,0,0.25);
+
         }
 
       .card-title {
@@ -49,49 +58,51 @@
         font-size: 14px;
         line-height: 1.5;
         margin-bottom: 1.25rem;
+        margin-top: 10px;
+        text-align: center;
+        font-family: Raleway, Helvetica, sans-serif;
       }
 
       .card-img {
         width: 100%;
-
         img {
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: auto;
-        max-width: 100%;
-        vertical-align: middle;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: auto;
+          max-width: 100%;
+          vertical-align: middle;
         }
       }
 
-    .button-card {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: none;
-      border: 1px solid #6AC5DB;
-      font-family: Raleway, Helvetica, sans-serif;
-      font-size: 14px;
-      line-height: 1;
-      margin: 5px;
-      padding: 8px;
-      color: #6AC5DB;
-      transition: 0.25s;
-      text-decoration: none;
-      border-radius: 3px;
-
-    }
-
-    @media (max-width: 300px) {
       .button-card {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: 1px solid #6AC5DB;
+        font-family: Raleway, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 1;
+        margin: 5px;
+        padding: 8px;
+        color: #6AC5DB;
+        transition: 0.25s;
+        text-decoration: none;
+        border-radius: 3px;
       }
-    }
 
-    .button-card:hover {
-      box-shadow: 0 0.5em 0.5em -0.4em;
+      @media (max-width: 300px) {
+        .button-card {
+          display: flex;
+          flex-direction: column;
+        }
       }
+
+      .button-card:hover {
+        box-shadow: 0 0.5em 0.5em -0.4em;
+      }
+
     }
   }
 }

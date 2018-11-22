@@ -2,11 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'users#index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'users/new_instructor', to: 'users#new_instructor'
 
   resources :users do
     resources :reviews, only: [ :index, :new, :create ]
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
   resources :reviews, only: [ :show, :edit, :update, :destroy]
 
@@ -23,6 +22,8 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :users, only: [:show]
+
+  post '/toggle-availability', to: 'availabilities#toggle_availability'
 
   get 'users-search', to: 'users#search_results'
   get 'no-results', to: 'users#no_results'

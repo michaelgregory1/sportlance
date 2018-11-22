@@ -22,10 +22,20 @@ class AvailabilitiesController < ApplicationController
     @availability.destroy
   end
 
+  def toggle_availability
+    time = (params[:time][:value]).to_datetime + 1.second
+
+    if Availability.exists?(date_start: time - 1.hour, date_end: time, user_id: current_user.id)
+      a = Availability.find_by(date_start: time - 1.hour, date_end: time, user_id: current_user.id)
+      a.destroy
+    else
+      Availability.create(date_start: time - 1.hour, date_end: time, user_id: current_user.id)
+    end
+  end
+
   private
 
   def availability_params
     params.require(:availability).permit(:date_start, :date_end)
   end
-
 end

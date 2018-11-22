@@ -47,10 +47,11 @@
       </a>
       <div class="button-wrap">
         <a class="button">About Us</a>
+
         <%= link_to("New Instructor", new_user_registration_path, method: "get", class: "button") %>
-        <%= link_to("Log In / Sign Up", new_user_session_path, method: "get", class: "button") %>
+        <%= link_to("New Instructor", users_new_instructor_path, method: "get", class: "button") %>
+
       </div>
     </nav>
   </div>
 <% end %>
-
