@@ -1,8 +1,16 @@
-<% if @messages.empty? %>
-  <h1>Sorry, no messages yet</h1>
-<% end %>
-<% @messages.each do |message| %>
-  <%= message.body %>
-<% end %>
-
+<div class="calendar-dash">
+  <% if !current_user.is_client %>
+    <%= render 'components/instructor_sidebar' %>
+  <% else %>
+    <%= render 'components/client_sidebar' %>
+  <% end %>
+  <div>
+    <% if @messages.empty? %>
+      <h1>Sorry, no messages yet</h1>
+    <% end %>
+    <% @messages.each do |message| %>
+      <%= message.body %>
+    <% end %>
+  </div>
+</div>
 

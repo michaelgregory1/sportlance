@@ -4,27 +4,31 @@
     <%= render 'components/calendar' %>
   </div>
 <% else %>
+  <div class="calendar-dash">
   <%= render 'components/client_sidebar' %>
-  <% @bookings.each do |booking| %>
-    <p>
-      Instructor: <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
-    </p>
-    <p>
-      Client: <%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %>
-    </p>
-    <p>Location</p>
-    <p>
-      Longitude: <%= Location.find(booking.location_id).longitude %>
-    </p>
-    <p>
-      Latitude: <%= Location.find(booking.location_id).latitude %>
-    </p>
-    <p>
-      date start: <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
-    </p>
-    <p>
-      date end: <%= booking.date_end.strftime("%b %e, %l:%M %p")  %>
-    </p>
-  <% end %>
+    <div>
+      <% @bookings.each do |booking| %>
+        <p>
+          Instructor: <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+        </p>
+        <p>
+          Client: <%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %>
+        </p>
+        <p>Location</p>
+        <p>
+          Longitude: <%= Location.find(booking.location_id).longitude %>
+        </p>
+        <p>
+          Latitude: <%= Location.find(booking.location_id).latitude %>
+        </p>
+        <p>
+          date start: <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
+        </p>
+        <p>
+          date end: <%= booking.date_end.strftime("%b %e, %l:%M %p")  %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
