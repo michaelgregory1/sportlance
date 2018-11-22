@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
-   before_action :find_booking, only: [:show, :edit, :update, :destroy]
+  before_action :find_booking, only: [:show, :edit, :update, :destroy]
 
   def index
     @bookings = Booking.all
+    @user = current_user
   end
 
   def show
@@ -41,6 +42,13 @@ class BookingsController < ApplicationController
     # redirect_to TBC
   end
 
+  def redirect_to_show
+    p "HELLO"
+    time = (params[:time][:value]).to_datetime + 1.second
+    booking = Booking.find_by(date_start: time - 1.hour, date_end: time, user_id: current_user.id)
+    render js: "window.location = '/bookings/#{booking.id}'"
+  end
+
   private
 
   def booking_params
@@ -54,5 +62,4 @@ class BookingsController < ApplicationController
   def calculate_total_price
     @price = @booking.user.price_per_hour * ((@booking.date_end - @booking.date_start) * 0.000277778).floor
   end
-
 end
