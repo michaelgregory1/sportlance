@@ -1,5 +1,7 @@
 <h2>Sign up</h2>
 
+<%= link_to("Are you an instructor?", users_new_instructor_path, method: "get", class: "form-actions")%>
+
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
