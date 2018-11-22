@@ -43,6 +43,6 @@ class UsersController < ApplicationController
         end
       end
     end
-    @markers.compact!
+    @markers.compact! if @markers != nil
   end
 end
