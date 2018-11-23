@@ -3,7 +3,7 @@
     <div class="login-form">
       <span class="login-title">Sign up</span>
 
-<%= link_to("Are you an instructor?", users_new_instructor_path, method: "get", class: "form-actions")%>
+<%= link_to("Are you an instructor?", users_new_instructor_path, method: "get", class: "link-instructor")%>
 
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

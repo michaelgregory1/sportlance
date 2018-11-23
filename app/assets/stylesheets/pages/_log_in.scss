@@ -107,4 +107,16 @@
     }
 }
 
+.link-instructor {
+  text-decoration: none;
+  color: #6096BA;
+  font-size: 16px;
+  margin-bottom: 30px;
+
+    &:hover {
+      color: #274C77;
+      text-decoration: none;
+    }
+}
+
 
