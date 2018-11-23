@@ -22,7 +22,7 @@ gem 'carrierwave', '~> 1.2'
 gem "simple_calendar", "~> 2.0"
 gem "geocoder"
 gem 'pg_search'
-
+gem "cocoon"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
