@@ -61,6 +61,7 @@
   background-color: rgba(220,220,220,0.4);
   border-radius: 3px;
   flex-direction: column;
+  min-width: 400px;
 }
 
 .instructor_availability {
@@ -92,4 +93,12 @@
 .gallery {
   margin-bottom: 10px;
   width: 350px;
+}
+
+.client-note {
+  border: 1px solid #6BC4D9;
+}
+
+#booking_date_start {
+  width: 200px;
 }
