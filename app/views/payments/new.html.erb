@@ -1,6 +1,6 @@
 <div class="book_lesson">
   <h1> Book your Lesson with <%= @user.first_name %></h1>
-  <%= cl_image_tag @user.photo %>
+  <%= cl_image_tag @user.photo, class: "pay-pic" %>
   <h3><%= @booking.date_start %></h3>
   <h3><%= @booking.location.address %></h3>
   <%= form_tag booking_payments_path(@booking) do %>
