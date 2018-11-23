@@ -7,8 +7,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @location.user = @user
     if @user.valid?
       @user.save
-      @location.save!
-      redirect_to root_path
+      @location.save
+      redirect_to user_session_path, method: 'post'
     else
       render :new
     end
