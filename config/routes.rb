@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :new, :create]
   end
 
+  resources :bookings, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
+
   resources :bookings, except: [:index]
 
   resources :users, only: [:index] do
