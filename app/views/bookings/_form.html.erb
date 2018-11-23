@@ -1,8 +1,8 @@
 <%= simple_form_for [@user, @booking] do |f| %>
   <!-- date picker removed for now, this line is in Slack -->
-  <%= f.association :location, label_method: :address %>
+  <%= f.association :location, label_method: :address, prompt: "Select location" %>
   <%= f.select :date_start, @availabilities.map { |a| a.date_start.strftime("%b %e, %l:%M %p") + " - " + a.date_end.strftime("%b %e, %l:%M %p")} %>
-  <%= f.input :client_note %>
+  <%= f.input :client_note, input_html: { class: "client-note" } %>
   <%= f.button :submit, "Book your lesson", class: "btn btn-primary" %>
 <% end %>
 
