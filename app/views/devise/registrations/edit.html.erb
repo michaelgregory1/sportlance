@@ -25,6 +25,35 @@
                       input_html: { autocomplete: "current-password", class: "style-input" } %>
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
+          <% unless current_user.is_client? %>
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true ,
+                        input_html: { autocomplete: "First name", class: "style-input" }%>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true ,
+                        input_html: { autocomplete: "Last name", class: "style-input" }%>
+            <%= f.input :sport,
+                        required: true,
+                        autofocus: true ,
+                        input_html: { autocomplete: "Sport", class: "style-input" }%>
+              <%= f.simple_fields_for :locations do |location| %>
+                <%= render 'users/location_fields.html.erb', f: location %>
+              <% end %>
+            <%= f.input :price_per_hour,
+                        required: true,
+                        autofocus: true ,
+                        input_html: { autocomplete: "Price / hour", class: "style-input" }%>
+            <%= f.input :abilities_taught,
+                        required: true,
+                        autofocus: true ,
+                        input_html: { autocomplete: "Abilities taught", class: "style-input" }%>
+            <%= f.input :bio,
+                        required: true,
+                        autofocus: true ,
+                        input_html: { autocomplete: "Bio", class: "style-input-bio" }%>
+          <% end %>
         </div>
 
         <div class="form-actions">

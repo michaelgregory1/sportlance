@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def new_instructor
     @user = User.new
+    @location = Location.new
   end
 
   private
