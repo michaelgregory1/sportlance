@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'users#index'
 
   get 'users/new_instructor', to: 'users#new_instructor'

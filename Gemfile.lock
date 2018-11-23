@@ -189,7 +189,7 @@ GEM
       tilt
     simple_calendar (2.3.0)
       rails (>= 3.0)
-    simple_form (4.0.1)
+    simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     spring (2.0.2)
@@ -238,7 +238,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3)
   carrierwave (~> 1.2)
   cloudinary
-  cocoon
+  cocoon (~> 1.2.11)
   devise
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
