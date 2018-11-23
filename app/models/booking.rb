@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
   validates :date_start, presence: true
   validates :date_end, presence: true
   validates :location_id, presence: true
-  monetize :price_cents
+  # monetize :price_cents
   monetize :amount_cents
   after_save :destroy_corresponding_availability
 
