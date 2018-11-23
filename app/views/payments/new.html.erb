@@ -1,10 +1,15 @@
-<h1>Purchase of teddy </h1>
-<%= form_tag booking_payments_path(@booking) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
-    </label>
-  </article>
+<div class="book_lesson">
+  <h1> Book your Lesson with <%= @user.first_name %></h1>
+  <%= cl_image_tag @user.photo %>
+  <h3><%= @booking.date_start %></h3>
+  <h3><%= @booking.location.address %></h3>
+  <%= form_tag booking_payments_path(@booking) do %>
+    <article>
+      <label class="amount">
+        <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
+      </label>
+    </article>
+
 
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -16,3 +21,4 @@
     data-currency="<%= @booking.amount.currency %>">
     </script>
 <% end %>
+</div>

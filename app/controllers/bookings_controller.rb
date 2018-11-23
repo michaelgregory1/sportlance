@@ -8,6 +8,11 @@ class BookingsController < ApplicationController
 
   def show
     calculate_total_price
+    if current_user.is_client?
+      @recipient = User.find(@booking.user_id)
+    else
+      @recipient = User.find(@booking.client_id)
+    end
   end
 
   def new
@@ -46,7 +51,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to user_bookings_path
+    redirect_to user_bookings_path(current_user)
   end
 
   def redirect_to_show
