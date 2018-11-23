@@ -70,7 +70,8 @@
     width: 100%;
 
     img {
-      height: auto;
+      height: 150px;
+      object-fit: cover;
       width: 100%;
       vertical-align: middle;
     }
@@ -115,6 +116,7 @@
 
     .card-item {
       width: 200px;
+
       padding: 0px;
       padding-right: 20px;
       padding-bottom: 20px;
