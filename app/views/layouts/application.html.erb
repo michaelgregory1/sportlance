@@ -16,7 +16,6 @@
     <% unless current_page?(root_path) %>
       <div class="fake-navbar"></div>
     <% end %>
-      <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

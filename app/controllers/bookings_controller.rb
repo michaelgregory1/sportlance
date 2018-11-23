@@ -8,17 +8,29 @@ class BookingsController < ApplicationController
 
   def show
     calculate_total_price
+    if current_user.is_client?
+      @recipient = User.find(@booking.user_id)
+    else
+      @recipient = User.find(@booking.client_id)
+    end
   end
 
   def new
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
+    date_start = booking_params[:date_start].scan(/\w{1,5}\s+\d{1,2},\s+\d{1,2}:\d\d\s[A-Z][A-Z]/)[0]
+    date_end = booking_params[:date_start].scan(/\w{1,5}\s+\d{1,2},\s+\d{1,2}:\d\d\s[A-Z][A-Z]/)[1]
+    @booking.date_start = Time.parse(date_start)
+    @booking.date_end = Time.parse(date_end)
+    @booking.user_id = params[:user_id]
     @booking.client_id = current_user.id
-    @booking.price = calculate_total_price
+    @booking.location_id = booking_params[:location_id]
+    @booking.client_note = booking_params[:client_note]
+    @booking.amount = calculate_total_price
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to new_booking_payment_path(@booking)
     else
       render :new
     end
@@ -29,7 +41,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    @booking.price = calculate_total_price
+    @booking.amount = calculate_total_price
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -39,7 +51,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to user_bookings_path
+    redirect_to user_bookings_path(current_user)
   end
 
   def redirect_to_show
@@ -56,7 +68,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date_start, :date_end, :user_id, :client_id, :location_id, :client_note, :user_note)
+    params.require(:booking).permit(:date_start, :location_id, :client_note, :user_id)
   end
 
   def find_booking

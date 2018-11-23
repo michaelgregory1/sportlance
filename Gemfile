@@ -16,13 +16,15 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'cloudinary'
+gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 
 gem "simple_calendar", "~> 2.0"
 gem "geocoder"
 gem 'pg_search'
-
+gem 'cocoon', '~> 1.2.11'
+gem 'money-rails'
+gem 'stripe'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

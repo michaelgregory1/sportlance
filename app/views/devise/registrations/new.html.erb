@@ -20,6 +20,7 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password", class: "style-input" } %>
+          <%= f.hidden_field :is_client, value: true %>
         </div>
 
 

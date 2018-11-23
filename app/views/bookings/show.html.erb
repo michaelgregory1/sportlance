@@ -4,54 +4,108 @@
   <% else %>
     <%= render 'components/client_sidebar' %>
   <% end %>
-  <div class="margin-auto">
-    <h1><strong>Appointment</strong></h1>
-    <div class="booking-instructor">
-      <div class="client-info">
-        <h4><strong>Client Name:</strong></h4>
-        <p><%= User.find(@booking.client_id).first_name %> <%= User.find(@booking.client_id).last_name %></p>
-        <h4><strong>Payment Status:</strong></h4>
-        <p>TO BE CODED LOL</p>
-      </div>
-      <div class="appointment-info">
-        <div class="appointment-headers">
-          <div class="header-margin">
-            <h4><strong>Location:</strong></h4>
-            <p><%= Location.find(@booking.location_id).address %></p>
-          </div>
-          <div class="header-margin">
-            <h4><strong>Date:</strong></h4>
-            <p><%= @booking.date_start.strftime("%a %e %b") %></p>
-          </div>
-          <div class="header-margin">
-            <h4><strong>Start Time:</strong></h4>
-            <p><%= @booking.date_start.strftime("%l:%M %p")  %></p>
-          </div>
-          <div class="header-margin">
-            <h4><strong>End Time:</strong></h4>
-            <p><%= @booking.date_end.strftime("%l:%M %p") %></p>
-          </div>
+  <% unless current_user.is_client %>
+    <div class="margin-auto">
+      <h1><strong>Appointment</strong></h1>
+      <div class="booking-instructor">
+        <div class="client-info">
+          <h4><strong>Client Name:</strong></h4>
+          <p><%= User.find(@booking.client_id).first_name %> <%= User.find(@booking.client_id).last_name %></p>
+          <h4><strong>Payment Status:</strong></h4>
+          <p>Paid</p>
         </div>
-        <div>
-          <h4><strong>Notes:</strong></h4>
-          <div class="note">
-            <p><%= @booking.user_note %></p>
-          </div>
-        </div>
-        <div class="booking-btns">
-          <div>
-            <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: User.find(@booking.client_id)), method: 'post', class: "btn book-btn"%>
-          </div>
-          <% unless current_user.is_client %>
-            <div>
-              <%= link_to 'Reschedule', edit_booking_path(params[:id]), class: "btn book-btn" %>
+        <div class="appointment-info">
+          <div class="appointment-headers">
+            <div class="header-margin">
+              <h4><strong>Location:</strong></h4>
+              <p><%= Location.find(@booking.location_id).address %></p>
             </div>
-          <% end %>
+            <div class="header-margin">
+              <h4><strong>Date:</strong></h4>
+              <p><%= @booking.date_start.strftime("%a %e %b") %></p>
+            </div>
+            <div class="header-margin">
+              <h4><strong>Start Time:</strong></h4>
+              <p><%= @booking.date_start.strftime("%l:%M %p")  %></p>
+            </div>
+            <div class="header-margin">
+              <h4><strong>End Time:</strong></h4>
+              <p><%= @booking.date_end.strftime("%l:%M %p") %></p>
+            </div>
+          </div>
           <div>
-            <%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "btn book-btn"%>
+            <h4><strong>Notes:</strong></h4>
+            <div class="note">
+              <p><%= @booking.client_note %></p>
+            </div>
+          </div>
+          <div class="booking-btns">
+            <div>
+              <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: User.find(@booking.client_id)), method: 'post', class: "btn book-btn"%>
+            </div>
+            <% unless current_user.is_client %>
+              <div>
+                <%= link_to 'Reschedule', edit_booking_path(params[:id]), class: "btn book-btn" %>
+              </div>
+            <% end %>
+            <div>
+              <%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "btn book-btn"%>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
+  <% if current_user.is_client %>
+    <div class="margin-auto">
+      <h1><strong>Appointment</strong></h1>
+      <div class="booking-instructor">
+        <div class="client-info">
+          <h4><strong>Instructor Name:</strong></h4>
+          <p><%= User.find(@booking.user_id).first_name %> <%= User.find(@booking.user_id).last_name %></p>
+          <h4><strong>Payment Status:</strong></h4>
+          <p>Paid</p>
+        </div>
+        <div class="appointment-info">
+          <div class="appointment-headers">
+            <div class="header-margin">
+              <h4><strong>Location:</strong></h4>
+              <p><%= Location.find(@booking.location_id).address %></p>
+            </div>
+            <div class="header-margin">
+              <h4><strong>Date:</strong></h4>
+              <p><%= @booking.date_start.strftime("%a %e %b") %></p>
+            </div>
+            <div class="header-margin">
+              <h4><strong>Start Time:</strong></h4>
+              <p><%= @booking.date_start.strftime("%l:%M %p")  %></p>
+            </div>
+            <div class="header-margin">
+              <h4><strong>End Time:</strong></h4>
+              <p><%= @booking.date_end.strftime("%l:%M %p") %></p>
+            </div>
+          </div>
+          <div>
+            <h4><strong>Notes:</strong></h4>
+            <div class="note">
+              <p><%= @booking.client_note %></p>
+            </div>
+          </div>
+          <div class="booking-btns">
+            <div>
+              <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: User.find(@booking.client_id)), method: 'post', class: "btn book-btn"%>
+            </div>
+            <% unless current_user.is_client %>
+              <div>
+                <%= link_to 'Reschedule', edit_booking_path(params[:id]), class: "btn book-btn" %>
+              </div>
+            <% end %>
+            <div>
+              <%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "btn book-btn"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

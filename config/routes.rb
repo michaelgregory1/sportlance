@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'users#index'
 
   get 'users/new_instructor', to: 'users#new_instructor'
@@ -13,10 +13,14 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :new, :create]
   end
 
+  resources :bookings, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
+
   resources :bookings, except: [:index]
 
   resources :users, only: [:index] do
-    resources :bookings, only: [:index, :clients]
+    resources :bookings, only: [:index, :clients, :new, :create]
     get 'clients', to: 'bookings#clients'
   end
 

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :clients, through: :bookings, source: :user
   has_many :bookings, dependent: :destroy
-  has_many :locations, dependent: :destroy
+  has_many :locations, inverse_of: :user, dependent: :destroy
   has_many :availabilities, dependent: :destroy
   has_many :reviews
   mount_uploader :photo, PhotoUploader
@@ -34,5 +34,4 @@ class User < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
 end

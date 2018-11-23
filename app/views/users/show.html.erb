@@ -6,12 +6,12 @@
           <div class="col-xs-12 col-sm-6">
             <div class="left-info height-max">
               <div>
-                <%= image_tag('phelps', class: "avatar-xl") %>
+                <%= cl_image_tag @user.photo, class: "avatar-xl" %>
               </div>
               <div class="instructor_summary">
-                 <p>Name:<%= @user.first_name %><%= @user.last_name %></p>
-                 <p>Activity:<%= @user.sport %></p>
-                 <p>Price ph:<%= @user.price_per_hour %></p>
+                 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+                 <p>Activity: <%= @user.sport.capitalize %></p>
+                 <p>Price per hour: £<%= @user.price_per_hour %></p>
                  <div class="avg_review">
                    <span><i class="fas fa-star"></i></span>
                    <span><i class="fas fa-star"></i></span>
@@ -31,8 +31,9 @@
             <div class="instructor_bio">
               <div class="instructor_description">
                 <span class="bio-title">Bio</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur </p>
+                <p><%= @user.bio %></p>
                 <h4>Cancelation Policy:</h4>
+                <p>Cancellation fee of £10 if cancelled less than 24 hours before appointment.</p>
               </div>
               <div class="instructor_availability">
                 <span class="bio-title">Avability</span>
@@ -43,6 +44,7 @@
                 <p>Friday: N/A</p>
                 <p>Saturday: N/A</p>
                 <p>Sunday: N/A</p>
+         
               </div>
             </div>
 

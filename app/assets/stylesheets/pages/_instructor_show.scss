@@ -108,6 +108,7 @@
   width: 350px;
 }
 
+
 .bio-title {
   font-size: 30px;
   font-family: Raleway, Helvetica, sans-serif;
@@ -116,4 +117,11 @@
   line-height: 1.2;
   display: block;
   margin-bottom: 10px;
+
+.client-note {
+  border: 1px solid #6BC4D9;
+}
+
+#booking_date_start {
+  width: 200px;
 }

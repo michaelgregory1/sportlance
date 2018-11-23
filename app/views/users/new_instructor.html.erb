@@ -22,6 +22,9 @@
         <%= f.simple_fields_for :locations do |p| %>
           <%= p.input :address, required: true, autofocus: true, label: "Location(s)" %>
         <% end %>
+        <!-- <div class="links"> -->
+          <%#= link_to_add_association 'add location', f, :locations, partial: "shared/location_fields.html.erb"%>
+        <!-- </div> -->
         <%= f.input :price_per_hour,
                     required: true,
                     autofocus: true ,
@@ -47,6 +50,7 @@
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password", class: "style-input" } %>
+        <%= f.hidden_field :is_client, value: false %>
       </div>
 
       <div class="form-actions">
