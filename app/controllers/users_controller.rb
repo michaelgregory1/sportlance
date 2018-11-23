@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @booking = Booking.new
     @booking.user_id = params[:id]
+    @availabilities = []
+    @user.availabilities.each do |availability|
+      @availabilities << availability
+    end
   end
 
   def search_results

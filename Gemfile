@@ -23,6 +23,8 @@ gem "simple_calendar", "~> 2.0"
 gem "geocoder"
 gem 'pg_search'
 gem 'cocoon', '~> 1.2.11'
+gem 'money-rails'
+gem 'stripe'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

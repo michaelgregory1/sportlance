@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :clients, through: :bookings, source: :user
-  has_many :bookings
-  has_many :locations, inverse_of: :user
-  has_many :availabilities
+  has_many :bookings, dependent: :destroy
+  has_many :locations, inverse_of: :user, dependent: :destroy
+  has_many :availabilities, dependent: :destroy
   has_many :reviews
   mount_uploader :photo, PhotoUploader
 

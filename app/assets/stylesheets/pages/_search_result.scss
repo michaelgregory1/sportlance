@@ -1,31 +1,53 @@
 .container-map {
   margin: 30px;
+  position: relative;
 
   .search_results_flex {
     display: flex;
-    margin-right: 50px;
   }
 
   .card-map-container {
-    width: 60%;
-    border-right: 1px solid #E8E7E4;
-    border-top: 1px solid #E8E7E4;
-    margin-right: 80px;
+    width: 100%;
+    background: #fff;
+    display: flex;
   }
 
   .map-search-form-container {
     top: 50px;
     width: 45%;
     margin-bottom: 10px;
-    margin-left: 30px;
 
 
   }
 
   .results-found {
-      font-family: Raleway, Helvetica, sans-serif;
-      font-size: 18px;
-      margin-left: 30px;
-      width: 50%;
+    font-family: Raleway, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+    width: 50%;
+  }
+
+  .card-wrap {
+    width: 400px;
+    flex-shrink: 0;
+    overflow-y: scroll;
+    height: 500px;
+
+    @media (max-width: 768px) {
+      width: 200px;
     }
+
+    @media (max-width: 460px) {
+      overflow: auto;
+      width: 100%;
+    }
+  }
+
+  .map {
+    width: 100%;
+
+    @media (max-width: 460px) {
+      display: none;
+    }
+  }
 }
