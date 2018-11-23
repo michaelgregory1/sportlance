@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :edit, :update, :destroy]
+  before_action :find_booking, only: [:show, :edit, :update, :destroy, :new]
 
   def index
     @bookings = Booking.all
@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    # redirect_to TBC
+    redirect_to user_bookings_path
   end
 
   def redirect_to_show
@@ -61,6 +61,10 @@ class BookingsController < ApplicationController
 
   def find_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def find_user
+    @user = User.find(params[:user_id])
   end
 
   def calculate_total_price
