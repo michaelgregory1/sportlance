@@ -22,6 +22,8 @@ gem 'carrierwave', '~> 1.2'
 gem "simple_calendar", "~> 2.0"
 gem "geocoder"
 gem 'pg_search'
+gem 'money-rails'
+gem 'stripe'
 
 
 group :development do
