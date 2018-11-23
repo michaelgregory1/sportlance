@@ -1,17 +1,17 @@
-<div class="card-wrap">
-  <% @users.each do |user| %>
-    <li class="card-item">
-      <div class="card">
-        <div class="card-img">
-          <%= link_to user_path(user) do %>
-            <%= cl_image_tag user.photo %>
-          <% end %>
-        </div>
-        <div class="card-content">
-          <div class="card-title"><%= user.first_name %> <%= user.last_name %></div>
-          <p class="card-text"><%= user.sport %> || £<%= user.price_per_hour %>/hr</p>
-        </div>
+
+<% @users.each do |user| %>
+  <li class="card-item">
+    <div class="card">
+      <div class="card-img">
+        <%= link_to user_path(user) do %>
+          <%= cl_image_tag user.photo %>
+        <% end %>
       </div>
-    </li>
-  <% end %>
-</div>
+      <div class="card-content">
+        <div class="card-title"><%= user.first_name %> <%= user.last_name %></div>
+        <p class="card-text"><%= user.sport %> || £<%= user.price_per_hour %>/hr</p>
+      </div>
+    </div>
+  </li>
+<% end %>
+
