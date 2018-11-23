@@ -15,94 +15,119 @@
   list-style: none;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
+  justify-content: center;
 
   .card-item {
-  display: flex;
-  padding: 20px 15px;
+    display: flex;
+    padding: 20px 15px;
+  }
+  .card {
+    display: flex;
+    background-color: white;
+    box-shadow: 0 10px 20px -15px rgba(0,0,0,0.25);
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    width: 250px;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 300px;
+    transition: 0.5s;
+
+    &:hover {
+      filter: contrast(100%);
+      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.25);
+    }
+  }
+
+  .card-title {
+    color: #696969;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .card-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .card-text {
+    flex: 1 1 auto;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    margin-top: 10px;
+    text-align: center;
+    font-family: Raleway, Helvetica, sans-serif;
+  }
+
+  .card-img {
+    width: 100%;
+
+    img {
+      height: auto;
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .button-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: 1px solid #6AC5DB;
+    font-family: Raleway, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    margin: 5px;
+    padding: 8px;
+    color: #6AC5DB;
+    transition: 0.25s;
+    text-decoration: none;
+    border-radius: 3px;
+
+    &:hover {
+      box-shadow: 0 0.5em 0.5em -0.4em;
+    }
+  }
+
+  @media (max-width: 300px) {
+    .button-card {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &--search-results {
+    padding: 0px;
+    box-sizing: border-box;
+    justify-content: flex-start;
 
     .card {
-      display: flex;
-      background-color: white;
-      box-shadow: 0 10px 20px -15px rgba(0,0,0,0.25);
-      border: 1px solid #cccccc;
-      border-radius: 3px;
-      width: 250px;
-      flex-direction: column;
-      overflow: hidden;
-      max-height: 300px;
-      transition: 0.5s;
-        &:hover {
-          filter: contrast(100%);
-          box-shadow: 0 10px 20px -10px rgba(0,0,0,0.25);
+      width: 100%;
+    }
 
-        }
+    .card-item {
+      width: 200px;
+      padding: 0px;
+      padding-right: 20px;
+      padding-bottom: 20px;
 
-      .card-title {
-        color: #696969;
-        font-size: 16px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding-top: 10px;
-        text-align: center;
-      }
 
-      .card-content {
-        display: flex;
-        flex: 1 1 auto;
-        flex-direction: column;
-        padding: 10px;
-      }
-
-      .card-text {
-        flex: 1 1 auto;
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 1.25rem;
-        margin-top: 10px;
-        text-align: center;
-        font-family: Raleway, Helvetica, sans-serif;
-      }
-
-      .card-img {
+      @media (max-width: 460px) {
         width: 100%;
-        img {
-          background-position: center center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: auto;
-          max-width: 100%;
-          vertical-align: middle;
-        }
       }
+    }
 
-      .button-card {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: none;
-        border: 1px solid #6AC5DB;
-        font-family: Raleway, Helvetica, sans-serif;
-        font-size: 14px;
-        line-height: 1;
-        margin: 5px;
-        padding: 8px;
-        color: #6AC5DB;
-        transition: 0.25s;
-        text-decoration: none;
-        border-radius: 3px;
-      }
-
-      @media (max-width: 300px) {
-        .button-card {
-          display: flex;
-          flex-direction: column;
-        }
-      }
-
-      .button-card:hover {
-        box-shadow: 0 0.5em 0.5em -0.4em;
-      }
-
+    .card-img img {
+      height: 80px;
+      object-fit: cover;
     }
   }
 }

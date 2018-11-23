@@ -11,14 +11,21 @@
   <% end %>
   <div class="search_results_flex">
     <div class="card-map-container">
-      <%= render 'shared/cards.html.erb' %>
+      <div class="card-wrap card-wrap--search-results">
+        <%= render 'shared/cards.html.erb' %>
+        <%= render 'shared/cards.html.erb' %>
+        <%= render 'shared/cards.html.erb' %>
+        <%= render 'shared/cards.html.erb' %>
+        <%= render 'shared/cards.html.erb' %>
+      </div>
+      <div
+        id="map"
+        class="map"
+        style="height: 500px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
     </div>
-    <div
-      id="map"
-      style="width: 40%;
-      height: 500px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+
   </div>
 </div>
