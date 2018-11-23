@@ -22,9 +22,9 @@ class BookingsController < ApplicationController
     @booking.user_id = params[:user_id]
     @booking.client_id = current_user.id
     @booking.location_id = booking_params[:location_id]
-    @booking.price = calculate_total_price
+    @booking.amount = calculate_total_price
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to new_booking_payment_path(@booking)
     else
       render :new
     end
@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    @booking.price = calculate_total_price
+    @booking.amount = calculate_total_price
     if @booking.save
       redirect_to booking_path(@booking)
     else
