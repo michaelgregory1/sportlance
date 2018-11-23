@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
+    @user = @booking.user
   end
 
   def create
