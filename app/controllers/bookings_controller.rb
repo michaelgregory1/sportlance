@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
     @booking.user_id = params[:user_id]
     @booking.client_id = current_user.id
     @booking.location_id = booking_params[:location_id]
+    @booking.client_note = booking_params[:client_note]
     @booking.amount = calculate_total_price
     if @booking.save
       redirect_to new_booking_payment_path(@booking)
