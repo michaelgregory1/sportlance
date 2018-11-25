@@ -13,6 +13,13 @@ class UsersController < ApplicationController
     @user.availabilities.each do |availability|
       @availabilities << availability
     end
+    if user_signed_in? && current_user.is_client
+      if current_user.is_client?
+        @recipient = User.find(@booking.user_id)
+      else
+        @recipient = User.find(@booking.client_id)
+      end
+    end
   end
 
   def search_results
