@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :clients, through: :bookings, source: :user
   has_many :bookings, dependent: :destroy
   has_many :locations, inverse_of: :user, dependent: :destroy
+  accepts_nested_attributes_for :locations
   has_many :availabilities, dependent: :destroy
   has_many :reviews
   mount_uploader :photo, PhotoUploader
