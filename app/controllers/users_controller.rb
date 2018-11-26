@@ -5,14 +5,26 @@ class UsersController < ApplicationController
     @users = User.where(is_client: false)
   end
 
-  def show
+  def availabilities
     @user = User.find(params[:id])
     @booking = Booking.new
     @booking.user_id = params[:id]
     @availabilities = []
     @user.availabilities.each do |availability|
-      @availabilities << availability
+      if availability.date_start.strftime("%Y-%m-%d") == params[:date]
+        @availabilities << availability
+      end
     end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @booking = Booking.new
+    @booking.user_id = params[:id]
+    @availabilities = @user.availabilities.where(date_start: params[:date])
     if user_signed_in? && current_user.is_client
       if current_user.is_client?
         @recipient = User.find(@booking.user_id)
