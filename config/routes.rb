@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews, only: [ :index, :new, :create ]
   end
+
+  get 'availabilities/:id', to: "users#availabilities"
   resources :reviews, only: [ :show, :edit, :update, :destroy]
 
   resources :conversations, only: [:index, :create] do

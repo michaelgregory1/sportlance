@@ -5,11 +5,27 @@
   object-fit: cover;
 }
 
+.avatar-mailbox {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
 .avatar-large {
   height: 100px;
   width: 100px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.avatar-profile {
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-sizing: border-box;
 }
 
 .avatar-xl {

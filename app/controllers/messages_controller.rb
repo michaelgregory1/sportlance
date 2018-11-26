@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   # PLEASE NOTE THIS IS NOT MY BADLY FORMATTED CODE, FOUND ONLINE AND DON'T WANT TO TAMPER - Ariel
 
   def index
+
     @messages = @conversation.messages
     if @messages.length > 10
       @over_ten = true

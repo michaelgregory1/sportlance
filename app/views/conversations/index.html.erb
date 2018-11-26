@@ -4,23 +4,52 @@
   <% else %>
     <%= render 'components/client_sidebar' %>
   <% end %>
-  <div>
-    <div class=”ui segment”>
-      <h3>Mailbox</h3>
-      <div class=”ui list”>
-        <div class=”item”>
-          <% @conversations.each do |conversation| %>
-            <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
-              <% if conversation.sender_id == current_user.id %>
-                <% recipient = User.find(conversation.recipient_id) %>
-              <% else %>
-                <% recipient = User.find(conversation.sender_id) %>
-              <% end %>
-              <%= link_to recipient.first_name,   conversation_messages_path(conversation)%>
+<div class="users-container">
+  <span class="title">Users</span>
+    <ul class="inbox">
+       <% @users.each do |user| %>
+        <% if user.id != current_user.id %>
+       <div class="users">
+       <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+     </div>
+    <% end %>
+    <% end %>
+  </ul>
+</div>
+
+
+<div class="mailbox-container">
+ <span class="title">Mailbox</span>
+   <ul class="inbox">
+     <% @conversations.each do |conversation| %>
+       <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+        <%= link_to conversation_messages_path(conversation) do %>
+          <li class="conversation">
+            <% lastMessage = conversation.messages[conversation.messages.length - 1] %>
+            <% if conversation.sender_id == current_user.id %>
+              <% conversationPartner = User.find(conversation.recipient_id) %>
+            <% else %>
+              <% conversationPartner = User.find(conversation.sender_id) %>
+            <% end %>
+            <div class="image-container">
+              <%= cl_image_tag conversationPartner.photo, class: "avatar-mailbox" %>
+            <p class="conversation__name"><%= conversationPartner.first_name %></p>
+          </div>
+          <div class="message">
+            <% if !lastMessage.nil? %>
+                <p class="message__summary"><%= lastMessage.title %></p>
+                <p class="message__body"><%= lastMessage.summary %></p>
             <% end %>
           <% end %>
+        <% end %>
         </div>
-      </div>
-    </div>
-  </div>
+      </li>
+      <% end %>
+  </ul>
 </div>
+</div>
+
+
+
+
+

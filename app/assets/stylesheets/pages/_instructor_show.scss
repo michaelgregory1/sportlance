@@ -1,3 +1,13 @@
+.banner-profile {
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 25%;
+}
+
+
+
 .instructor_info {
   border-radius: 3px;
   margin: 10px;
@@ -58,6 +68,7 @@
   padding: 10px;
   font-family: Raleway, Helvetica, sans-serif;
   font-size: 14px;
+   box-shadow: 1px 0.5px 0.5px rgba(220, 220, 220, 0.4);
 }
 
 .height-max {
@@ -110,7 +121,17 @@
 
 
 .bio-title {
-  font-size: 30px;
+  font-size: 24px;
+  font-family: Raleway, Helvetica, sans-serif;
+  text-align: left;
+  text-transform: capitalize;
+  line-height: 1.2;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.bio-title-small {
+  font-size: 18px;
   font-family: Raleway, Helvetica, sans-serif;
   text-align: left;
   text-transform: capitalize;
@@ -125,4 +146,9 @@
 
 #booking_date_start {
   width: 200px;
+}
+
+.profile-photo {
+position: relative;
+width: 200px;
 }
