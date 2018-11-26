@@ -1,4 +1,24 @@
-<%= simple_form_for [@user, @review] do |f| %>
-  <%= f.input :body %>
-  <%= f.submit "add a review", class: "btn btn-primary" %>
-<% end %>
+<div style = "text-align: center;">
+<h3><%= "Leave a review for #{@user.first_name}" %></h3>
+<%= cl_image_tag(@user.photo, class: "avatar-large") %>
+</div>
+
+<div class = "row" >
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="review_form">
+      <%= simple_form_for [@user, @review] do |f| %>
+        <div>
+          <%= f.error_notification %>
+          <%= f.input :body, required: true %>
+          <%= f.label :rating, required: true %>
+          <%= f.select :rating, [ 1, 2, 3, 4, 5]%>
+        </div>
+        <div class="review_buttons">
+          <%= f.submit "Add review", class: "btn btn-primary" %>
+          <%= link_to "Back", user_bookings_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

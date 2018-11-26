@@ -10,6 +10,16 @@ class UsersController < ApplicationController
     @booking = Booking.new
     @booking.user_id = params[:id]
     @availabilities = []
+    @reviews = @user.reviews
+
+    @total = 0
+    @reviews.each do |review|
+      @total += review.rating.to_i
+    end
+    if @reviews.length > 0
+    @user_average_review = @total / @reviews.length
+    end
+
     @user.availabilities.each do |availability|
       @availabilities << availability
     end

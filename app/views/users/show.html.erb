@@ -12,13 +12,19 @@
                  <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
                  <p>Activity: <%= @user.sport.capitalize %></p>
                  <p>Price per hour: £<%= @user.price_per_hour %></p>
-                 <div class="avg_review">
-                   <span><i class="fas fa-star"></i></span>
-                   <span><i class="fas fa-star"></i></span>
-                   <span><i class="fas fa-star"></i></span>
-                   <span><i class="fas fa-star"></i></span>
-                   <span><i class="fas fa-star"></i></span>
-                 </div>
+                 <% if @reviews.blank? %>
+                 <p>No reviews yet</p>
+                 <% else %>
+                   <div class="avg_review">
+                    <% @user_average_review.to_i.times do  %>
+                      <span class="glyphicon glyphicon-star"></span>
+                    <% end %>
+                    <% (5- @user_average_review.to_i).times do %>
+                      <span class="glyphicon glyphicon-star-empty"></span>
+                     <% end %>
+                     <%= "(#{@reviews.length})" %>
+                   </div>
+                 <% end %>
               </div>
               <div class="instructor_gallery">
                 <%#= image_tag('phelps', class: "gallery") %>
@@ -46,7 +52,6 @@
                 <p>Friday: N/A</p>
                 <p>Saturday: N/A</p>
                 <p>Sunday: N/A</p>
-
               </div>
             </div>
 
@@ -54,19 +59,7 @@
         </div>
       </div>
       <div class="instructor_reviews">
-        <span class="bio-title">Reviews</span>
-        <div class="review">
-          <p>Excellent teacher</p>
-          <p>5 stars</p>
-        </div>
-        <div class="review">
-          <p>Excellent teacher</p>
-          <p>5 stars</p>
-        </div>
-        <div class="review">
-          <p>Excellent teacher</p>
-          <p>5 stars</p>
-        </div>
+        <%= render 'reviews/index.html.erb' %>
       </div>
     </div>
     <div class="book_instructor hidden-md hidden-lg">
@@ -87,8 +80,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-

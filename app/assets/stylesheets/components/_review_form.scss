@@ -1,0 +1,19 @@
+.review_form {
+  padding: 20px;
+  display: flex;
+  text-align: center;
+  background-color: rgba(230, 230, 230, 0.5);
+  border-radius: 3px;
+  justify-content: space-around;
+  margin-top: 30px;
+  text-align: center;
+  flex-direction: column;
+
+}
+
+.review_buttons {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
