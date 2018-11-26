@@ -36,7 +36,7 @@
 }
 
 .calendar-headers {
-  margin-top: 40px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   border-top: 2px solid black;
@@ -85,17 +85,28 @@
   padding: 4px;
 }
 
+.test {
+  display: none;
+}
+
 // CELL STATES
 
 .unavailable {
-  background-color: #abacb2;
+  background-color: #CFD3D4;
+  cursor: pointer;
 }
 
 .available {
-  background-color: #4cc962;
+  background-color: #7bd666;
+  cursor: pointer;
 }
 
 .booked {
   background-color: #6BC4D9;
+}
+
+.booked:hover {
+  background-color: #19849e;
+  cursor: pointer;
 }
 
