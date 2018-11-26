@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to new_booking_payment_path(@booking)
     else
-      render :new
+      redirect_to user_path(params[:user_id])
     end
   end
 
