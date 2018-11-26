@@ -1,0 +1,60 @@
+.message_container {
+  width: 80%;
+  padding: 10px;
+}
+
+.message-box {
+  overflow-x: scroll;
+  height: 350px;
+  padding-top: 40px;
+}
+
+.message-blue {
+  background-color: #bbe4ed;
+  border: 1px solid #a5e2ef;
+  position: relative;
+  width: 450px;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: left;
+  font-family: Raleway, Helvetica, sans-serif;
+
+}
+
+.message-title {
+font-size: 32px;
+margin: 40px;
+margin-bottom: 40px;
+font-family: Raleway, Helvetica, sans-serif;
+}
+
+.message-content {
+  padding: 0;
+  margin: 10px;
+}
+
+.message-yellow {
+  background-color: #ffcfaa;
+  border: 1px solid #ffbc8c;
+  width: 450px;
+  margin-left: calc(100% - 450px);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: left;
+  font-family: Raleway, Helvetica, sans-serif;
+}
+
+.message-header {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: black;
+  font-size: 16px;
+}
+
+.reply-container {
+  width: 100%;
+  padding: 20px;
+}
+
+
