@@ -67,19 +67,21 @@
         </div>
       </div>
     </div>
-    <div class="book_instructor hidden-md hidden-lg">
-      <h3>Book with <%= @user.first_name %></h3>
-      <br>
-      <div class="form-wrapper" style="width: 200px; margin: 0 auto;">
-        <%= render 'bookings/new.html.erb' %>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-3">
-      <div class="book_instructor position-fixed">
+    <div id="available_days" data-array="<%= @calendar_availabilities.to_json %>">
+      <div class="book_instructor hidden-md hidden-lg">
         <h3>Book with <%= @user.first_name %></h3>
         <br>
         <div class="form-wrapper" style="width: 200px; margin: 0 auto;">
           <%= render 'bookings/new.html.erb' %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <div class="book_instructor position-fixed">
+          <h3>Book with <%= @user.first_name %></h3>
+          <br>
+          <div class="form-wrapper" style="width: 200px; margin: 0 auto;">
+            <%= render 'bookings/new.html.erb' %>
+          </div>
         </div>
       </div>
     </div>

@@ -18,7 +18,10 @@ function changeText() {
 changeText()
 
 const calendar = document.querySelector(".calendar")
-calendar.scrollTo(0, 308);
+if (calendar) {
+  calendar.scrollTo(0, 308);
+}
+
 
 blocks.forEach(function(element) {
   element.addEventListener("click", (event) => {

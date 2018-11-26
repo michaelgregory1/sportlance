@@ -9,12 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @booking = Booking.new
     @booking.user_id = params[:id]
-    @availabilities = []
-    @user.availabilities.each do |availability|
-      if availability.date_start.strftime("%Y-%m-%d") == params[:date]
-        @availabilities << availability
-      end
-    end
+    @availabilities = user_availabilities(@user)
     respond_to do |format|
       format.js
     end
@@ -24,7 +19,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @booking = Booking.new
     @booking.user_id = params[:id]
-    @availabilities = @user.availabilities.where(date_start: params[:date])
+    @calendar_availabilities = []
+    @user.availabilities.each do |availability|
+      @calendar_availabilities << availability.date_start.strftime("%Y-%m-%d")
+    end
+    @availabilities = []
     if user_signed_in? && current_user.is_client
       if current_user.is_client?
         @recipient = User.find(@booking.user_id)
@@ -72,5 +71,15 @@ class UsersController < ApplicationController
       end
     end
     @markers.compact! if @markers != nil
+  end
+
+  def user_availabilities(user)
+    availabilities = []
+    user.availabilities.each do |availability|
+      if availability.date_start.strftime("%Y-%m-%d") == params[:date]
+        availabilities << availability
+      end
+    end
+    return availabilities
   end
 end
