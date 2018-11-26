@@ -1,3 +1,6 @@
+import $ from 'jquery'
+
+let mydata
 const blocks = document.querySelectorAll(".hour-block")
 
 function changeText() {
@@ -20,60 +23,7 @@ changeText()
 const calendar = document.querySelector(".calendar")
 if (calendar) {
   calendar.scrollTo(0, 308);
-}
-
-
-blocks.forEach(function(element) {
-  element.addEventListener("click", (event) => {
-    if (!event.toElement.classList.contains("booked")) {
-      mydata = `time[value]=${event.toElement.id}`
-      Rails.ajax({
-        type: "POST",
-        url: "/toggle-availability",
-        data: mydata
-      });
-    };
-    if (event.toElement.classList.contains("booked")) {
-      mydata = `time[value]=${event.toElement.id}`
-      Rails.ajax({
-      type: "POST",
-      url: "/redirect-to-show",
-      data: mydata
-    });
-    }
-    if (!event.toElement.classList.contains("booked")) {
-      element.classList.toggle("unavailable");
-      element.classList.toggle("available");
-      changeText();
-    };
-  });
-});
-
-blocks.forEach(function(element) {
-  element.addEventListener("ondrag", (event) => {
-    if (!event.toElement.classList.contains("booked")) {
-      mydata = `time[value]=${event.toElement.id}`
-      Rails.ajax({
-        type: "POST",
-        url: "/toggle-availability",
-        data: mydata
-      });
-    };
-    if (event.toElement.classList.contains("booked")) {
-      mydata = `time[value]=${event.toElement.id}`
-      Rails.ajax({
-      type: "POST",
-      url: "/redirect-to-show",
-      data: mydata
-    });
-    }
-    if (!event.toElement.classList.contains("booked")) {
-      element.classList.toggle("unavailable");
-      element.classList.toggle("available");
-      changeText();
-    };
-  });
-});
+};
 
 blocks.forEach(function(element) {
   element.addEventListener("mouseover", (event) => {
@@ -88,5 +38,45 @@ blocks.forEach(function(element) {
   });
 });
 
-
-
+$(blocks).mousedown(e  => {
+  if (e.currentTarget.classList.contains('unavailable')) {
+    $('.unavailable').mouseenter(e => {
+      mydata = `time[value]=${event.toElement.id}`
+      Rails.ajax({
+        type: "POST",
+        url: "/toggle-availability",
+        data: mydata
+      });
+      e.currentTarget.classList.toggle("unavailable");
+      e.currentTarget.classList.toggle("available");
+      changeText()
+    })
+  } else if (e.currentTarget.classList.contains('available')) {
+    $('.available').mouseenter(e => {
+      mydata = `time[value]=${event.toElement.id}`
+      Rails.ajax({
+        type: "POST",
+        url: "/toggle-availability",
+        data: mydata
+      });
+      e.currentTarget.classList.toggle("unavailable");
+      e.currentTarget.classList.toggle("available");
+      changeText()
+    })
+  }
+  mydata = `time[value]=${event.toElement.id}`
+  Rails.ajax({
+    type: "POST",
+    url: "/toggle-availability",
+    data: mydata
+  });
+  e.currentTarget.classList.toggle("unavailable");
+  e.currentTarget.classList.toggle("available");
+  changeText()
+  $(document).mouseup(e => {
+    console.log('I worked because I am Good Code(tm)')
+    $('.available').off('mouseenter')
+    $('.unavailable').off('mouseenter')
+    $(document).off('mouseup')
+  })
+})

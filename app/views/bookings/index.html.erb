@@ -28,6 +28,7 @@
           date end: <%= booking.date_end.strftime("%b %e, %l:%M %p")  %>
         </p>
         <%= link_to("Booking details", booking_path(booking), method: "get") %>
+        <%= link_to 'Leave a Review', new_user_review_path(booking), class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>

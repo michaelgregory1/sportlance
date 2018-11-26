@@ -1,0 +1,28 @@
+
+<div style = "text-align: center;">
+<h3><%= "Thanks for your review of #{@review.user.first_name}" %></h3>
+<%= cl_image_tag(@review.user.photo, class: "avatar-large") %>
+</div>
+
+<div class = "row" >
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="review_form">
+      <div>
+      <% @review.rating.to_i.times do  %>
+        <span class="glyphicon glyphicon-star"></span>
+      <% end %>
+      <% (5 - @review.rating.to_i).times do %>
+        <span class="glyphicon glyphicon-star-empty"></span>
+      <% end %>
+      </div>
+      <p><%= "#{@review.body}" %></p>
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class ="review_buttons">
+          <%= link_to "Back to your bookings", user_bookings_path(@review.user_id), class: "btn btn-primary" %>
+          <br>
+          <%= link_to "#{@review.user.first_name}'s profile", user_path(@review.user_id), class: "btn btn-primary" %>
+         </div>
+       </div>
+     </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div>
+  <h3 class="review_title"><%= @user.first_name + "'s lastest reviews:" %></h3>
+  <% if @reviews.blank? %>
+    <p>No reviews just yet, book with him and be the first!</p>
+  <% elsif current_page?(user_path) %>
+    <% @reviews.last(5).reverse.each do |review| %>
+        <% reviewer = User.find(review.client_id) %>
+        <div class="reviews">
+          <% review.rating.to_i.times do  %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+          <% review.blank_stars.times do %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+          <span><%= cl_image_tag(reviewer.photo, class: "avatar-medium")%></span>
+          <span><%= "#{reviewer.first_name} | #{review.created_at.strftime('%d.%m.%Y')} |" %></span>
+          <p><%= review.body %></p>
+        </div>
+      <% end %>
+  <% elsif %>
+    <% @reviews.reverse.each do |review| %>
+      <% reviewer = User.find(review.client_id) %>
+      <div class="reviews">
+        <% review.rating.to_i.times do  %>
+          <span class="glyphicon glyphicon-star"></span>
+        <% end %>
+        <% review.blank_stars.times do %>
+          <span class="glyphicon glyphicon-star-empty"></span>
+        <% end %>
+        <span><%= cl_image_tag(reviewer.photo, class: "avatar-medium")%></span>
+        <span><%= "Reviewed by #{reviewer.first_name}" %></span>
+        <span><%= "|#{reviewer.first_name}|#{review.created_at.strftime('%d.%m.%Y')}|" %></span>
+        <p><%= review.body %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
