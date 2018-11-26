@@ -4,37 +4,54 @@
   <% else %>
     <%= render 'components/client_sidebar' %>
   <% end %>
-  <div>
+
     <% if @over_ten %>
      <%= link_to 'Show Previous', '?m=all' %>
     <% end %>
-    <div class="ui segment">
-     <% @messages.each do |message| %>
+    <div class="message_container">
+      <span class="message-title">Messages</span>
+      <div class="message-box">
+
+
+     <% @messages.reverse.each do |message| %>
       <% if message.body %>
-       <% user = User.find(message.user_id) %>
-       <div class="item">
-        <div class="content">
-         <div class="header"><strong><%= user.first_name %></strong>     <%= message.message_time %></div>
-          <div class="list">
-           <div class="item">
-            <i class="right triangle icon"></i>
-             <%= message.body %>
+      <% user = User.find(message.user_id) %>
+
+        <% if user == current_user %>
+         <div class="message-blue">
+          <div class="message-header">
+              <strong><%= user.first_name %></strong>
+              <%= message.message_time %>
+            </div>
+          <div class="message-content">
+            <%= message.body %>
           </div>
         </div>
-       </div>
-     </div>
+
+      <% elsif %>
+       <div class="message-yellow">
+        <div class="message-header">
+            <strong><%= user.first_name %></strong>
+            <%= message.message_time %>
+          </div>
+        <div class="message-content">
+          <%= message.body %>
+        </div>
+      </div>
+     <% end %>
      <% end %>
     <% end %>
-    </div>
-    <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
-     <div class="field">
+  </div>
+
+   <div class="reply-container">
+    <%= form_for [@conversation, @message], html: {class: "ui reply form"} do
+      |f| %>
        <%= f.text_area :body, class: "form-control" %>
-     </div>
      <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-     <div>
-       <%= f.submit "Add Reply", class: "ui blue labeled submit icon button" %>
-     </div>
+       <%= f.submit "Add Reply", class: "button-blue" %>
     <% end %>
+  </div>
+
   </div>
 </div>
 
