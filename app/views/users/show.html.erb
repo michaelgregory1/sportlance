@@ -26,6 +26,7 @@
               <% if user_signed_in? && current_user.is_client %>
                 <%= link_to "Message #{@user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: @recipient), method: 'post', class: "btn btn-primary message_button"%>
               <% end %>
+
             </div>
             <br>
           </div>
@@ -33,12 +34,8 @@
             <div class="instructor_bio">
               <div class="instructor_description">
                 <span class="bio-title">Bio</span>
-                <p><%= @user.bio %></p>
-                <h4>Cancelation Policy:</h4>
-                <p>Cancellation fee of £10 if cancelled less than 24 hours before appointment.</p>
-              </div>
-              <div class="instructor_availability">
-                <span class="bio-title">Avability</span>
+                <p><%= @user.bio %>Something about me...</p>
+                <span class="bio-title-small">Avability</span>
                 <p>Monday: N/A</p>
                 <p>tuesday: N/A</p>
                 <p>Wednesday: N/A</p>
@@ -46,7 +43,8 @@
                 <p>Friday: N/A</p>
                 <p>Saturday: N/A</p>
                 <p>Sunday: N/A</p>
-
+                <span class="bio-title-small">Cancelation policy</span>
+                <p>Cancellation fee of £10 if cancelled less than 24 hours before appointment.</p>
               </div>
             </div>
 
