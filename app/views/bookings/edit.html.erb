@@ -4,7 +4,11 @@
       <div class="header">
         <p>Update</p>
       </div>
-      <%= render 'form', user: @user, booking: @booking %>
+      <%= simple_form_for [@booking] do |f| %>
+        <%= f.association :location, collection: Location.where(user: current_user.id), label_method: :address, prompt: "Select location" %>
+        <%= f.select :date_start, current_user.availabilities.map { |a| a.date_start.strftime("%b %e, %l:%M %p") + " - " + a.date_end.strftime("%b %e, %l:%M %p")} %>
+        <%= f.button :submit, "Book the lesson", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

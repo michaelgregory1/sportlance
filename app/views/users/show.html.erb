@@ -23,7 +23,10 @@
               <div class="instructor_gallery">
                 <%#= image_tag('phelps', class: "gallery") %>
               </div>
-              <button type="button" class="button-blue"><%= "Message #{@user.first_name}" %></button>
+              <% if user_signed_in? && current_user.is_client %>
+                <%= link_to "Message #{@user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: @recipient), method: 'post', class: "btn btn-primary message_button"%>
+              <% end %>
+
             </div>
             <br>
           </div>

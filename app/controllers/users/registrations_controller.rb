@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :find_user, only: [:update]
+
   def create
     @user = User.new(user_params)
     @location = Location.new(location_params)
@@ -14,6 +16,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    @user.update(user_params)
+    @location = Location.where(user: @user.id)
+    @location.update(location_params)
+    if @user.save
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def user_params
@@ -22,6 +35,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def location_params
     params.require(:user).require(:locations).permit(:address)
+  end
+
+  def find_user
+    @user = current_user
   end
 
   # before_action :configure_sign_up_params, only: [:create]

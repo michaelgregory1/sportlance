@@ -41,7 +41,7 @@
           </div>
           <div class="booking-btns">
             <div>
-              <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: User.find(@booking.client_id)), method: 'post', class: "btn book-btn"%>
+              <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: @recipient), method: 'post', class: "btn book-btn"%>
             </div>
             <% unless current_user.is_client %>
               <div>
