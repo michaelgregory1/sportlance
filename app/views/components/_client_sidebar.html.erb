@@ -1,15 +1,32 @@
-<div class="tabs stick-to-left">
-  <%= link_to(user_bookings_path(current_user), class: "tab active") do %>
-    <div class ="icon">
-      <i class="far fa-calendar-check"></i>
-    </div>
-    <span class="span-dashboard">Bookings</span>
-  <% end %>
-  <%= link_to(conversations_path, class: "tab") do %>
-    <div class ="icon">
-      <i class="far fa-envelope"></i>
-    </div>
-    <span class="span-dashboard">Messages</span>
-  <% end %>
+<% if params[:controller] == "conversations" %>
+  <div class="tabs stick-to-left">
+    <%= link_to(user_bookings_path(current_user), class: "tab") do %>
+      <div class ="icon">
+        <i class="far fa-calendar-check"></i>
+      </div>
+      <span class="span-dashboard">Bookings</span>
+    <% end %>
+    <%= link_to(conversations_path, class: "tab active") do %>
+      <div class ="icon">
+        <i class="far fa-envelope"></i>
+      </div>
+      <span class="span-dashboard">Messages</span>
+    <% end %>
+  </div>
+<% else %>
+  <div class="tabs stick-to-left">
+    <%= link_to(user_bookings_path(current_user), class: "tab active") do %>
+      <div class ="icon">
+        <i class="far fa-calendar-check"></i>
+      </div>
+      <span class="span-dashboard">Bookings</span>
+    <% end %>
+    <%= link_to(conversations_path, class: "tab") do %>
+      <div class ="icon">
+        <i class="far fa-envelope"></i>
+      </div>
+      <span class="span-dashboard">Messages</span>
+    <% end %>
+  </div>
+<% end %>
 
-</div>

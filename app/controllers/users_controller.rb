@@ -10,8 +10,8 @@ class UsersController < ApplicationController
     @booking = Booking.new
     @booking.user_id = params[:id]
     @availabilities = []
-    @reviews = @user.reviews
 
+    @reviews = @user.reviews
     @total = 0
     @reviews.each do |review|
       @total += review.rating.to_i
