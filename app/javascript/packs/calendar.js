@@ -17,6 +17,9 @@ function changeText() {
 
 changeText()
 
+const calendar = document.querySelector(".calendar")
+calendar.scrollTo(0, 308);
+
 blocks.forEach(function(element) {
   element.addEventListener("click", (event) => {
     if (!event.toElement.classList.contains("booked")) {
@@ -43,7 +46,44 @@ blocks.forEach(function(element) {
   });
 });
 
+blocks.forEach(function(element) {
+  element.addEventListener("ondrag", (event) => {
+    if (!event.toElement.classList.contains("booked")) {
+      mydata = `time[value]=${event.toElement.id}`
+      Rails.ajax({
+        type: "POST",
+        url: "/toggle-availability",
+        data: mydata
+      });
+    };
+    if (event.toElement.classList.contains("booked")) {
+      mydata = `time[value]=${event.toElement.id}`
+      Rails.ajax({
+      type: "POST",
+      url: "/redirect-to-show",
+      data: mydata
+    });
+    }
+    if (!event.toElement.classList.contains("booked")) {
+      element.classList.toggle("unavailable");
+      element.classList.toggle("available");
+      changeText();
+    };
+  });
+});
 
+blocks.forEach(function(element) {
+  element.addEventListener("mouseover", (event) => {
+    if (event.currentTarget.classList.contains("booked")) {
+      event.currentTarget.innerHTML = "<p>Go to booking</p>";
+    }
+  });
+  element.addEventListener("mouseleave", (event) => {
+    if (event.currentTarget.classList.contains("booked")) {
+      event.currentTarget.innerHTML = "<p>Booked</p>";
+    }
+  });
+});
 
 
 
