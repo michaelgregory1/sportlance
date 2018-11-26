@@ -1,0 +1,114 @@
+.mailbox-container {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+  max-height: 80vh;
+  overflow: scroll;
+}
+
+.inbox {
+  list-style: none;
+  margin: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.message {
+  margin: 20px;
+  float: right;
+
+  .message__body {
+    color: black;
+    font-size: 14px;
+    font-family: Raleway, Helvetica, sans-serif;
+  }
+
+  .message__summary {
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+    font-family: Raleway, Helvetica, sans-serif;
+  }
+}
+
+.image-container {
+  float: left;
+  margin-right: 20px;
+}
+
+.conversation {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 0px;
+  flex: 1 0 auto;
+
+  &:last-child {
+    border: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+
+  .conversation__name {
+    text-decoration: none;
+    color: #242423;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    font-family: Raleway, Helvetica, sans-serif;
+
+    &:hover {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.title {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-size: 32px;
+  font-family: Raleway, Helvetica, sans-serif;
+}
+
+.users-container {
+  width: 20%;
+  max-height: 80vh;
+  position: sticky;
+  overflow: scroll;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-right: 20px;
+
+  .box {
+  list-style: none;
+  margin: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  align-items: center;
+}
+
+  .users {
+    font-family: Raleway, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-right: 5px;
+    line-height: 5;
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+      font-size: 16px;
+      float: right;
+    }
+
+  }
+}
+
