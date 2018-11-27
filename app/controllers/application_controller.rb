@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_unread_count
 
   def  set_unread_count
-    if user_signed_in? && Conversation.where(sender_id: current_user.id) || Conversation.where(recipient_id: current_user.id)
+    if user_signed_in? && (Conversation.where(sender_id: current_user.id) || Conversation.where(recipient_id: current_user.id))
       @unread = 0
       @sender_conversations = Conversation.where(sender_id: current_user.id)
       @recipient_conversations = Conversation.where(recipient_id: current_user.id)
