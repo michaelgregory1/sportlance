@@ -5,20 +5,22 @@ class ApplicationController < ActionController::Base
   before_action :set_unread_count
 
   def  set_unread_count
-    @unread = 0
-    @sender_conversations = Conversation.where(sender_id: current_user.id)
-    @recipient_conversations = Conversation.where(recipient_id: current_user.id)
-    @sender_conversations.each do |convo|
-      convo.messages.each do |message|
-        @unread += 1 if message.read == false && message.sender_id != current_user.id
+    if user_signed_in? && Conversation.where(sender_id: current_user.id) || Conversation.where(recipient_id: current_user.id)
+      @unread = 0
+      @sender_conversations = Conversation.where(sender_id: current_user.id)
+      @recipient_conversations = Conversation.where(recipient_id: current_user.id)
+      @sender_conversations.each do |convo|
+        convo.messages.each do |message|
+          @unread += 1 if message.read == false && message.conversation.sender_id != current_user.id
+        end
       end
-    end
-    @recipient_conversations.each do |convo|
-      convo.messages.each do |message|
-        @unread += 1 if message.read == false && message.sender_id != current_user.id
+      @recipient_conversations.each do |convo|
+        convo.messages.each do |message|
+          @unread += 1 if message.read == false && message.conversation.sender_id != current_user.id
+        end
       end
+      @unread
     end
-    @unread
   end
 
 
