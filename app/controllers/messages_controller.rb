@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
   # PLEASE NOTE THIS IS NOT MY BADLY FORMATTED CODE, FOUND ONLINE AND DON'T WANT TO TAMPER - Ariel
 
   def index
-
     @messages = @conversation.messages
 
     @messages.each do |message|
@@ -32,8 +31,6 @@ class MessagesController < ApplicationController
   def new
     @message = @conversation.messages.new
   end
-
-
 
   def create
     @message = @conversation.messages.new(message_params)
