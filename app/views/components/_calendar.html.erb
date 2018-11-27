@@ -14,13 +14,13 @@
     <!-- New row -->
   <div class="calendar">
     <div class="grid-item"><p class="time-label" class="time-label">00:00 - 01:00</p></div>
-    <div class="<%= @user.check_available(Time.now + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now + (1 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now + (1 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now + (2 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now + (2 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now + (3 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now + (3 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now + (4 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now + (4 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now + (5 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now + (5 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now + (6 * 86400) + (1 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now + (6 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + (1 * 3600) - 1).beginning_of_day) %>" id="<%= @user.id_set((Time.now + (1 * 3600) - 1).beginning_of_day) %>"></div>
+    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (1 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now + (6 * 86400) + (1 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item"><p class="time-label" >01:00 - 02:00</p></div>
     <div class="<%= @user.check_available(Time.now + (2 * 3600) - 1) %>" id="<%= @user.id_set(Time.now + (2 * 3600) - 1) %>"></div>
