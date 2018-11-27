@@ -57,4 +57,10 @@
   transition: 0.25s;
   text-decoration: none;
   border-radius: 3px;
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: 0 0.5em 0.5em -0.4em;
+    color: #b7ebf7;
+  }
 }

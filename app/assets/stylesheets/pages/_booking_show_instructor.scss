@@ -1,61 +1,122 @@
-.booking-show {
-  display: flex;
-}
 
-.booking-instructor {
-  margin: 0 auto;
-  display: flex;
-  h4 {
-    font-size: 1em;
-  }
-}
 
-.margin-auto {
-  margin: 0 auto;
-  h1 {
-    margin-bottom: 27px;
-  }
-}
-
-.appointment-headers {
-  display: flex;
-}
-
-.appointment-info {
-  margin: 0 30px;
-  width: 100%;
+.appointment-info-container {
+  width: 60%;
   background-color: #C4C4C4;
-  padding: 10px 20px;
-}
-
-.header-margin {
-  margin: 0 10px;
-}
-
-.note {
-  min-height: 100px;
-  background-color: #E5E5E5;
-}
-
-.client-info {
-  background-color: #C4C4C4;
-  p {
-    background-color: #E5E5E5;
-  }
-  h4 {
-    padding: 5px;
-  }
-}
-
-.book-btn {
-  position: relative;
-  margin: 10px;
-  padding: 10px;
-  background-color: #6AC5DB;
-  color: white;
-  width: 200px;
-}
-
-.center-btns {
   margin: 0 auto;
+  padding: 20px;
+  max-height: 80vh;
 }
+.booking-instructor-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 0;
+}
+
+.info-box {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 30px 30px 30px 30px;
+  align-items: center;
+  overflow-y: scroll;
+  width: 70%;
+  margin: 0 auto;
+  height: 70vh;
+}
+
+.appointment-title {
+  font-size: 20px;
+  font-family: Raleway, Helvetica, sans-serif;
+  text-align: left;
+  align-items: center;
+  text-transform: capitalize;
+  line-height: 1.2;
+  display: block;
+  color: #43515E;
+  padding: 15px;
+}
+
+.left-bold {
+  padding: 0 20px 0 20px;
+  color: #999999;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.right {
+  padding: 0 20px 0 20px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appo-title {
+  padding: 0 0 20px 140px;
+  font-size: 28px;
+  font-family: Raleway, Helvetica, sans-serif;
+}
+
+.left-button {
+  padding: 20px 20px 0 15px;
+  text-align: left;
+
+}
+
+
+
+// .booking-show {
+
+// }
+
+// .booking-instructor {
+//   margin: 0 auto;
+//   display: flex;
+//   h4 {
+//     font-size: 1em;
+//   }
+// }
+
+// .margin-auto {
+//   margin: 0 auto;
+//   h1 {
+//     margin-bottom: 27px;
+//   }
+// }
+
+// .appointment-headers {
+//   display: flex;
+// }
+
+
+
+// .header-margin {
+//   margin: 0 10px;
+// }
+
+// .note {
+//   min-height: 100px;
+//   background-color: #E5E5E5;
+// }
+
+// .book-btn {
+//   position: relative;
+//   margin: 10px;
+//   padding: 10px;
+//   background-color: #6AC5DB;
+//   color: white;
+//   width: 200px;
+// }
+
+// .center-btns {
+//   margin: 0 auto;
+// }
