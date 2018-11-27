@@ -3,7 +3,7 @@
   <div class="test"><h1>HELLO</h1></div>
   <p class="text-center">Click on a time-slot to adjust your availability</p>
   <div class="calendar-headers">
-    <div class="calendar-header header-item flex-it">Time</div>
+    <div class="calendar-header header-item flex-it curved-tl-border">Time</div>
     <div class="calendar-header header-item"><div class="flex-it"><strong>Monday</strong></div><div class="flex-it"><%= Date.today.beginning_of_week.strftime('%d/%m/%Y') %></div></div>
     <div class="calendar-header header-item"><div class="flex-it"><strong>Tuesday</strong></div><div class="flex-it"><%= (Date.today.beginning_of_week + 1).strftime('%d/%m/%Y') %></div></div>
     <div class="calendar-header header-item"><div class="flex-it"><strong>Wednesday</strong></div><div class="flex-it"><%= (Date.today.beginning_of_week + 2).strftime('%d/%m/%Y') %></div></div>
