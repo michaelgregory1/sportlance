@@ -1,8 +1,23 @@
 .book_lesson {
   text-align: center;
-  background-color: rgba(220, 220, 220, 0.2);
+  background-color: white;
+  margin-top: 50px;
+  img {
+    margin: 10px 0;
+  };
+  h1 {
+    color: #6CC4D9;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+
 }
 
 .pay-pic {
   height: 200px;
+}
+
+.amount {
+  margin: 10px;
 }

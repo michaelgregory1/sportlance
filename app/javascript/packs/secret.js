@@ -1,9 +1,8 @@
-const logo = document.querySelector(".logo")
+const about = document.getElementById("about-us")
 
-logo.addEventListener('click', function (event) {
-    if (event.detail === 5) {
-        alert('YOU FOUND THE EASTER EGG');
-    }
-});
+if (about) {
+  about.addEventListener('dblclick', function (event) {
+    alert("HELLO!");
+  });
+};
 
-// this currently does not work

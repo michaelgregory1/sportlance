@@ -1,8 +1,8 @@
 <div class="book_lesson">
   <h1> Book your Lesson with <%= @user.first_name %></h1>
   <%= cl_image_tag @user.photo, class: "pay-pic" %>
-  <h3><%= @booking.date_start %></h3>
-  <h3><%= @booking.location.address %></h3>
+  <h3><strong>When: </strong><%= @booking.date_start.strftime("%b %e, %l:%M %p") %> - <%= @booking.date_end.strftime("%l:%M %p") %></h3>
+  <h3><strong>Where: </strong><%= @booking.location.address %></h3>
   <%= form_tag booking_payments_path(@booking) do %>
     <article>
       <label class="amount">
