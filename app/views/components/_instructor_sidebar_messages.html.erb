@@ -1,0 +1,22 @@
+<div class="tabs stick-to-left">
+  <%= link_to(user_bookings_path(current_user), class: "tab") do %>
+    <div class ="icon">
+      <i class="far fa-calendar-check"></i>
+    </div>
+    <span class="span-dashboard">Schedule</span>
+  <% end %>
+
+  <%= link_to(user_clients_path(current_user), class: "tab") do %>
+    <div class ="icon">
+      <i class="fas fa-users"></i>
+    </div>
+    <span class="span-dashboard">Clients</span>
+  <% end %>
+
+  <%= link_to(conversations_path, class: "tab active") do %>
+    <div class ="icon">
+      <i class="far fa-envelope"></i>
+    </div>
+    <span class="span-dashboard">Messages</span>
+  <% end %>
+</div>
