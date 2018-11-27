@@ -19,12 +19,16 @@
                     required: true,
                     autofocus: true ,
                     input_html: { autocomplete: "Sport", class: "style-input" }%>
-        <%= f.simple_fields_for :locations do |p| %>
-          <%= p.input :address, required: true, autofocus: true, label: "Location(s)" %>
+        <%= f.simple_fields_for :locations do |f| %>
+          <%= f.input :address,
+                    required: true,
+                    autofocus: true,
+                    label: "Location(s)",
+                    input_html: {class: "address_autocomplete" }%>
         <% end %>
-        <!-- <div class="links"> -->
-          <%#= link_to_add_association 'add location', f, :locations, partial: "shared/location_fields.html.erb"%>
-        <!-- </div> -->
+        <!-- <div class="links">
+          <%#= link_to_add_association 'add location', f, :locations, partial: "users/location_fields.html.erb"%>
+        </div> -->
         <%= f.input :price_per_hour,
                     required: true,
                     autofocus: true ,
