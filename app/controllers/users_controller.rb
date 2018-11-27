@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :search_results, :new_instructor]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search_results, :new_instructor, :no_results]
 
   def index
     @users = User.where(is_client: false)
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   def new_instructor
     @user = User.new
-    @location = Location.new
+    @user.locations.build
   end
 
   private
