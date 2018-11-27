@@ -28,6 +28,7 @@
         <%= f.input :price_per_hour,
                     required: true,
                     autofocus: true ,
+                    label: "Price per hour (£)",
                     input_html: { autocomplete: "Price / hour", class: "style-input" }%>
         <%= f.input :abilities_taught,
                     required: true,
@@ -36,7 +37,7 @@
         <%= f.input :bio,
                     required: true,
                     autofocus: true ,
-                    input_html: { autocomplete: "Bio", class: "style-input-bio" }%>
+                    input_html: { autocomplete: "Bio", class: "style-input-bio", placeholder: "Write a short bio about yourself" }%>
         <%= f.input :photo, class: "style-input" %>
         <%= f.input :photo_cache, as: :hidden, class: "style-input" %>
         <%= f.input :email,

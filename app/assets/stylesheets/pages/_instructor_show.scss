@@ -67,7 +67,7 @@
   text-align: center;
   padding: 10px;
   font-family: Raleway, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 1em;
    box-shadow: 1px 0.5px 0.5px rgba(220, 220, 220, 0.4);
 }
 
@@ -128,6 +128,7 @@
   line-height: 1.2;
   display: block;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .bio-title-small {
@@ -138,6 +139,7 @@
   line-height: 1.2;
   display: block;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .client-note {
