@@ -3,34 +3,25 @@
     <%= render 'components/instructor_sidebar_schedule' %>
     <%= render 'components/calendar' %>
   </div>
-<% else %>
+  <% else %>
   <div class="calendar-dash">
-  <%= render 'components/client_sidebar' %>
-    <div>
-      <% @bookings.each do |booking| %>
-        <p>
-          Instructor: <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
-        </p>
-        <p>
-          Client: <%= User.find(booking.client_id).first_name %> <%= User.find(booking.client_id).last_name %>
-        </p>
-        <p>Location</p>
-        <p>
-          Longitude: <%= Location.find(booking.location_id).longitude %>
-        </p>
-        <p>
-          Latitude: <%= Location.find(booking.location_id).latitude %>
-        </p>
-        <p>
-          date start: <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
-        </p>
-        <p>
-          date end: <%= booking.date_end.strftime("%b %e, %l:%M %p")  %>
-        </p>
-        <%= link_to("Booking details", booking_path(booking), method: "get") %>
-        <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "btn btn-primary" %>
-      <% end %>
-    </div>
+    <%= render 'components/client_sidebar' %>
+      <div class="booking-box">
+        <div class="appointment-details">
+        <% @past_bookings.each do |booking| %>
+          <p>
+           <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+          </p>
+          <p>
+            <%= Location.find(booking.location_id).address %>
+          </p>
+          <p>
+             <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
+          </p>
+        <!-- <%= link_to("Booking details", booking_path(booking), method: "get", class: "button-blue") %> -->
+        <!-- <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %> -->
+        <!-- <% end %> -->
+        <% end %>
   </div>
-<% end %>
+</div>
 
