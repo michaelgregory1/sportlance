@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
       user.permit(:first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, locations: [:address])
     end
   end
+
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
+  end
 end
