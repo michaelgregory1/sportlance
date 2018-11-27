@@ -9,11 +9,11 @@
      <%= link_to 'Show Previous', '?m=all' %>
     <% end %>
     <div class="message_container">
-      <span class="message-title">Messages</span>
-      <div class="message-box">
+      <span class="message-title">Messages with <%= @conversation.sender.first_name unless @conversation.sender.first_name == current_user.first_name %> <%= @conversation.recipient.first_name unless @conversation.recipient.first_name == current_user.first_name %></span>
+      <div class="message-box" id="messages-lad">
 
 
-     <% @messages.reverse.each do |message| %>
+     <% @messages.each do |message| %>
       <% if message.body %>
       <% user = User.find(message.user_id) %>
 
@@ -46,7 +46,7 @@
    <div class="reply-container">
     <%= form_for [@conversation, @message], html: {class: "ui reply form"} do
       |f| %>
-       <%= f.text_area :body, class: "form-control" %>
+       <%= f.text_area :body, class: "form-control send-message" %>
      <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
        <%= f.submit "Add Reply", class: "button-blue" %>
     <% end %>
@@ -55,3 +55,9 @@
   </div>
 </div>
 
+<script>
+  window.onload=function () {
+     var objDiv = document.getElementById("messages-lad");
+     objDiv.scrollTop = objDiv.scrollHeight;
+  }
+</script>
