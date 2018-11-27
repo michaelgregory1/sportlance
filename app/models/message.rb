@@ -13,6 +13,10 @@ class Message < ApplicationRecord
     body[0..150].gsub(/\s\w+\s*$/,'...')
   end
 
+  def change
+    @read = true
+  end
+
   def title
     if body.length <= 30
       return body

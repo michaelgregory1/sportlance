@@ -8,6 +8,11 @@ class MessagesController < ApplicationController
   def index
 
     @messages = @conversation.messages
+
+    @messages.each do |message|
+      message.update(read: true) if message.user != current_user
+    end
+
     if @messages.length > 10
       @over_ten = true
       @messages = @messages[-10..-1]
