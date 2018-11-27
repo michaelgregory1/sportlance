@@ -36,20 +36,22 @@
             </div>
             <br>
           </div>
-          <div class="col-xs-12 col-sm-6">
+          <div class="col-xs-12 col-sm-6 height-max">
             <div class="instructor_bio">
               <div class="instructor_description">
                 <span class="bio-title">Bio</span>
-                <p><%= @user.bio %>Something about me...</p>
-                <span class="bio-title-small">Avability</span>
-                <p>Monday: N/A</p>
-                <p>tuesday: N/A</p>
-                <p>Wednesday: N/A</p>
-                <p>Thursday: N/A</p>
-                <p>Friday: N/A</p>
-                <p>Saturday: N/A</p>
-                <p>Sunday: N/A</p>
-                <span class="bio-title-small">Cancelation policy</span>
+                  <p><%= @user.bio %></p>
+                <span class="bio-title-small">Available days this week</span>
+                  <% availabilities = [] %>
+                  <% @user.availabilities.each do |a| %>
+                    <% if a.date_start.beginning_of_week == Time.now.beginning_of_week %>
+                      <% availabilities << a.date_start.strftime("%A") %>
+                    <% end %>
+                  <% end %>
+                  <% availabilities.uniq.each do |av| %>
+                    <p><%= av %></p>
+                  <% end %>
+                <span class="bio-title-small">Cancellation policy</span>
                 <p>Cancellation fee of £10 if cancelled less than 24 hours before appointment.</p>
               </div>
             </div>
