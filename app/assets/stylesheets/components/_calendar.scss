@@ -21,6 +21,8 @@
 .header-item {
   border-right: 1px solid black;
   padding: 4px;
+  background-color: #6BC4D9;
+  color: white;
 }
 
 .flex-it {
@@ -33,6 +35,8 @@
   border-right: 2px solid black;
   border-top-right-radius: 7px;
   padding: 4px;
+  background-color: #6BC4D9;
+  color: white;
 }
 
 .calendar-headers {
@@ -89,6 +93,10 @@
 
 .test {
   display: none;
+}
+
+.curved-tl-border {
+  border-top-left-radius: 5px;
 }
 
 // CELL STATES
