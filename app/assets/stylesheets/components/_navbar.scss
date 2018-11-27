@@ -10,12 +10,27 @@
   height: 70px;
   z-index: 2;
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.2) !important;
-}
 
-// .open {
-//   width: 0px;
-//   height: 0px;
-// }
+    .button-wrap {
+
+    display: flex;
+    align-items: center;
+
+    .button {
+    background: none;
+    border: 1px solid white;
+    font-family: Raleway, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    margin: 10px;
+    padding: 8px;
+    color: white;
+    transition: 0.25s;
+    text-decoration: none;
+    border-radius: 3px;
+    }
+  }
+}
 
 .navbar-wagon-white {
   background-color: white;
@@ -23,6 +38,26 @@
   height: 70px;
   position: fixed;
   top: 0;
+
+  .button-wrap {
+
+    display: flex;
+    align-items: center;
+
+    .button {
+    background: none;
+    border: 1px solid #6AC5DB;
+    font-family: Raleway, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    margin: 10px;
+    padding: 8px;
+    color: #6AC5DB;
+    transition: 0.25s;
+    text-decoration: none;
+    border-radius: 3px;
+    }
+  }
 }
 
 .fake-navbar {
@@ -49,8 +84,7 @@ body > div.topbar-placeholder > nav > a:hover {
 }
 
 .button-wrap {
-  justify-content: space-between;
-  width: 350px;
+  align-items: right;
 }
 
 
@@ -72,6 +106,7 @@ body > div.topbar-placeholder > nav > a > h1 {
 .dropdown-menu {
   left: -130px !important;
 }
+
 
 
 // .topbar-placeholder {
