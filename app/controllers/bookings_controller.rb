@@ -2,7 +2,13 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy, :new]
 
   def index
-    @bookings = Booking.all
+    @upcoming_bookings = []
+    @past_bookings = []
+    bookings = Booking.all
+    bookings.each do |b|
+      @upcoming_bookings << b if b.date_start >= Time.now
+      @past_bookings << b if b.date_start < Time.now
+    end
     @user = current_user
   end
 
