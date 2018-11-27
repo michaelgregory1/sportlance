@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @user.availabilities.each do |availability|
       @calendar_availabilities << availability.date_start.strftime("%Y-%m-%d")
     end
+    @calendar_availabilities = false if @calendar_availabilities.empty?
     @availabilities = []
     if user_signed_in? && current_user.is_client
       if current_user.is_client?
