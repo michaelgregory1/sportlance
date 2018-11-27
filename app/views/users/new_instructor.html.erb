@@ -24,6 +24,22 @@
                     required: true,
                     autofocus: true,
                     label: "Location(s)",
+                    placeholder: "address 1",
+                    input_html: {class: "address_autocomplete" }%>
+          <%= f.input :address,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "address 2",
+                    input_html: {class: "address_autocomplete" }%>
+          <%= f.input :address,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "address 3",
+                    input_html: {class: "address_autocomplete" }%>
+          <%= f.input :address,
+                    autofocus: true,
+                    label: false,
+                    placeholder: "address 4",
                     input_html: {class: "address_autocomplete" }%>
         <% end %>
         <!-- <div class="links">
