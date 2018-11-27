@@ -13,15 +13,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js
     end
-
-    @reviews = @user.reviews
-    @total = 0
-    @reviews.each do |review|
-      @total += review.rating.to_i
-    end
-    if @reviews.length > 0
-      @user_average_review = @total / @reviews.length
-    end
   end
 
   def show
@@ -39,6 +30,15 @@ class UsersController < ApplicationController
       else
         @recipient = User.find(@booking.client_id)
       end
+    end
+
+    @reviews = @user.reviews
+    @total = 0
+    @reviews.each do |review|
+      @total += review.rating.to_i
+    end
+    if @reviews.length > 0
+      @user_average_review = @total / @reviews.length
     end
   end
 
