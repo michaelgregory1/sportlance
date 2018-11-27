@@ -1,6 +1,6 @@
   <div class="calendar-dash">
     <% unless current_user.is_client %>
-      <%= render 'components/instructor_sidebar' %>
+      <%= render 'components/instructor_sidebar_schedule' %>
     <% else %>
       <%= render 'components/client_sidebar' %>
     <% end %>

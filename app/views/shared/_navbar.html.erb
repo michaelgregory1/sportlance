@@ -10,7 +10,7 @@
             <%= link_to("Dashboard", user_bookings_path(current_user), method: "get", class: "button") %>
           </div>
           <div>
-            <a class="button">About Us</a>
+            <a class="button" id="about-us">About Us</a>
           </div>
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true""><%= cl_image_tag(current_user.photo, class: "avatar-medium") %></button>
