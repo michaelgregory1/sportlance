@@ -1,14 +1,14 @@
 .grid-item {
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .grid-item-last {
-  border-bottom: 1px solid black;
-  border-right: 2px solid black;
+  border-bottom: 1px solid grey;
+  border-right: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,8 +32,8 @@
 }
 
 .header-item-last {
-  border-right: 2px solid black;
-  border-top-right-radius: 7px;
+  border-right: 1px solid black;
+  border-top-right-radius: 2px;
   padding: 4px;
   background-color: #6BC4D9;
   color: white;
@@ -43,10 +43,10 @@
   margin-top: 20px;
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
   font-size: 0.8em;
   -webkit-user-select: none;
 }
@@ -55,11 +55,11 @@
   display: grid;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-auto-rows: min-content;
-  border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-bottom: 2px solid;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
   height: 300px;
   overflow: scroll;
   -webkit-user-select: none;
@@ -96,19 +96,27 @@
 }
 
 .curved-tl-border {
-  border-top-left-radius: 5px;
+  border-top-left-radius: 2px;
 }
 
 // CELL STATES
 
 .unavailable {
-  background-color: #CFD3D4;
+  background-color: rgba(230, 230, 230, 0.5);
   cursor: pointer;
+}
+
+.unavailable:hover {
+  box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
 
 .available {
   background-color: #7bd666;
   cursor: pointer;
+}
+
+.available:hover {
+  box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
 
 .booked {
@@ -118,5 +126,6 @@
 .booked:hover {
   background-color: #19849e;
   cursor: pointer;
+  box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
 

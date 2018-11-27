@@ -11,7 +11,7 @@ function changeText() {
     element.innerHTML = "<p>Available</p>";
   });
   unavailables.forEach(function(element) {
-    element.innerHTML = "<p>Unavailable</p>";
+    element.innerHTML = "<p></p>";
   });
   bookeds.forEach(function(element) {
     element.innerHTML = "<p>Booked</p>";
