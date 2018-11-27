@@ -154,3 +154,9 @@
 position: relative;
 width: 200px;
 }
+
+@media (max-width: 1000px) {
+   .position-fixed {
+      position: relative;
+  }
+}

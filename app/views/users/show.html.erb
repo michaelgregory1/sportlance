@@ -32,7 +32,6 @@
               <% if user_signed_in? && current_user.is_client %>
                 <%= link_to "Message #{@user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: @recipient), method: 'post', class: "btn btn-primary message_button"%>
               <% end %>
-
             </div>
             <br>
           </div>
@@ -55,7 +54,6 @@
                 <p>Cancellation fee of £10 if cancelled less than 24 hours before appointment.</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -63,14 +61,7 @@
         <%= render 'reviews/index.html.erb' %>
       </div>
     </div>
-    <div id="available_days" data-array="<%= @calendar_availabilities.to_json %>">
-      <div class="book_instructor hidden-md hidden-lg">
-        <h3>Book with <%= @user.first_name %></h3>
-        <br>
-        <div class="form-wrapper" style="width: 200px; margin: 0 auto;">
-          <%= render 'bookings/new.html.erb' %>
-        </div>
-      </div>
+    <div id="available_days" data-array="<%= @calendar_availabilities_uniq.to_json %>">
       <div class="col-sm-12 col-md-3">
         <div class="book_instructor position-fixed">
           <h3>Book with <%= @user.first_name %></h3>
