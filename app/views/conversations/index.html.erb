@@ -4,19 +4,6 @@
   <% else %>
     <%= render 'components/client_sidebar' %>
   <% end %>
-<div class="users-container">
-  <span class="title">Users</span>
-    <ul class="inbox">
-       <% @users.each do |user| %>
-        <% if user.id != current_user.id %>
-       <div class="users">
-       <%= user.first_name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-     </div>
-    <% end %>
-    <% end %>
-  </ul>
-</div>
-
 
 <div class="mailbox-container">
  <span class="title">Mailbox</span>

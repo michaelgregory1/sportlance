@@ -19,24 +19,24 @@
 
         <% if user == current_user %>
          <div class="message-blue">
+          <div class="message-content">
+            <%= message.body %>
+          </div>
           <div class="message-header">
               <strong><%= user.first_name %></strong>
               <%= message.message_time %>
             </div>
-          <div class="message-content">
-            <%= message.body %>
-          </div>
         </div>
 
       <% elsif %>
        <div class="message-yellow">
-        <div class="message-header">
-            <strong><%= user.first_name %></strong>
-            <%= message.message_time %>
-          </div>
         <div class="message-content">
           <%= message.body %>
         </div>
+        <div class="message-header">
+              <strong><%= user.first_name %></strong>
+              <%= message.message_time %>
+            </div>
       </div>
      <% end %>
      <% end %>
