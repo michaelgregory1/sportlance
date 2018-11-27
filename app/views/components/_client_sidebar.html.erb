@@ -9,6 +9,11 @@
     <%= link_to(conversations_path, class: "tab active") do %>
       <div class ="icon">
         <i class="far fa-envelope"></i>
+        <% if @unread > 0 %>
+          <div class="notification">
+            <p><%= @unread %></p>
+          </div>
+        <% end %>
       </div>
       <span class="span-dashboard">Messages</span>
     <% end %>
@@ -24,6 +29,11 @@
     <%= link_to(conversations_path, class: "tab") do %>
       <div class ="icon">
         <i class="far fa-envelope"></i>
+        <% if @unread > 0 %>
+          <div class="notification">
+            <p><%= @unread %></p>
+          </div>
+        <% end %>
       </div>
       <span class="span-dashboard">Messages</span>
     <% end %>
