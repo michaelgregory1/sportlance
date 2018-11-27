@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :search_results, :new_instructor, :no_results]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search_results, :new_instructor, :no_results, :availabilities]
 
   def index
     @users = User.where(is_client: false)
