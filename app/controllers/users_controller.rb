@@ -56,7 +56,7 @@ class UsersController < ApplicationController
       end
       @users = @users_located.uniq
     end
-    map(@users)
+    map(@users, @locations)
     redirect_to no_results_path if @users.empty?
   end
 
@@ -67,27 +67,19 @@ class UsersController < ApplicationController
 
   private
 
-  def map(users)
+  def map(users, locations)
     users.each do |user|
-      if Location.where(address: @query).exists?
-        search_place = Location.where(address: @query)
-        @markers = user.locations.map do |place|
-          if place.address == search_place[0].address
-            {
-              lng: place.longitude,
-              lat: place.latitude,
-              infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
-            }
-          end
-        end
+      unless locations.empty?
+        places = locations
       else
-        @markers = user.locations.map do |place|
-          {
-            lng: place.longitude,
-            lat: place.latitude,
-            infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
-          }
-        end
+        places = user.locations
+      end
+      @markers = places.map do |place|
+        {
+          lng: place.longitude,
+          lat: place.latitude,
+          infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
+        }
       end
     end
     @markers.compact! if @markers != nil
