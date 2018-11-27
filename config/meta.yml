@@ -1,0 +1,5 @@
+meta_product_name: "SportLance"
+meta_title: "SportLance - Seamless organisation and communication for freelance sports instructors and clients."
+meta_description: "Built on the Le Wagon 9 week bootcamp"
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@LeWagonLondon"
