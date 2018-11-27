@@ -51,7 +51,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to user_bookings_path(current_user)
+    redirect_to user_clients_path(current_user)
   end
 
   def redirect_to_show
@@ -62,7 +62,14 @@ class BookingsController < ApplicationController
   end
 
   def clients
-    @bookings = Booking.all
+    index
+    @user_clients = []
+    @bookings.each do |booking|
+      if booking.user == current_user
+        @user_clients << User.find(booking.client_id)
+      end
+    end
+    @clients = @user_clients.uniq
   end
 
   private

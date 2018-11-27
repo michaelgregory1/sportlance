@@ -44,7 +44,17 @@ class UsersController < ApplicationController
 
   def search_results
     @query = params[:query]
-    @users = User.global_search(params[:query])
+    @locations = Location.near(@query, 10)
+    raise
+    if @locations.empty?
+      @users = User.global_search(params[:query])
+    else
+      @users_located = []
+      @locations.each do |location|
+        @users_located << User.find(location.user_id)
+      end
+      @users = @users_located.uniq
+    end
     map(@users)
     redirect_to no_results_path if @users.empty?
   end
