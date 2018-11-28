@@ -1,16 +1,68 @@
-.booking-box {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  align-items: center;
-  width: 70%;
+.noflex-wrap {
+  width: 80%;
   margin: 0 auto;
-  margin-top: 30px;
-  height: 100%;
+  margin-top: 20px;
 }
 
-.appointment-details {
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.summary-header {
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  .header-details {
+  margin-top: 10px;
+  color: #9999;
+  display: block;
+  font-size: 16px;
+  font-family: Raleway, Helvetica, sans-serif;
+  text-align: left;
+  height: auto;
+  overflow: hidden;
+  .column {
+      float: left;
+      width: 24.33%;
+      margin-bottom: 0;
+      color: #242423;
+    }
+  }
 }
+
+
+.summary {
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  .summary-details {
+  padding-top: 10px;
+  color: #9999;
+  display: block;
+  font-size: 14px;
+  font-family: Raleway, Helvetica, sans-serif;
+  text-align: left;
+  height: auto;
+  overflow: hidden;
+
+    .column {
+      float: left;
+      width: 24.33%;
+      margin-bottom: 0;
+      color: #242423;
+    }
+  }
+}
+.text-wrap {
+  overflow: hidden;
+  height: auto;
+}
+.buttons-box {
+  width: 30%;
+  display: flex;
+  padding-top: 10px;
+
+  .button-blue {
+  margin-top: 0px;
+  display: block;
+  }
+}
+
+
 
