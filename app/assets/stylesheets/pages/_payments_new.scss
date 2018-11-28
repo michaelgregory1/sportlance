@@ -14,10 +14,51 @@
 
 }
 
+.sum-box {
+  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.25);
+  padding: 30px 30px 30px 30px;
+  align-items: center;
+  overflow-y: scroll;
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+}
+
+.img-box {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+
 .pay-pic {
-  height: 200px;
+  height: 150px;
+}
+}
+
+.sum-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: Raleway, Helvetica, sans-serif;
+  text-align: left;
+  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.25);
+}
+
+.sum-left {
+text-align: left;
+color: #999999;
+font-weight: 600;
+font-size: 14px;
+line-height: 22px;
 }
 
 .amount {
-  margin: 10px;
+  line-height: 22px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 18px;
+  color: #43515E;
+  font-family: Raleway, Helvetica, sans-serif;
+
 }
