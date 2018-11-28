@@ -67,19 +67,27 @@ class UsersController < ApplicationController
 
   private
 
-  def map(users, locations)
-    users.each do |user|
-      unless locations.empty?
-        places = locations
-      else
-        places = user.locations
-      end
+  def map(users, search_locations)
+    unless search_locations.empty?
+      places = search_locations
       @markers = places.map do |place|
         {
           lng: place.longitude,
           lat: place.latitude,
           infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
         }
+      end
+    else
+      @markers = []
+      users.each do |user|
+        user.locations.each do |place|
+          @markers <<
+          {
+            lng: place.longitude,
+            lat: place.latitude,
+            infoWindow: { content: render_to_string(partial: "/users/map_window", locals: { user: User.find(place.user_id) }) }
+          }
+        end
       end
     end
     @markers.compact! if @markers != nil
