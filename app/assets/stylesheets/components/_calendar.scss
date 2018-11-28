@@ -19,6 +19,7 @@
 }
 
 .header-item {
+  overflow: scroll;
   border-right: 1px solid black;
   padding: 4px;
   background-color: #6BC4D9;
@@ -32,6 +33,7 @@
 }
 
 .header-item-last {
+  overflow: scroll;
   border-right: 1px solid black;
   border-top-right-radius: 2px;
   padding: 4px;
@@ -47,7 +49,7 @@
   border-left: 1px solid black;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  font-size: 0.8em;
+  font-size: 80%;
   -webkit-user-select: none;
 }
 
@@ -99,6 +101,10 @@
   border-top-left-radius: 2px;
 }
 
+.grid-time {
+  width: 100px;
+}
+
 // CELL STATES
 
 .unavailable {
@@ -128,4 +134,3 @@
   cursor: pointer;
   box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
-

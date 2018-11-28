@@ -22,7 +22,7 @@ changeText()
 
 const calendar = document.querySelector(".calendar")
 if (calendar) {
-  calendar.scrollTo(0, 308);
+  calendar.scrollTo(0, 150);
 };
 
 blocks.forEach(function(element) {
@@ -80,3 +80,17 @@ $(blocks).mousedown(e  => {
     $(document).off('mouseup')
   })
 })
+
+blocks.forEach(function(element) {
+  element.addEventListener("click", (event) => {
+    if (event.toElement.classList.contains("booked")) {
+      event.currentTarget.innerHTML = "<p>Go to booking</p>";
+      mydata = `time[value]=${event.toElement.id}`
+      Rails.ajax({
+      type: "POST",
+      url: "/redirect-to-show",
+      data: mydata
+    });
+    };
+  });
+});
