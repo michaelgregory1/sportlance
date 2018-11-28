@@ -48,6 +48,12 @@
   justify-content: space-between;
 }
 
+.buttons-left {
+  padding: 0 15px 0 15px;
+  display: flex;
+  text-align: left;
+}
+
 .right {
   padding: 0 20px 0 20px;
   color: #999999;
@@ -61,9 +67,11 @@
 }
 
 .appo-title {
-  padding: 0 0 20px 140px;
+  width: 70%;
+  margin: 0 auto;
   font-size: 28px;
   font-family: Raleway, Helvetica, sans-serif;
+  margin-bottom: 10px;
 }
 
 .left-button {

@@ -15,8 +15,8 @@ class BookingsController < ApplicationController
     end
     @upcoming_bookings = []
     @past_bookings = []
-    @bookings = Booking.where(client_id: current_user.id)
-    @bookings.each do |b|
+    bookings = Booking.where(client_id: current_user.id)
+    bookings.each do |b|
       @upcoming_bookings << b if b.date_start >= Time.now
       @past_bookings << b if b.date_start < Time.now
     end
@@ -79,7 +79,7 @@ class BookingsController < ApplicationController
   end
 
   def clients
-    index
+    @bookings = Booking.all
     @user_clients = []
     @bookings.each do |booking|
       if booking.user == current_user
@@ -113,8 +113,5 @@ class BookingsController < ApplicationController
 
   def calculate_total_price
     @price = @booking.user.price_per_hour * ((@booking.date_end - @booking.date_start) * 0.000277778).floor
-  end
-
-  def set_modifier
   end
 end
