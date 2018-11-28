@@ -7,35 +7,35 @@
 
   <p><%= "#{@notifications}" %></p>
 
-<div class="mailbox-container">
-  <span class="title">Mailbox</span>
+  <div class="mailbox-container">
+    <span class="title">Mailbox</span>
     <ul class="inbox">
       <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <%= link_to conversation_messages_path(conversation) do %>
-          <li class="conversation">
-            <% lastMessage = conversation.messages[conversation.messages.length - 1] %>
-            <% if conversation.sender_id == current_user.id %>
-              <% conversationPartner = User.find(conversation.recipient_id) %>
-            <% else %>
-              <% conversationPartner = User.find(conversation.sender_id) %>
-            <% end %>
-            <div class="image-container">
-              <%= cl_image_tag conversationPartner.photo, class: "avatar-mailbox" %>
-            <p class="conversation__name"><%= conversationPartner.first_name %></p>
-          </div>
-          <div class="message">
-            <% if !lastMessage.nil? %>
-                <p class="message__summary"><%= lastMessage.title %></p>
-                <p class="message__body"><%= lastMessage.summary %></p>
-            <% end %>
+          <%= link_to conversation_messages_path(conversation) do %>
+            <li class="conversation">
+              <% lastMessage = conversation.messages[conversation.messages.length - 1] %>
+              <% if conversation.sender_id == current_user.id %>
+                <% conversationPartner = User.find(conversation.recipient_id) %>
+              <% else %>
+                <% conversationPartner = User.find(conversation.sender_id) %>
+              <% end %>
+              <div class="image-container">
+                <%= cl_image_tag conversationPartner.photo, class: "avatar-mailbox" %>
+                <p class="conversation__name"><%= conversationPartner.first_name %></p>
+              </div>
+              <div class="message">
+                <% if !lastMessage.nil? %>
+                  <p class="message__summary"><%= lastMessage.title %></p>
+                  <p class="message__body"><%= lastMessage.summary %></p>
+                <% end %>
+              </div>
+            </li>
           <% end %>
         <% end %>
-        </div>
-      </li>
       <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
 </div>
 
 

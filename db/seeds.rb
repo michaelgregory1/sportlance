@@ -35,7 +35,7 @@ adam.save
 
 puts 'Creating clients'
 mary = User.create(email: "mary@swim.com", password: "123456", first_name: 'Mary', last_name: 'Meister', is_client: true)
-georgia = User.create(email: "george@swim.com", password: "123456", first_name: 'george', last_name: 'Smith', is_client: true)
+georgia = User.create(email: "georgia@swim.com", password: "123456", first_name: 'georgia', last_name: 'Smith', is_client: true)
 
 mary.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542799963/train2.jpg"
 mary.save
