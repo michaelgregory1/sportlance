@@ -102,4 +102,8 @@ class UsersController < ApplicationController
     end
     return availabilities
   end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, :is_client, :photo_cache, :email, :password, :password_confirmation, locations_attributes: [:id, :address])
+  end
 end

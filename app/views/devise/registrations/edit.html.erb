@@ -38,13 +38,13 @@
                         required: true,
                         autofocus: true ,
                         input_html: { autocomplete: "Sport", class: "style-input" }%>
-              <%= m.simple_fields_for :locations do |p| %>
-                <%= p.input :address,
-                        required: true,
-                        autofocus: true,
-                        label: "Location(s)",
-                        input_html: {class: "address_autocomplete" }%>
-              <% end %>
+            <%= m.simple_fields_for :locations do |p| %>
+              <%= p.input :address,
+                      required: true,
+                      autofocus: true,
+                      label: "Location(s)",
+                      input_html: {class: "address_autocomplete" }%>
+            <% end %>
             <%= m.input :price_per_hour,
                         required: true,
                         autofocus: true ,
