@@ -1,242 +1,242 @@
 <div class="the-calendar">
-  <h2 class="text-center">Your Schedule for This Week</h2>
+  <h2 class="text-center"><strong>Your Schedule</strong></h2>
   <div class="switch-weeks">
-    <%= link_to(change_calendar_backwards_path(:user => {"value" => current_user}), { :method => :change_calendar_backwards}) do %>
+    <%= link_to(change_calendar_backwards_path(:user => {"value" => current_user}, count: @modifier), { :method => :change_calendar_backwards, class: "switch-item"}) do %>
       <i class="fas fa-arrow-left"></i>
       <p>Previous week</p>
     <% end %>
-    <%= link_to(change_calendar_forwards_path(:user => {"value" => current_user}), { :method => :change_calendar_forwards}) do %>
-      <i class="fas fa-arrow-right"></i>
+    <p class="text-center">Click on a time-slot to adjust your availability</p>
+    <%= link_to(change_calendar_forwards_path(:user => {"value" => current_user}, count: @modifier), { :method => :change_calendar_forwards, class: "switch-item"}) do %>
       <p>Next week</p>
+      <i class="fas fa-arrow-right"></i>
     <% end %>
   </div>
-  <p class="text-center">Click on a time-slot to adjust your availability</p>
   <div class="calendar-headers">
     <div class="calendar-header header-item flex-it curved-tl-border grid-time">Time</div>
-    <div class="calendar-header header-item"><div class="flex-it"><strong><%= Date.today.beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= Date.today.beginning_of_day.strftime('%d/%m/%Y') %></div></div>
-    <div class="calendar-header header-item"><div class="flex-it"><strong><%= (Date.today + 1).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= (Date.today + 1).beginning_of_day.strftime('%d/%m/%Y') %></div></div>
-    <div class="calendar-header header-item"><div class="flex-it"><strong><%= (Date.today + 2).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= (Date.today + 2).beginning_of_day.strftime('%d/%m/%Y') %></div></div>
-    <div class="calendar-header header-item"><div class="flex-it"><strong><%= (Date.today + 3).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= (Date.today + 3).beginning_of_day.strftime('%d/%m/%Y') %></div></div>
-    <div class="calendar-header header-item"><div class="flex-it"><strong><%= (Date.today + 4).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= (Date.today + 4).beginning_of_day.strftime('%d/%m/%Y') %></div></div>
-    <div class="calendar-header header-item"><div class="flex-it"><strong><%= (Date.today + 5).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= (Date.today + 5).beginning_of_day.strftime('%d/%m/%Y') %></div></div>
-    <div class="calendar-header header-item-last"><div class="flex-it"><strong><%= (Date.today + 6).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= (Date.today + 6).strftime('%d/%m/%Y') %></div></div>
+    <div class="calendar-header header-item"><div class="flex-it"><strong><%= (Date.today + @modifier).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= (Date.today + @modifier).beginning_of_day.strftime('%d-%m-%y') %></div></div>
+    <div class="calendar-header header-item"><div class="flex-it"><strong><%= ((Date.today + @modifier) + 1).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= ((Date.today + @modifier) + 1).beginning_of_day.strftime('%d-%m-%y') %></div></div>
+    <div class="calendar-header header-item"><div class="flex-it"><strong><%= ((Date.today + @modifier) + 2).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= ((Date.today + @modifier) + 2).beginning_of_day.strftime('%d-%m-%y') %></div></div>
+    <div class="calendar-header header-item"><div class="flex-it"><strong><%= ((Date.today + @modifier) + 3).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= ((Date.today + @modifier) + 3).beginning_of_day.strftime('%d-%m-%y') %></div></div>
+    <div class="calendar-header header-item"><div class="flex-it"><strong><%= ((Date.today + @modifier) + 4).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= ((Date.today + @modifier) + 4).beginning_of_day.strftime('%d-%m-%y') %></div></div>
+    <div class="calendar-header header-item"><div class="flex-it"><strong><%= ((Date.today + @modifier) + 5).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= ((Date.today + @modifier) + 5).beginning_of_day.strftime('%d-%m-%y') %></div></div>
+    <div class="calendar-header header-item-last"><div class="flex-it"><strong><%= ((Date.today + @modifier) + 6).beginning_of_day.strftime('%A') %></strong></div><div class="flex-it"><%= ((Date.today + @modifier) + 6).strftime('%d-%m-%y') %></div></div>
   </div>
     <!-- New row -->
   <div class="calendar">
     <div class="grid-item grid-time"><p class="time-label">00:00 - 01:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (1 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (1 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (1 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (1 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (1 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (1 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label" >01:00 - 02:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (2 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (2 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (2 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (2 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (2 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (2 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (2 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (2 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (2 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (2 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (2 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (2 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (2 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (2 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (2 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">02:00 - 03:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (3 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (3 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (3 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (3 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (3 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (3 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (3 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (3 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (3 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (3 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (3 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (3 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (3 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (3 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (3 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">03:00 - 04:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (4 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (4 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (4 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (4 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (4 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (4 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (4 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (4 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (4 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (4 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (4 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (4 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (4 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (4 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (4 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">04:00 - 05:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (5 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (5 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (5 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (5 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (5 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (5 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (5 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (5 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (5 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (5 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (5 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (5 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (5 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (5 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (5 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">05:00 - 06:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (6 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (6 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (6 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (6 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (6 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (6 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (6 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (6 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (6 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (6 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (6 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (6 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (6 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (6 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (6 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">06:00 - 07:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (7 * 3600)- 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (7 * 3600)- 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (7 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (7 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (7 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (7 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (7 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (7 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (7 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (7 * 3600)- 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (7 * 3600)- 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (7 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (7 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (7 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (7 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (7 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (7 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (7 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (7 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">07:00 - 08:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (8 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (8 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (8 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (8 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (8 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (8 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (8 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (8 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (8 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (8 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (8 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (8 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (8 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (8 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (8 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (8 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (8 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (8 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (8 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">08:00 - 09:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (9 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (9 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (9 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (9 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (9 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (9 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (9 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (9 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (9 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (9 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (9 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (9 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (9 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (9 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (9 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (9 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (9 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (9 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (9 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">09:00 - 10:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (10 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (10 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (10 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (10 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (10 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (10 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (10 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (10 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (10 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (10 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (10 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (10 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (10 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (10 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (10 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (10 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (10 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (10 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (10 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">10:00 - 11:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (11 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (11 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (11 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (11 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (11 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (11 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (11 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (11 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (11 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (11 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (11 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (11 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (11 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (11 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (11 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (11 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (11 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (11 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (11 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">11:00 - 12:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (12 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (12 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (12 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (12 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (12 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (12 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (12 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (12 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (12 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (12 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (12 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (12 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (12 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (12 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (12 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (12 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (12 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (12 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (12 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">12:00 - 13:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (13 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (13 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (13 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (13 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (13 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (13 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (13 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (13 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (13 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (13 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (13 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (13 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (13 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (13 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (13 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (13 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (13 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (13 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (13 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">13:00 - 14:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (14 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (14 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (14 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (14 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (14 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (14 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (14 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (14 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (14 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (14 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (14 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (14 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (14 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (14 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (14 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (14 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (14 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (14 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (14 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">14:00 - 15:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (15 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (15 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (15 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (15 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (15 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (15 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (15 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (15 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (15 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (15 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (15 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (15 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (15 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (15 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (15 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (15 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (15 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (15 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (15 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">15:00 - 16:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (16 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (16 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (16 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (16 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (16 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (16 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (16 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (16 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (16 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (16 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (16 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (16 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (16 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (16 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (16 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (16 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (16 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (16 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (16 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">16:00 - 17:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (17 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (17 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (17 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (17 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (17 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (17 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (17 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (17 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (17 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (17 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (17 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (17 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (17 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (17 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (17 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (17 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (17 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (17 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (17 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">17:00 - 18:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (18 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (18 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (18 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (18 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (18 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (18 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (18 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (18 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (18 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (18 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (18 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (18 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (18 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (18 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (18 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (18 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (18 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (18 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (18 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">18:00 - 19:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (19 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (19 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (19 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (19 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (19 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (19 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (19 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (19 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (19 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (19 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (19 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (19 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (19 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (19 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (19 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (19 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (19 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (19 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (19 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">19:00 - 20:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (20 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (20 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (20 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (20 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (20 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (20 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (20 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (20 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (20 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (20 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (20 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (20 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (20 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (20 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (20 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (20 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (20 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (20 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (20 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">20:00 - 21:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (21 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (21 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (21 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (21 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (21 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (21 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (21 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (21 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (21 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (21 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (21 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (21 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (21 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (21 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (21 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (21 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (21 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (21 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (21 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">21:00 - 22:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (22 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (22 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (22 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (22 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (22 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (22 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (22 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (22 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (22 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (22 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (22 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (22 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (22 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (22 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (22 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (22 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (22 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (22 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (22 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item grid-time"><p class="time-label">22:00 - 23:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (23 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (23 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (23 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (23 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (23 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (23 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (23 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (23 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (23 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (23 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (23 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (23 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (23 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (23 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (23 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (23 * 3600) - 1) %>" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (23 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (23 * 3600) - 1) %> grid-item-last" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (23 * 3600) - 1) %>"></div>
     <!-- New row -->
     <div class="grid-item last-row grid-time"><p class="time-label">23:00 - 24:00</p></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set(Time.now.beginning_of_day + (24 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (1 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set(Time.now.beginning_of_day + (1 * 86400) + (24 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (2 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set(Time.now.beginning_of_day + (2 * 86400) + (24 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (3 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set(Time.now.beginning_of_day + (3 * 86400) + (24 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (4 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set(Time.now.beginning_of_day + (4 * 86400) + (24 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (5 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set(Time.now.beginning_of_day + (5 * 86400) + (24 * 3600) - 1) %>"></div>
-    <div class="<%= @user.check_available(Time.now.beginning_of_day + (6 * 86400) + (24 * 3600) - 1) %> grid-item-last last-row" id="<%= @user.id_set(Time.now.beginning_of_day + (6 * 86400) + (24 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (24 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (1 * 86400) + (24 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (2 * 86400) + (24 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (3 * 86400) + (24 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (4 * 86400) + (24 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (24 * 3600) - 1) %> last-row" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (5 * 86400) + (24 * 3600) - 1) %>"></div>
+    <div class="<%= @user.check_available((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (24 * 3600) - 1) %> grid-item-last last-row" id="<%= @user.id_set((Time.now + @modifier.days).beginning_of_day + (6 * 86400) + (24 * 3600) - 1) %>"></div>
   </div>
 </div>

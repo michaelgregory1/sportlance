@@ -35,4 +35,6 @@ Rails.application.routes.draw do
 
   get 'users-search', to: 'users#search_results'
   get 'no-results', to: 'users#no_results'
+  post 'change-calendar-backwards', to: 'bookings#change_calendar_backwards'
+  post 'change-calendar-forwards', to: 'bookings#change_calendar_forwards'
 end

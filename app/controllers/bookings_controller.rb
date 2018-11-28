@@ -2,6 +2,17 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy, :new]
 
   def index
+    if params["count"].present?
+      if params[:modifier] == "back"
+        @modifier = params["count"].to_i
+        @modifier -= 7
+      elsif params[:modifier] == "forwards"
+        @modifier = params["count"].to_i
+        @modifier += 7
+      end
+    else
+      @modifier = 0
+    end
     set_modifier
     @upcoming_bookings = []
     @past_bookings = []
@@ -80,11 +91,11 @@ class BookingsController < ApplicationController
   end
 
   def change_calendar_backwards
-    redirect_to user_bookings_path(params[:user][:value], modifier: "back")
+    redirect_to user_bookings_path(params[:user][:value], count: params["count"], modifier: "back")
   end
 
   def change_calendar_forwards
-    redirect_to user_bookings_path(params[:user][:value], modifier: "forwards")
+    redirect_to user_bookings_path(params[:user][:value], count: params["count"], modifier: "forwards")
   end
 
   private
