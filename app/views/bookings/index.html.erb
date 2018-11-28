@@ -5,32 +5,33 @@
 <% else %>
   <div class="calendar-dash">
     <%= render 'components/client_sidebar' %>
+
     <div class="noflex-wrap">
       <div class="summary-header">
         <span class="head">Upcoming bookings</span>
       </div>
       <div class="summary-header">
-        <div class="header-details">
-          <p class="column">Name</p>
-          <p class="column">Location</p>
-          <p class="column">Date</p>
-          <p class="column">Options</p>
+        <div class="header-details hidden-xs hidden-sm">
+          <div class="column summary-name">Name</div>
+          <div class="column summary-location">Location</div>
+          <div class="column summary-date">Date</div>
+          <div class="column summary-buttons">Options</div>
         </div>
       </div>
       <div class="summary">
         <div class="summary-details">
           <% @upcoming_bookings.each do |booking| %>
             <div class="text-wrap">
-              <p class="column">
+              <div class="column summary-name">
                 <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
-              </p>
-              <p class="column">
+              </div>
+              <div class="column summary-location">
                 <%= Location.find(booking.location_id).address %>
-              </p>
-              <p class="column">
+              </div>
+              <div class="column summary-date">
                  <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
-              </p>
-              <div class="column">
+              </div>
+              <div class="column summary-buttons">
                 <%= link_to("Details", booking_path(booking), method: "get", class: "button-blue") %>
                 <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %>
               </div>
@@ -45,16 +46,16 @@
         <div class="summary-details">
           <% @past_bookings.each do |booking| %>
             <div class="text-wrap">
-              <p class="column">
+              <p class="column summary-name">
                 <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
               </p>
-              <p class="column">
+              <p class="column summary-location">
                 <%= Location.find(booking.location_id).address %>
               </p>
-              <p class="column">
+              <p class="column summary-date">
                  <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
               </p>
-              <div class="column">
+              <div class="column summary-buttons">
                 <%= link_to("Details", booking_path(booking), method: "get", class: "button-blue") %>
                 <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %>
               </div>
@@ -63,6 +64,7 @@
         </div>
       </div>
     </div>
+
 
     </div>
   </div>

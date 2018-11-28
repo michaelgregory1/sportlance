@@ -1,24 +1,37 @@
-<div class="book_lesson">
-  <h1> Book your Lesson with <%= @user.first_name %></h1>
-  <%= cl_image_tag @user.photo, class: "pay-pic" %>
-  <h3><strong>When: </strong><%= @booking.date_start.strftime("%b %e, %l:%M %p") %> - <%= @booking.date_end.strftime("%l:%M %p") %></h3>
-  <h3><strong>Where: </strong><%= @booking.location.address %></h3>
-  <%= form_tag booking_payments_path(@booking) do %>
-    <article>
-      <label class="amount">
-        <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
-      </label>
-    </article>
-
-
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+      <div class="booking-instructor-container">
+        <span class="sum-title">Book your Lesson with <%= @user.first_name %></span>
+        <div class="sum-box">
+          <div class="img-box"><%= cl_image_tag @user.photo, class: "pay-pic" %></div>
+            <div class="sum-left" style="color: #43515E;">When:
+              <p class="right" style="color: #43515E;"><%= @booking.date_start.strftime("%b %e, %l:%M %p") %> - <%= @booking.date_end.strftime("%l:%M %p") %></p>
+            </div>
+          <div class="sum-left" style="color: #43515E;">Where:
+          <p class="right" style="color: #43515E;"><%= @booking.location.address %></p>
+        </div>
+        <%= form_tag booking_payments_path(@booking) do %>
+          <article>
+            <div class="amount">
+              <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
+            </div>
+          </article>
+        <% end %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-name="My Lesson"
     data-email="<%= current_user.email %>"
     data-description="Lesson"
     data-amount="<%= @booking.amount_cents %>"
+    data-label="Book <%= @user.first_name %>"
     data-currency="<%= @booking.amount.currency %>">
     </script>
-<% end %>
+      </div>
+
+    </div>
+  </div>
+  </div>
 </div>
+
+
