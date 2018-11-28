@@ -1,45 +1,11 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :find_user, only: [:update]
-
-  # def create
-    # @user = User.new(user_params)
-    # @location = Location.new(location_params)
-    # @location.user = @user
-    # if @user.valid?
-    #   @user.save
-    #   @location.save
-    #   redirect_to user_session_path, method: 'post'
-    # else
-    #   render :new
-    # end
-  # end
-
-  # def update
-  #   @user.update(user_params)
-  #   @location = Location.where(user: @user.id)
-  #   @location.update(location_params)
-  #   if @user.save
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-
-  # private
-
-  # def user_params
-  #   params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, :is_client, locations_attributes: [:address])
-  # end
-
-  # def location_params
-  #   params.require(:user).require(:locations).permit(:address)
-  # end
-
-  # def find_user
-  #   @user = current_user
-  # end
+  def update
+    super
+    @locations = Location.where(address: "")
+    @locations.destroy_all
+  end
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

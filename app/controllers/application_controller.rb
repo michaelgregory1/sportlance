@@ -26,12 +26,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up) do |user|
-      user.permit(:first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, :is_client, :photo_cache, :email, :password, :password_confirmation, locations_attributes: [:address])
+      user.permit(:first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, :is_client, :photo_cache, :email, :password, :password_confirmation, locations_attributes: [:id, :address])
     end
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update) do |user|
-      user.permit(:first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, :photo_cache, :email, :password, :password_confirmation, locations_attributes: [:address])
+      user.permit(:first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, :photo_cache, :email, :password, :password_confirmation, :current_password, locations_attributes: [:id, :address])
     end
   end
 
