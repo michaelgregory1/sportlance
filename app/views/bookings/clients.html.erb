@@ -2,11 +2,15 @@
   <%= render 'components/instructor_sidebar_clients' %>
   <div>
     <ul>
-      <% @clients.each do |client| %>
-        <li>
-          <%= client.first_name %> <%= client.last_name %>
-          <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: client), method: 'post', class: "btn book-btn"%>
-        </li>
+      <% unless @clients.empty? %>
+        <% @clients.each do |client| %>
+          <li>
+            <%= client.first_name %> <%= client.last_name %>
+            <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: client), method: 'post', class: "btn book-btn"%>
+          </li>
+        <% end %>
+      <% else %>
+        <li>No client</li>
       <% end %>
     </ul>
   </div>
