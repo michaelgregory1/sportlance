@@ -12,6 +12,14 @@ class User < ApplicationRecord
   has_many :reviews
   mount_uploader :photo, PhotoUploader
 
+  def average_review
+    total = 0
+    reviews.each do |review|
+      total += review.rating.to_i
+    end
+    (total / reviews.length.to_f).ceil
+  end
+
   def check_available(time)
     availabilities.each do |a|
       return "available hour-block grid-item" if time.between?(a.date_start, a.date_end)
