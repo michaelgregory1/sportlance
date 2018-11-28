@@ -2,11 +2,13 @@
   <div class="calendar-dash">
     <%= render 'components/instructor_sidebar_schedule' %>
     <%= render 'components/calendar' %>
-  </div>
-  <% else %>
+<% else %>
   <div class="calendar-dash">
     <%= render 'components/client_sidebar' %>
     <div class="noflex-wrap">
+      <div class="summary-header">
+        <span class="head">Upcoming bookings</span>
+      </div>
       <div class="summary-header">
         <div class="header-details">
           <p class="column">Name</p>
@@ -14,29 +16,56 @@
           <p class="column">Date</p>
           <p class="column">Options</p>
         </div>
-    </div>
-        <% @past_bookings.each do |booking| %>
-        <div class="summary">
+      </div>
+      <div class="summary">
         <div class="summary-details">
-          <div class="text-wrap">
-          <p class="column">
-           <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
-          </p>
-          <p class="column">
-            <%= Location.find(booking.location_id).address %>
-          </p>
-          <p class="column">
-             <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
-          </p>
-          <div class="column">
-        <%= link_to("Details", booking_path(booking), method: "get", class: "button-blue") %>
-        <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %>
-        <!-- <% end %> -->
-        <% end %>
-          </div>
+          <% @upcoming_bookings.each do |booking| %>
+            <div class="text-wrap">
+              <p class="column">
+                <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+              </p>
+              <p class="column">
+                <%= Location.find(booking.location_id).address %>
+              </p>
+              <p class="column">
+                 <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
+              </p>
+              <div class="column">
+                <%= link_to("Details", booking_path(booking), method: "get", class: "button-blue") %>
+                <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="summary-header">
+        <span class="head">Past bookings</span>
+      </div>
+      <div class="summary">
+        <div class="summary-details">
+          <% @past_bookings.each do |booking| %>
+            <div class="text-wrap">
+              <p class="column">
+                <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+              </p>
+              <p class="column">
+                <%= Location.find(booking.location_id).address %>
+              </p>
+              <p class="column">
+                 <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
+              </p>
+              <div class="column">
+                <%= link_to("Details", booking_path(booking), method: "get", class: "button-blue") %>
+                <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
+
+    </div>
   </div>
+<% end %>
 </div>
 
