@@ -1,3 +1,6 @@
+.clients {
+  padding: 0px;
+}
 .client {
   display: flex;
   align-items: center;
@@ -6,9 +9,6 @@
   border-radius: 3px;
   margin-top: 10px;
   justify-content: space-between;
-}
-.clients {
-  padding: 0px;
 }
 .client-details {
   display: flex;
