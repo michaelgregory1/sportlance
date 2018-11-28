@@ -79,6 +79,14 @@ class BookingsController < ApplicationController
     @clients = @user_clients.uniq
   end
 
+  def change_calendar_backwards
+    redirect_to user_bookings_path(params[:user][:value], modifier: "back")
+  end
+
+  def change_calendar_forwards
+    redirect_to user_bookings_path(params[:user][:value], modifier: "forwards")
+  end
+
   private
 
   def booking_params
