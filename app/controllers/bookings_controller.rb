@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy, :new]
 
   def index
+    set_modifier
     @upcoming_bookings = []
     @past_bookings = []
     @bookings = Booking.all
@@ -94,5 +95,8 @@ class BookingsController < ApplicationController
 
   def calculate_total_price
     @price = @booking.user.price_per_hour * ((@booking.date_end - @booking.date_start) * 0.000277778).floor
+  end
+
+  def set_modifier
   end
 end
