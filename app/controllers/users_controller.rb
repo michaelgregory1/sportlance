@@ -45,18 +45,27 @@ class UsersController < ApplicationController
   end
 
   def search_results
-    @query = params[:query]
-    @locations = Location.near(@query, 3)
-    if @locations.empty?
-      @users = User.global_search(params[:query])
-    else
+    if params[:query1] != ""
+      @users = User.global_search(params[:query1])
+    end
+    @locations =[]
+    if params[:query2] != ""
+      @query = params[:query2]
+      @locations = Location.near(@query, 3)
       @users_located = []
+      @final_locations = []
       @locations.each do |location|
-        @users_located << User.find(location.user_id)
+        if @users == nil
+          @users_located << User.find(location.user_id)
+          @final_locations << location
+        elsif @users.include?(User.find(location.user_id))
+          @users_located << User.find(location.user_id)
+          @final_locations << location
+        end
       end
       @users = @users_located.uniq
     end
-    map(@users, @locations)
+    map(@users, @final_locations)
     redirect_to no_results_path if @users.empty?
   end
 
@@ -68,7 +77,7 @@ class UsersController < ApplicationController
   private
 
   def map(users, search_locations)
-    unless search_locations.empty?
+    unless search_locations == nil
       places = search_locations
       @markers = places.map do |place|
         {

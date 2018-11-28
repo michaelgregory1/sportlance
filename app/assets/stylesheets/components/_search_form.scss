@@ -1,12 +1,12 @@
-.placeholder-white {
+.nav-form {
   width: 500px;
-  input::placeholder {
-    color: white;
-  }
 }
 .nav-form form {
   display: flex;
   margin-top: 25px;
+}
+.placeholder-white input::placeholder {
+  color: white;
 }
 .form-control {
   width: 100%;
@@ -32,6 +32,10 @@ input.form-control[type=text] {
   background-color: transparent;
   font-family: Raleway, Helvetica, sans-serif;
   color: #242423;
+}
+.form-width {
+  width: 110px;
+  margin-right: 5px;
 }
 .ap-name {
   color: black;
