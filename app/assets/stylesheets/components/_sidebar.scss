@@ -1,18 +1,17 @@
 .tabs {
-  background: grey;
+  background-color: rgba(220, 220, 220, 1);
   display: flex;
   flex-direction: column;
   width: 150px;
   height: 100vh;
 }
 .tabs a {
-  color: white;
+  color: grey;
   position: relative;
 }
 .tabs a:hover {
   cursor: pointer;
   text-decoration: none;
-  opacity: 0.8;
 }
 .tabs h3 {
   font-size: 17px;
@@ -24,7 +23,7 @@
   margin-bottom: 0;
 }
 .tab {
-  background: grey;
+  background: rgba(220, 220, 220, 1);
   text-align: left;
   padding: 20px 0;
   padding-left: 10px;
@@ -32,9 +31,13 @@
   display: flex;
 }
 
+.tab:hover {
+  box-shadow: inset 0px 0px 2px 2px rgba(200,200,200,1);
+}
+
 .tab.active {
   background: #6AC5DB;
-  color: white;
+  color: grey;
   border: none;
 
   &::before {
