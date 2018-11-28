@@ -54,13 +54,14 @@
     flex: 1 1 auto;
     flex-direction: column;
     padding: 10px;
+    text-align: center;
   }
 
   .card-text {
     flex: 1 1 auto;
     font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0 !important;
     margin-top: 10px;
     text-align: center;
     font-family: Raleway, Helvetica, sans-serif;

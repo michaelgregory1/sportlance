@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       @total += review.rating.to_i
     end
     if @reviews.length > 0
-      @user_average_review = @total / @reviews.length
+      @user_average_review = (@total / @reviews.length.to_f).ceil
     end
   end
 
