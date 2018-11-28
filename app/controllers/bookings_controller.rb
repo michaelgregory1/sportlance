@@ -2,6 +2,18 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update, :destroy, :new]
 
   def index
+    if params["count"].present?
+      if params[:modifier] == "back"
+        @modifier = params["count"].to_i
+        @modifier -= 7
+      elsif params[:modifier] == "forwards"
+        @modifier = params["count"].to_i
+        @modifier += 7
+      end
+    else
+      @modifier = 0
+    end
+    set_modifier
     @upcoming_bookings = []
     @past_bookings = []
     @bookings = Booking.all
@@ -78,6 +90,14 @@ class BookingsController < ApplicationController
     @clients = @user_clients.uniq
   end
 
+  def change_calendar_backwards
+    redirect_to user_bookings_path(params[:user][:value], count: params["count"], modifier: "back")
+  end
+
+  def change_calendar_forwards
+    redirect_to user_bookings_path(params[:user][:value], count: params["count"], modifier: "forwards")
+  end
+
   private
 
   def booking_params
@@ -94,5 +114,8 @@ class BookingsController < ApplicationController
 
   def calculate_total_price
     @price = @booking.user.price_per_hour * ((@booking.date_end - @booking.date_start) * 0.000277778).floor
+  end
+
+  def set_modifier
   end
 end
