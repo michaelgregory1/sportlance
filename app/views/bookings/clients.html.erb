@@ -2,20 +2,17 @@
   <%= render 'components/instructor_sidebar_clients' %>
   <div class="mailbox-container">
     <!-- <span class="title">Clients</span> -->
-    <ul class="inbox">
+    <ul class="clients">
       <% unless @clients.empty? %>
         <% @clients.each do |client| %>
-          <li class="conversation">
-
-            <div class="image-container">
+          <li class="client">
+            <div class="client-details">
               <%= cl_image_tag client.photo, class: "avatar-mailbox" %>
+              <div class="client-name">
+                <%= client.first_name.capitalize %> <%= client.last_name.capitalize %>
+              </div>
             </div>
-            <div class="message">
-              <%= client.first_name %> <%= client.last_name %>
-            </div>
-            <div>
-              <%= link_to 'Send a message', conversations_path(sender_id: current_user.id, recipient_id: client), method: 'post', class: "btn book-btn"%>
-            </div>
+            <%= link_to 'Send a message', conversations_path(sender_id: current_user.id, recipient_id: client), method: 'post', class: "button-blue btn-margin"%>
           </li>
         <% end %>
       <% end %>
