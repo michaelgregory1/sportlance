@@ -89,10 +89,19 @@ blocks.forEach(function(element) {
       event.currentTarget.innerHTML = "<p>Go to booking</p>";
       mydata = `time[value]=${event.toElement.id}`
       Rails.ajax({
-      type: "POST",
-      url: "/redirect-to-show",
-      data: mydata
-    });
+        type: "POST",
+        url: "/redirect-to-show",
+        data: mydata
+      });
+    };
+  });
+});
+
+blocks.forEach(function(element) {
+  element.addEventListener("click", (event) => {
+    const availables = document.querySelectorAll(".available")
+    if (availables.length === 168) {
+      window.location = "https://www.youtube.com/watch?v=710e9ZSYtdM";
     };
   });
 });
