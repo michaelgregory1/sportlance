@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def search_results
     @query = params[:query]
-    @locations = Location.near(@query, 5)
+    @locations = Location.near(@query, 3)
     if @locations.empty?
       @users = User.global_search(params[:query])
     else
