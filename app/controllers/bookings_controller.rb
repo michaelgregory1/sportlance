@@ -4,8 +4,8 @@ class BookingsController < ApplicationController
   def index
     @upcoming_bookings = []
     @past_bookings = []
-    bookings = Booking.all
-    bookings.each do |b|
+    @bookings = Booking.all
+    @bookings.each do |b|
       @upcoming_bookings << b if b.date_start >= Time.now
       @past_bookings << b if b.date_start < Time.now
     end
