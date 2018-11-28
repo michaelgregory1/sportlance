@@ -64,21 +64,23 @@ $(blocks).mousedown(e  => {
       changeText()
     })
   }
-  mydata = `time[value]=${event.toElement.id}`
-  Rails.ajax({
-    type: "POST",
-    url: "/toggle-availability",
-    data: mydata
-  });
-  e.currentTarget.classList.toggle("unavailable");
-  e.currentTarget.classList.toggle("available");
-  changeText()
-  $(document).mouseup(e => {
-    console.log('I worked because I am Good Code(tm)')
-    $('.available').off('mouseenter')
-    $('.unavailable').off('mouseenter')
-    $(document).off('mouseup')
-  })
+  if (!e.currentTarget.classList.contains("booked")) {
+    mydata = `time[value]=${event.toElement.id}`
+    Rails.ajax({
+      type: "POST",
+      url: "/toggle-availability",
+      data: mydata
+    });
+    e.currentTarget.classList.toggle("unavailable");
+    e.currentTarget.classList.toggle("available");
+    changeText()
+    $(document).mouseup(e => {
+      console.log('I worked because I am Good Code(tm)')
+      $('.available').off('mouseenter')
+      $('.unavailable').off('mouseenter')
+      $(document).off('mouseup')
+    });
+  };
 })
 
 blocks.forEach(function(element) {
