@@ -13,10 +13,9 @@ class BookingsController < ApplicationController
     else
       @modifier = 0
     end
-    set_modifier
     @upcoming_bookings = []
     @past_bookings = []
-    @bookings = Booking.all
+    @bookings = Booking.where(client_id: current_user.id)
     @bookings.each do |b|
       @upcoming_bookings << b if b.date_start >= Time.now
       @past_bookings << b if b.date_start < Time.now
