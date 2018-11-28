@@ -21,9 +21,9 @@
                 <% else %>
                   <% conversationPartner = User.find(conversation.sender_id) %>
                 <% end %>
-                <div class="image-container">
+                <div class="image-container client-details">
                   <%= cl_image_tag conversationPartner.photo, class: "avatar-mailbox" %>
-                  <p class="conversation__name"><%= conversationPartner.first_name %></p>
+                  <p class="conversation__name"><%= conversationPartner.first_name.capitalize %></p>
                 </div>
                 <div class="message">
                   <% if !lastMessage.nil? %>
