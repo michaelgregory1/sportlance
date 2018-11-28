@@ -1,4 +1,4 @@
-<% if params[:controller] == "conversations" %>
+<% if params[:controller] == "conversations" || params[:controller] == "messages" %>
   <div class="tabs stick-to-left">
     <%= link_to(user_bookings_path(current_user), class: "tab") do %>
       <div class ="icon">
