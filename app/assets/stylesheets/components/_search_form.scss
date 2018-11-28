@@ -1,37 +1,40 @@
-.nav-form input::placeholder {
-  color: white;
+.placeholder-white {
+  width: 500px;
+  input::placeholder {
+    color: white;
+  }
 }
-
 .nav-form form {
   display: flex;
   margin-top: 25px;
 }
-
 .form-control {
-    width: 100%;
-    background-color: transparent;
-    border-bottom: 1px solid #4dd0e1;
-    font-family: Raleway, Helvetica, sans-serif;
-    box-shadow: 0 1px 0 0 #4dd0e1;
-    border: none;
-    margin-right: 10px;
-  }
+  width: 100%;
+  background-color: transparent;
+  border-bottom: 1px solid #4dd0e1;
+  font-family: Raleway, Helvetica, sans-serif;
+  box-shadow: 0 1px 0 0 #4dd0e1;
+  border: none;
+  margin-right: 10px;
+}
+input.form-control-white[type=text] {
+  box-shadow: 0 1px 0 0 #4dd0e1;
+  border: none;
+  border-bottom: 1px solid #4dd0e1;
+  background-color: transparent;
+  font-family: Raleway, Helvetica, sans-serif;
+  color: #fff;
+}
+input.form-control[type=text] {
+  box-shadow: 0 1px 0 0 #4dd0e1;
+  border: none;
+  border-bottom: 1px solid #4dd0e1;
+  background-color: transparent;
+  font-family: Raleway, Helvetica, sans-serif;
+  color: #242423;
+}
+.ap-name {
+  color: black;
+}
 
-  input.form-control-white[type=text] {
-    box-shadow: 0 1px 0 0 #4dd0e1;
-    border: none;
-    border-bottom: 1px solid #4dd0e1;
-    background-color: transparent;
-    font-family: Raleway, Helvetica, sans-serif;
-    color: #fff;
-  }
-
-  input.form-control[type=text] {
-    box-shadow: 0 1px 0 0 #4dd0e1;
-    border: none;
-    border-bottom: 1px solid #4dd0e1;
-    background-color: transparent;
-    font-family: Raleway, Helvetica, sans-serif;
-    color: #242423;
-  }
 
