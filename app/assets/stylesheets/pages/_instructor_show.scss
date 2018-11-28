@@ -16,6 +16,7 @@
   margin: 10px;
   margin-top: 0px;
   padding: 10px;
+  box-shadow: 1px 0.5px 0.5px rgba(220, 220, 220, 0.4);
 }
 
 .book_instructor {
@@ -70,7 +71,7 @@
   padding: 10px;
   font-family: Raleway, Helvetica, sans-serif;
   font-size: 1em;
-   box-shadow: 1px 0.5px 0.5px rgba(220, 220, 220, 0.4);
+  box-shadow: 1px 0.5px 0.5px rgba(220, 220, 220, 0.4);
 }
 
 .height-max {
@@ -94,9 +95,10 @@
 
 
 .instructor_description {
-  padding: 10px;
+  padding: 20px;
   font-family: Raleway, Helvetica, sans-serif;
   min-height: 344px;
+  box-shadow: 1px 0.5px 0.5px rgba(220, 220, 220, 0.4);
 }
 
 .review {

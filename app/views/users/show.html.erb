@@ -38,7 +38,7 @@
           <div class="col-xs-12 col-sm-8 height-max">
             <div class="instructor_bio">
               <div class="instructor_description">
-                <span class="bio-title">Bio</span>
+                <span class="bio-title"><%= "#{@user.first_name}'s Bio" %></span>
                   <p><%= @user.bio %></p>
                 <span class="bio-title-small">Available days this week</span>
                   <% availabilities = [] %>
