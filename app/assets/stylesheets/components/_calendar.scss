@@ -134,3 +134,27 @@
   cursor: pointer;
   box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
+
+.switch-weeks {
+  display: flex;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: #6CC3D7;
+  }
+}
+
+.switch-item {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+    padding: 0 5px;
+  }
+}
+
+.the-calendar {
+  h2 {
+    margin-top: 7px;
+  }
+}

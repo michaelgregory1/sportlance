@@ -1,6 +1,6 @@
 <div class="nav-form placeholder-white">
   <%= form_tag users_search_path, method: "get" do %>
-    <%= text_field_tag :query, "", placeholder: "Sport, Location", class: "form-control-white address_autocomplete" %>
+    <%= text_field_tag :query, "", placeholder: "Enter a sport or location", class: "form-control-white address_autocomplete" %>
     <%= submit_tag "Search", class: "button" %>
   <% end %>
 </div>

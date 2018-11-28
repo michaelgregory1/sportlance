@@ -5,6 +5,7 @@
       <%= render 'components/client_sidebar' %>
     <% end %>
     <% unless current_user.is_client %>
+
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
@@ -72,6 +73,71 @@
                         <%= link_to 'Reschedule', edit_booking_path(params[:id]), class: "btn book-btn" %>
                       <% end %>
                       <%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "button-blue"%>
+
+      <div class="booking-instructor-container">
+        <div class="appo-title">Appointment</div>
+        <div class="info-box">
+          <span class="appointment-title">Reservation Details</span>
+          <div class="left-bold">Client Name:
+            <p class="right"><%= User.find(@booking.client_id).first_name %> <%= User.find(@booking.client_id).last_name %></p>
+          </div>
+          <div class="left-bold">Payment Status:
+            <p class="right">Paid</p>
+          </div>
+          <div class="left-bold">Location:
+            <p class="right"><%= Location.find(@booking.location_id).address %></p>
+          </div>
+          <div class="left-bold">Date:
+            <p class="right"><%= @booking.date_start.strftime("%a %e %b") %></p>
+          </div>
+          <div class="left-bold">Start Time:
+            <p class="right" style="color: #00b1b1;"><%= @booking.date_start.strftime("%l:%M %p")  %></p>
+          </div>
+          <div class="left-bold">End Time:
+            <p class="right"><%= @booking.date_end.strftime("%l:%M %p") %></p>
+          </div>
+           <div class="left-bold">Notes:
+            <p class="right"><%= @booking.client_note %></p>
+          </div>
+          <div class="buttons-left">
+            <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: @recipient), method: 'post', class: "button-blue"%>
+            <%# unless current_user.is_client %>
+                <%#= link_to 'Reschedule', edit_booking_path(params[:id]), class: "button-blue" %>
+            <%# end %>
+            <%= link_to "Cancel", booking_path(@booking), method: "delete", data: {confirm: "Are you sure"}, :class => "button-blue"%>
+          </div>
+            <% end %>
+            <% if current_user.is_client %>
+            <div class="booking-instructor-container">
+              <div class="appo-title">Appointment</div>
+              <div class="info-box">
+                <span class="appointment-title">Reservation Details</span>
+                <div class="left-bold">Instructor Name:
+                  <p class="right"><%= User.find(@booking.user_id).first_name %> <%= User.find(@booking.user_id).last_name %></p>
+                </div>
+                <div class="left-bold">Payment Status:
+                  <p class="right">Paid</p>
+                </div>
+                <div class="left-bold">Location:
+                  <p class="right" style="color: #00b1b1;"><%= Location.find(@booking.location_id).address %></p>
+                </div>
+                <div class="left-bold">Date:
+                  <p class="right" style="color: #00b1b1;"><%= @booking.date_start.strftime("%a %e %b") %></p>
+                </div>
+                <div class="left-bold">Start Time:
+                  <p class="right" style="color: #00b1b1;"><%= @booking.date_start.strftime("%l:%M %p")  %></p>
+                </div>
+                <div class="left-bold">End Time:
+                  <p class="right"><%= @booking.date_end.strftime("%l:%M %p") %></p>
+                </div>
+                <div class="left-bold">Notes:
+                  <p class="right"><%= @booking.client_note %></p>
+                </div>
+                <div class="left-button">
+                  <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: @recipient), method: 'post', class: "button-blue"%>
+                  <% unless current_user.is_client %>
+                    <%= link_to 'Reschedule', edit_booking_path(params[:id]), class: "btn book-btn" %>
+
                   <% end %>
               </div>
             </div>
