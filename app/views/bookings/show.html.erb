@@ -40,29 +40,33 @@
             <% end %>
             <% if current_user.is_client %>
             <div class="booking-instructor-container">
-               <span class="sum-title">Reservation Details</span>
+
               <div class="sum-box">
-                <div class="sum-left">Instructor Name:
-                  <p class="right"><%= User.find(@booking.user_id).first_name %> <%= User.find(@booking.user_id).last_name %></p>
+                <div style="width: 100%; margin-bottom: 20px;">
+                 <span class="sum-title">Reservation Details</span>
                 </div>
-                <div class="sum-left">Payment Status:
-                  <p class="right">Paid</p>
-                </div>
-                <div class="sum-left">Location:
-                  <p class="right" style="color: #00b1b1;"><%= Location.find(@booking.location_id).address %></p>
-                </div>
-                <div class="sum-left">Date:
-                  <p class="right" style="color: #00b1b1;"><%= @booking.date_start.strftime("%a %e %b") %></p>
-                </div>
-                <div class="sum-left">Start Time:
-                  <p class="right" style="color: #00b1b1;"><%= @booking.date_start.strftime("%l:%M %p")  %></p>
-                </div>
-                <div class="sum-left">End Time:
-                  <p class="right"><%= @booking.date_end.strftime("%l:%M %p") %></p>
-                </div>
-                <div class="sum-left">Notes:
-                  <p class="right"><%= @booking.client_note %></p>
-                </div>
+                    <div class="sum-left">Instructor Name:
+                                <p class="right"><%= User.find(@booking.user_id).first_name %> <%= User.find(@booking.user_id).last_name %></p>
+                              </div>
+                              <div class="sum-left">Payment Status:
+                                <p class="right">Paid</p>
+                              </div>
+                              <div class="sum-left">Location:
+                                <p class="right" style="color: #00b1b1;"><%= Location.find(@booking.location_id).address %></p>
+                              </div>
+                              <div class="sum-left">Date:
+                                <p class="right" style="color: #00b1b1;"><%= @booking.date_start.strftime("%a %e %b") %></p>
+                              </div>
+                              <div class="sum-left">Start Time:
+                                <p class="right" style="color: #00b1b1;"><%= @booking.date_start.strftime("%l:%M %p")  %></p>
+                              </div>
+                              <div class="sum-left">End Time:
+                                <p class="right"><%= @booking.date_end.strftime("%l:%M %p") %></p>
+                              </div>
+                              <div class="sum-left">Notes:
+                                <p class="right"><%= @booking.client_note %></p>
+                              </div>
+                          <!--   </div> -->
                 <div class="left-button">
                   <%= link_to 'Send message', conversations_path(sender_id: current_user.id, recipient_id: @recipient), method: 'post', class: "button-blue"%>
                   <% unless current_user.is_client %>
