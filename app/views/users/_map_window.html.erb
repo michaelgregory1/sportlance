@@ -1,10 +1,23 @@
 <div class="map-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path user.photo %>);">
   <div class="user-description">
-     <h4><%= user.first_name + " " + user.last_name %></h4>
+     <h4><%= user.sport.capitalize %></h4>
   </div>
   <div class="user-price">
     <p>£<%= user.price_per_hour %>/hr</p>
-    <p><%= user.sport %></p>
+    <p><%= user.first_name + " " + user.last_name %></p>
+    <% if user.reviews.blank? %>
+          <p class = "card-text">No reviews yet</p>
+        <% else %>
+          <div class="avg_review card-text">
+            <% user.average_review.to_i.times do  %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+            <% (5- user.average_review.to_i).times do %>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            <% end %>
+            <%= "(#{user.reviews.length})" %>
+          </div>
+        <% end %>
   </div>
   <%= link_to "", user_path(user), class: "card-link"%>
 </div>
