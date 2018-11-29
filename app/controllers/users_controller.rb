@@ -66,8 +66,11 @@ class UsersController < ApplicationController
       end
       @users = @users_located.uniq
     end
-    map(@users, @final_locations)
-    redirect_to no_results_path if @users.empty?
+    unless @users.nil?
+      map(@users, @final_locations)
+    else
+      redirect_to no_results_path
+    end
   end
 
   def new_instructor
