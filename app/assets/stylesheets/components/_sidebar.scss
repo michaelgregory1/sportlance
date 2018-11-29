@@ -37,7 +37,8 @@
 
 .tab.active {
   background: #6AC5DB;
-  color: grey;
+  color: white;
+  font-weight: bold;
   border: none;
 
   &::before {
