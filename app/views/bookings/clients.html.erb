@@ -3,7 +3,9 @@
   <div class="mailbox-container">
     <!-- <span class="title">Clients</span> -->
     <ul class="clients">
-      <% unless @clients.empty? %>
+      <% if @clients.empty? %>
+      <p>You dont have any clients at the moment</p>
+      <% else %>
         <% @clients.each do |client| %>
           <li class="client">
             <div class="client-details">
