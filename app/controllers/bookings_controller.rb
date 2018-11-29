@@ -68,7 +68,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to user_clients_path(current_user)
+    redirect_to user_bookings_path(current_user)
   end
 
   def redirect_to_show
