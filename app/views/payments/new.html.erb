@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
       <div class="booking-instructor-container">
         <span class="sum-title">Book your Lesson with <%= @user.first_name %></span>
         <div class="sum-box">
@@ -13,7 +13,7 @@
         </div>
         <%= form_tag booking_payments_path(@booking) do %>
           <article>
-            <div class="amount">
+            <div class="amount" style="text-align: center; margin-top: 20px;">
               <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
             </div>
           </article>
