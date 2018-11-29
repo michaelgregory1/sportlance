@@ -17,6 +17,8 @@ james = User.create(email: "james@swim.com", password: "123456", first_name: 'Ja
 adrian = User.create(email: "adrian@swim.com", password: "123456", first_name: 'Adrian', last_name: 'Young', sport: 'strength', price_per_hour: 65, abilities_taught: "advanced", is_client: false)
 ben = User.create(email: "ben@swim.com", password: "123456", first_name: 'Ben', last_name: 'Peel', sport: 'running', price_per_hour: 50, abilities_taught: "beginner", is_client: false)
 adam = User.create(email: "adam@swim.com", password: "123456", first_name: 'Adam', last_name: 'Stanley', sport: 'running', price_per_hour: 35, abilities_taught: "beginner", is_client: false)
+mike = User.create(email: "mike@swim.com", password: "123456", first_name: 'Michael', last_name: 'Gregory', sport: 'swimming', price_per_hour: 60, abilities_taught: "beginner", is_client: false)
+
 
 john.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542799972/train8.jpg"
 john.save
@@ -32,39 +34,10 @@ ben.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v15429
 ben.save
 adam.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542970011/train5.jpg"
 adam.save
+mike.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542970011/mike1.jpg"
+mike.save
 
-puts 'Creating clients'
-mary = User.create(email: "mary@swim.com", password: "123456", first_name: 'Mary', last_name: 'Meister', is_client: true)
-georgia = User.create(email: "georgia@swim.com", password: "123456", first_name: 'georgia', last_name: 'Smith', is_client: true)
-
-mary.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542799963/train2.jpg"
-mary.save
-georgia.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542799963/train3.jpg"
-georgia.save
-
-puts 'Creating Location'
-greenwich1 = Location.create(address: "King William Walk, London SE10 9HT", user_id: john.id)
-greenwich2 = Location.create(address: "5B Greenwich Market, London SE10 9HZ", user_id: cassie.id)
-greenwich3 = Location.create(address: "178 Greenwich High Rd, London SE10 8NN", user_id: adrian.id)
-greenwich4 = Location.create(address: "56 Royal Hill, Greenwich, London SE10 8RT", user_id: ben.id)
-greenwich5 = Location.create(address: "11 Victoria Parade, London SE10 9FR", user_id: adam.id)
-
-pimlico1 = Location.create(address: "Dolphin Square, London SW1V 3LX", user_id: john.id)
-pimlico2 = Location.create(address: "Lupus St, Pimlico, London SW1V 3AT", user_id: cassie.id)
-pimlico3 = Location.create(address: "52 Cambridge St, Pimlico, London SW1V 4QQ", user_id: adrian.id)
-
-hammersmith1 = Location.create(address: "121 King St, Hammersmith, London W6 9JG", user_id: paul.id)
-hammersmith2 = Location.create(address: "Hammersmith Rd, Hammersmith, London W14 8UX", user_id: james.id)
-hammersmith3 = Location.create(address: "Palliser Rd, Hammersmith, London W14 9EQ", user_id: ben.id)
-hammersmith4 = Location.create(address: "Normand Park, Lillie Rd, Fulham Pools, London SW6 7ST", user_id: adam.id)
-hammersmith5 = Location.create(address: "373 Lillie Rd, Hammersmith, London SW6 7PD", user_id: john.id)
-
-kensington1 = Location.create(address: "The Roof Gardens, Kensington High Street, London W8 5SA", user_id: james.id)
-kensington2 = Location.create(address: "11A Stratford Rd, Kensington, London W8 6RF", user_id: cassie.id)
-kensington3 = Location.create(address: "254 Road, Earls Court, London SW5 9AD", user_id: adrian.id)
-kensington4 = Location.create(address: "45 Phillimore Walk, Kensington, London W8 7RZ", user_id: paul.id)
-kensington5 = Location.create(address: "58-60 Kensington Church St, Kensington, London W8 4DB", user_id: ben.id)
-
+puts 'Adding bios'
 john.bio = "My background is in competitive swimming and I was previously ranked in the top 10 in the UK for the 100m freestyle and 50m backstroke. I have competed at the British team selection trials for the 2011 World Championships as well as the 2012 Olympic Games trials."
 john.save
 paul.bio = "Paul's my name, swimming's my game. Was Michael Phelps' coach for 8 years before we had a falling out when we realised that I was actually way quicker than him at swimming. Anyway I'm out a job now so I'm looking for students to take under my MASSIVE swimming wings."
@@ -79,4 +52,44 @@ ben.bio = "I am a Jamaican retired sprinter and world record holder in the 100 m
 ben.save
 adam.bio = "I am a fat retired sprinter and am not a world record holder in the 100 metres, 200 metres and 4 × 100 metres relay. My non-existent reign as Olympic Games champion in all of these events spans three Olympics. Owing to my achievements and dominance in sprint competition, I am widely considered to be the worst sprinter of all time."
 adam.save
+mike.bio = "My background is in competitive swimming and I was previously ranked in the top 10 in the UK for the 100m freestyle and 50m backstroke. I have competed at the British team selection trials for the 2011 World Championships as well as the 2012 Olympic Games trials."
+mike.save
+
+puts 'Creating clients'
+mary = User.create(email: "mary@swim.com", password: "123456", first_name: 'Mary', last_name: 'Meister', is_client: true)
+georgia = User.create(email: "georgia@swim.com", password: "123456", first_name: 'georgia', last_name: 'Smith', is_client: true)
+nico = User.create(email: "nico@swim.com", password: "123456", first_name: 'georgia', last_name: 'Smith', is_client: true)
+
+mary.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542799963/train2.jpg"
+mary.save
+georgia.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542799963/train3.jpg"
+georgia.save
+nico.remote_photo_url = "https://res.cloudinary.com/dsjm0qvdj/image/upload/v1542799963/Nico1.jpg"
+nico.save
+
+puts 'Creating Location'
+greenwich1 = Location.create(address: "King William Walk, London SE10 9HT", user_id: john.id)
+greenwich2 = Location.create(address: "5B Greenwich Market, London SE10 9HZ", user_id: cassie.id)
+greenwich3 = Location.create(address: "178 Greenwich High Rd, London SE10 8NN", user_id: adrian.id)
+greenwich4 = Location.create(address: "56 Royal Hill, Greenwich, London SE10 8RT", user_id: ben.id)
+greenwich5 = Location.create(address: "11 Victoria Parade, London SE10 9FR", user_id: adam.id)
+
+pimlico1 = Location.create(address: "Dolphin Square, London SW1V 3LX", user_id: mike.id)
+pimlico2 = Location.create(address: "Lupus St, Pimlico, London SW1V 3AT", user_id: cassie.id)
+pimlico3 = Location.create(address: "52 Cambridge St, Pimlico, London SW1V 4QQ", user_id: adrian.id)
+pimlico4 = Location.create(address: "74 Warwick Square, Pimlico, London SW1 2AR", user_id: john.id)
+pimlico4 = Location.create(address: "Tachbrook Street, Westminster SW1V 2QE", user_id: paul.id)
+
+hammersmith1 = Location.create(address: "121 King St, Hammersmith, London W6 9JG", user_id: paul.id)
+hammersmith2 = Location.create(address: "Hammersmith Rd, Hammersmith, London W14 8UX", user_id: james.id)
+hammersmith3 = Location.create(address: "Palliser Rd, Hammersmith, London W14 9EQ", user_id: ben.id)
+hammersmith4 = Location.create(address: "Normand Park, Lillie Rd, Fulham Pools, London SW6 7ST", user_id: mike.id)
+hammersmith5 = Location.create(address: "373 Lillie Rd, Hammersmith, London SW6 7PD", user_id: john.id)
+
+kensington1 = Location.create(address: "The Roof Gardens, Kensington High Street, London W8 5SA", user_id: james.id)
+kensington2 = Location.create(address: "11A Stratford Rd, Kensington, London W8 6RF", user_id: cassie.id)
+kensington3 = Location.create(address: "254 Road, Earls Court, London SW5 9AD", user_id: adrian.id)
+kensington4 = Location.create(address: "45 Phillimore Walk, Kensington, London W8 7RZ", user_id: paul.id)
+kensington5 = Location.create(address: "58-60 Kensington Church St, Kensington, London W8 4DB", user_id: ben.id)
+
 puts 'Finished'
