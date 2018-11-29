@@ -11,7 +11,7 @@ User.destroy_all
 
 puts 'Creating Users'
 john = User.create(email: "john@swim.com", password: "123456", first_name: 'John', last_name: 'Watson', sport: 'swimming', price_per_hour: 40, abilities_taught: "beginner", is_client: false)
-paul = User.create(email: "paul@swim.com", password: "123456", first_name: 'paul', last_name: 'Eadie', sport: 'swimming', price_per_hour: 55, abilities_taught: "advanced", is_client: false)
+paul = User.create(email: "paul@swim.com", password: "123456", first_name: 'Paul', last_name: 'Eadie', sport: 'swimming', price_per_hour: 55, abilities_taught: "advanced", is_client: false)
 cassie = User.create(email: "cassie@swim.com", password: "123456", first_name: 'Cassie', last_name: 'Dover', sport: 'yoga', price_per_hour: 30, abilities_taught: "beginner", is_client: false)
 james = User.create(email: "james@swim.com", password: "123456", first_name: 'James', last_name: 'David', sport: 'strength', price_per_hour: 45, abilities_taught: "intermediate", is_client: false)
 adrian = User.create(email: "adrian@swim.com", password: "123456", first_name: 'Adrian', last_name: 'Young', sport: 'strength', price_per_hour: 65, abilities_taught: "advanced", is_client: false)
@@ -65,9 +65,18 @@ kensington3 = Location.create(address: "254 Road, Earls Court, London SW5 9AD", 
 kensington4 = Location.create(address: "45 Phillimore Walk, Kensington, London W8 7RZ", user_id: paul.id)
 kensington5 = Location.create(address: "58-60 Kensington Church St, Kensington, London W8 4DB", user_id: ben.id)
 
-# puts 'Creating booking'
-# Booking.create(user_id: john.id, client_id: mary.id, date_start: "2018-11-21 13:00:00", date_end: "2018-11-21 14:00:00", location_id: greenwich.id)
-# Booking.create(user_id: cassie.id, client_id: mary.id, date_start: "2018-11-21 11:00:00", date_end: "2018-11-21 12:00:00", location_id: hammersmith.id)
-# Booking.create(user_id: james.id, client_id: mary.id, date_start: "2018-11-21 11:00:00", date_end: "2018-11-21 12:00:00", location_id: kensington.id)
-
+john.bio = "My background is in competitive swimming and I was previously ranked in the top 10 in the UK for the 100m freestyle and 50m backstroke. I have competed at the British team selection trials for the 2011 World Championships as well as the 2012 Olympic Games trials."
+john.save
+paul.bio = "Paul's my name, swimming's my game. Was Michael Phelps' coach for 8 years before we had a falling out when we realised that I was actually way quicker than him at swimming. Anyway I'm out a job now so I'm looking for students to take under my MASSIVE swimming wings."
+paul.save
+cassie.bio = "After years of martial arts practice, made the change to Yoga in 2012 in order to try and heal a re-occurring injury.  Immediate fell in love with the practice and what it did for my body and mind. I am particularly interested in the anatomy aspect and believe yoga really is “for all” no matter what your natural body structure is or what limitations you may feel you have."
+cassie.save
+james.bio = "I had no specific interest in bodybuilding until age 16 when I met muscleman David Cohen. Upon learning that Cohen lifted weights at his friend's house, I joined in out of curiosity. My legendary physique would begin to grow from barbells, dumbbells and a simple chinning bar."
+james.save
+adrian.bio = "I began lifting weights at the age of 15. I won the Mr. Universe title at age 20 and went on to win the Mr. Olympia contest seven times, remaining a prominent presence in bodybuilding and writing many books and articles on the sport. The Adrian Sports Festival, considered one of the best professional bodybuilding competitions in recent years, is named after me. I am widely considered to be one of the greatest bodybuilders of all-time as well as that sport's most charismatic ambassador."
+adrian.save
+ben.bio = "I am a Jamaican retired sprinter and world record holder in the 100 metres, 200 metres and 4 × 100 metres relay. My reign as Olympic Games champion in all of these events spans three Olympics. Owing to my achievements and dominance in sprint competition, I am widely considered to be the greatest sprinter of all time."
+ben.save
+adam.bio = "I am a fat retired sprinter and am not a world record holder in the 100 metres, 200 metres and 4 × 100 metres relay. My non-existent reign as Olympic Games champion in all of these events spans three Olympics. Owing to my achievements and dominance in sprint competition, I am widely considered to be the worst sprinter of all time."
+adam.save
 puts 'Finished'
