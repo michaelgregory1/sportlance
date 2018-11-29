@@ -4,7 +4,7 @@
       <div class="booking-instructor-container">
         <span class="sum-title">Book your Lesson with <%= @user.first_name %></span>
         <div class="sum-box">
-          <div class="img-box"><%= cl_image_tag @user.photo, class: "pay-pic" %></div>
+          <div class="img-box"><%= cl_image_tag @user.photo, class: "pay-pic", :gravity=>"face", :crop=>"crop", :zoom=> 0.1 %></div>
             <div class="sum-left" style="color: #43515E;">When:
               <p class="right" style="color: #43515E;"><%= @booking.date_start.strftime("%b %e, %l:%M %p") %> - <%= @booking.date_end.strftime("%l:%M %p") %></p>
             </div>
