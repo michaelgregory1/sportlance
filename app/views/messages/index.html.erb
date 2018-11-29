@@ -9,7 +9,7 @@
      <%= link_to 'Show Previous', '?m=all' %>
     <% end %>
     <div class="message_container">
-      <span class="message-title">Messages with <%= @conversation.sender.first_name.capitalize unless @conversation.sender.first_name == current_user.first_name %> <%= @conversation.recipient.first_name.capitalize unless @conversation.recipient.first_name == current_user.first_name %></span>
+      <span class="message-title">Messages with <%= @conversation.sender.first_name unless @conversation.sender.first_name == current_user.first_name %> <%= @conversation.recipient.first_name unless @conversation.recipient.first_name == current_user.first_name %></span>
       <div class="message-box" id="messages-lad">
 
 
@@ -23,7 +23,7 @@
             <%= message.body %>
           </div>
           <div class="message-header">
-              <strong><%= user.first_name.capitalize %></strong>
+              <strong><%= user.first_name %></strong>
               <%= message.message_time %>
             </div>
         </div>
@@ -34,7 +34,7 @@
           <%= message.body %>
         </div>
         <div class="message-header">
-              <strong><%= user.first_name.capitalize %></strong>
+              <strong><%= user.first_name %></strong>
               <%= message.message_time %>
             </div>
       </div>
