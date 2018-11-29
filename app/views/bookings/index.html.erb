@@ -23,7 +23,9 @@
           <% @upcoming_bookings.each do |booking| %>
             <div class="text-wrap">
               <div class="column summary-name">
-                <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+                <%= link_to users_show_path(booking.user_id) do %>
+                  <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+                <% end %>
               </div>
               <div class="column summary-location">
                 <%= Location.find(booking.location_id).address %>
@@ -54,7 +56,10 @@
           <% @past_bookings.each do |booking| %>
             <div class="text-wrap">
               <p class="column summary-name">
-                <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+                <%= link_to users_show_path(booking.user_id) do %>
+                  <%= User.find(booking.user_id).first_name %> <%= User.find(booking.user_id).last_name %>
+                <% end %>
+              </div>
               </p>
               <p class="column summary-location">
                 <%= Location.find(booking.location_id).address %>

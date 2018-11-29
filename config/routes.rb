@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :users, only: [:show]
+  get '/users/:id', to: 'users#show', as: 'users_show'
 
   post '/toggle-availability', to: 'availabilities#toggle_availability'
   post '/redirect-to-show', to: 'bookings#redirect_to_show'
