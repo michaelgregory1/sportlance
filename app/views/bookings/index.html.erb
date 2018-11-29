@@ -2,10 +2,10 @@
   <div class="calendar-dash">
     <%= render 'components/instructor_sidebar_schedule' %>
     <%= render 'components/calendar' %>
+  </div>
 <% else %>
   <div class="calendar-dash">
     <%= render 'components/client_sidebar' %>
-
     <div class="noflex-wrap">
       <div class="summary-header">
         <span class="head"><strong>Upcoming bookings</strong></span>
@@ -75,10 +75,6 @@
         </div>
       </div>
     </div>
-
-
-    </div>
   </div>
 <% end %>
-</div>
 
