@@ -108,7 +108,12 @@
 // CELL STATES
 
 .unavailable {
-  background-color: rgba(230, 230, 230, 0.5);
+   background-color: #f4f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f5f5), to(#dfdddd));
+ background-image: -webkit-linear-gradient(top, #f4f5f5, #dfdddd);
+ background-image: -moz-linear-gradient(top, #f4f5f5, #dfdddd);
+ background-image: -ms-linear-gradient(top, #f4f5f5, #dfdddd);
+ background-image: -o-linear-gradient(top, #f4f5f5, #dfdddd);
+ background-image: linear-gradient(to bottom, #f4f5f5, #dfdddd);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f4f5f5, endColorstr=#dfdddd);
   cursor: pointer;
 }
 
@@ -117,8 +122,13 @@
 }
 
 .available {
-  background-color: #7bd666;
-  cursor: pointer;
+ background-color: #8ed058; background-image: -webkit-gradient(linear, left top, left bottom, from(#8ed058), to(#7bb64b));
+ background-image: -webkit-linear-gradient(top, #8ed058, #7bb64b);
+ background-image: -moz-linear-gradient(top, #8ed058, #7bb64b);
+ background-image: -ms-linear-gradient(top, #8ed058, #7bb64b);
+ background-image: -o-linear-gradient(top, #8ed058, #7bb64b);
+ background-image: linear-gradient(to bottom, #8ed058, #7bb64b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#8ed058, endColorstr=#7bb64b);
+ cursor: pointer;
 }
 
 .available:hover {
@@ -126,7 +136,12 @@
 }
 
 .booked {
-  background-color: #6BC4D9;
+ background-color: #92cfde; background-image: -webkit-gradient(linear, left top, left bottom, from(#92cfde), to(#76bdd1));
+ background-image: -webkit-linear-gradient(top, #92cfde, #76bdd1);
+ background-image: -moz-linear-gradient(top, #92cfde, #76bdd1);
+ background-image: -ms-linear-gradient(top, #92cfde, #76bdd1);
+ background-image: -o-linear-gradient(top, #92cfde, #76bdd1);
+ background-image: linear-gradient(to bottom, #92cfde, #76bdd1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#92cfde, endColorstr=#76bdd1);
 }
 
 .booked:hover {
