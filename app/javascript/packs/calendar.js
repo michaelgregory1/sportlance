@@ -97,11 +97,11 @@ blocks.forEach(function(element) {
   });
 });
 
-blocks.forEach(function(element) {
-  element.addEventListener("click", (event) => {
-    const availables = document.querySelectorAll(".available")
-    if (availables.length === 168) {
-      window.location = "https://www.youtube.com/watch?v=710e9ZSYtdM";
-    };
-  });
-});
+// blocks.forEach(function(element) {
+//   element.addEventListener("click", (event) => {
+//     const availables = document.querySelectorAll(".available")
+//     if (availables.length === 168) {
+//       window.location = "https://www.youtube.com/watch?v=710e9ZSYtdM";
+//     };
+//   });
+// });

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    available_days_this_week(@user)
     @booking = Booking.new
     @booking.user_id = params[:id]
     @calendar_availabilities = []
@@ -114,5 +115,18 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :sport, :price_per_hour, :abilities_taught, :bio, :photo, :is_client, :photo_cache, :email, :password, :password_confirmation, locations_attributes: [:id, :address])
+  end
+
+  def available_days_this_week(user)
+    available_days = []
+    user.availabilities.each do |a|
+      if a.date_start.beginning_of_week == Time.now.beginning_of_week
+        available_days << a.date_start
+      end
+    end
+    sorted = available_days.sort
+    @available_days_ordered = sorted.map do |a|
+      a.strftime('%A')
+    end
   end
 end

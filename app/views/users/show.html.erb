@@ -41,13 +41,7 @@
                 <span class="bio-title"><%= "#{@user.first_name}'s Bio" %></span>
                   <p><%= @user.bio %></p>
                 <span class="bio-title-small">Available days this week</span>
-                  <% availabilities = [] %>
-                  <% @user.availabilities.each do |a| %>
-                    <% if a.date_start.beginning_of_week == Time.now.beginning_of_week %>
-                      <% availabilities << a.date_start.strftime("%A") %>
-                    <% end %>
-                  <% end %>
-                  <% availabilities.uniq.each do |av| %>
+                  <% @available_days_ordered.uniq.each do |av| %>
                     <p><%= av %></p>
                   <% end %>
                 <span class="bio-title-small">Cancellation policy</span>
