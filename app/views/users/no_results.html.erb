@@ -1,4 +1,7 @@
-<div class="no_result">Sorry, we couldn't find any results matching</div>
+<div class="no_result">Sorry, we couldn't find any results matching your search, try again: </div>
+<div style="display: flex; justify-content: space-around; margin: 30px; color: black;">
+  <%= render 'shared/search_white.html.erb' %>
+</div>
 <div class="link-no_result">
   <%= link_to("Back to homepage", root_path, method: "get", class: "button") %>
 </div>
