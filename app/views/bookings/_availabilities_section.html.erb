@@ -1,5 +1,5 @@
 <select name="booking[date_start]" id="booking_date_start">
   <% availabilities.each do |a| %>
-    <option value="<%= a.date_start.strftime("%b %e, %l:%M %p") %> - <%= a.date_end.strftime("%b %e, %l:%M %p") %>"><%= a.date_start.strftime("%b %e, %l:%M %p") %> - <%= a.date_end.strftime("%b %e, %l:%M %p") %></option>
+    <option value="<%= a.date_start.strftime("%b %e, %l:%M %p") %> - <%= a.date_end.strftime("%b %e, %l:%M %p") %>"><%= a.date_start.strftime("%l:%M %p") %> - <%= a.date_end.strftime("%l:%M %p") %></option>
   <% end %>
 </select>
