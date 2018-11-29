@@ -1,7 +1,7 @@
 <div>
   <h3 class="bio-title-small" style="padding-left: 10px;"><%= @user.first_name + "'s lastest reviews:" %></h3>
   <% if @reviews.blank? %>
-    <p>No reviews just yet, book with them and be the first!</p>
+    <p style="margin-left: 10px;">No reviews just yet, book with them and be the first!</p>
   <% elsif current_page?(user_path) %>
     <% @reviews.last(5).reverse.each do |review| %>
         <% reviewer = User.find(review.client_id) %>
