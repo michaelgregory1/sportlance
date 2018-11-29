@@ -14,13 +14,19 @@
         <% @conversations.each do |conversation| %>
           <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
             <%= link_to conversation_messages_path(conversation) do %>
-              <li class="conversation">
-                <% lastMessage = conversation.messages[conversation.messages.length - 1] %>
-                <% if conversation.sender_id == current_user.id %>
-                  <% conversationPartner = User.find(conversation.recipient_id) %>
+              <% lastMessage = conversation.messages[conversation.messages.length - 1] %>
+              <% if conversation.sender_id == current_user.id %>
+                <% conversationPartner = User.find(conversation.recipient_id) %>
+                <li class="conversation">
+              <% else %>
+                <% conversationPartner = User.find(conversation.sender_id) %>
+                <% if lastMessage.read? %>
+                  <li class="conversation">
                 <% else %>
-                  <% conversationPartner = User.find(conversation.sender_id) %>
+                  <% unread = true %>
+                  <li class="conversation unread-bold">
                 <% end %>
+              <% end %>
                 <div class="image-container client-details">
                   <%= cl_image_tag conversationPartner.photo, class: "avatar-mailbox" %>
                   <p class="conversation__name"><%= conversationPartner.first_name.capitalize %></p>

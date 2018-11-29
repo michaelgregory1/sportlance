@@ -5,35 +5,23 @@
   box-shadow: 0 10px 30px -15px rgba(0,0,0,0.25);
   padding: 20px;
 }
-
 .inbox {
   padding: 0px;
   a {
     text-decoration: none;
   }
 }
-//   list-style: none;
-//   margin: 0px;
-//   border: 1px solid rgba(0, 0, 0, 0.2);
-//   padding: 10px;
-//   align-items: center;
-//   width: 100%;
-//   overflow-y: scroll;
-//   height: 70vh;
-
 .message {
   margin: 20px;
   float: right;
   overflow: auto;
   flex-grow: 1;
-
   .message__body {
     color: black;
     font-size: 14px;
     font-family: Raleway, Helvetica, sans-serif;
     margin-bottom: 0px;
   }
-
   .message__summary {
     font-weight: bold;
     color: black;
@@ -42,12 +30,6 @@
     margin-bottom: 0px;
   }
 }
-
-// .image-container {
-//   float: left;
-//   margin-right: 20px;
-// }
-
 .conversation {
   display: flex;
   align-items: center;
@@ -55,43 +37,18 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   margin-top: 10px;
-  // justify-content: space-between;
-
-  // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  // display: flex;
-  // align-items: center;
-  // flex-direction: row;
-  // margin-left: 0px;
-  // flex: 1 0 auto;
-
-//   &:last-child {
-//     border: none;
-//   }
-
-  // a:hover {
-  //   text-decoration: none;
-  // }
+  background-color: rgba(0, 0, 0, 0.05);
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.1);
   }
-
-
   .conversation__name {
     text-decoration: none;
     color: #242423;
-    // display: block;
     font-family: Raleway, Helvetica, sans-serif;
-    // text-align: center;
     margin-bottom: 0px;
     min-width: 80px
-
-    // &:hover {
-    //   text-decoration: none;
-    //   color: black;
-    // }
   }
 }
-
 .date {
   color: black;
   font-size: 14px;
@@ -99,13 +56,11 @@
   margin-bottom: 0px;
   margin-right: 20px;
 }
-
-// .title {
-//   margin-bottom: 15px;
-//   margin-top: 15px;
-//   font-size: 32px;
-//   font-family: Raleway, Helvetica, sans-serif;
-// }
+.unread-bold {
+  font-weight: bolder;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
 
 
 
