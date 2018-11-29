@@ -8,7 +8,7 @@
 
     <div class="noflex-wrap">
       <div class="summary-header">
-        <span class="head">Upcoming bookings</span>
+        <span class="head"><strong>Upcoming bookings</strong></span>
       </div>
       <div class="summary-header">
         <div class="header-details hidden-xs hidden-sm">
@@ -32,15 +32,22 @@
                  <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
               </div>
               <div class="column summary-buttons">
-                <%= link_to("Details", booking_path(booking), method: "get", class: "button-blue") %>
-                <%#= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %>
+                <%= link_to("Booking details", booking_path(booking), method: "get", class: "button-blue details-margin") %>
               </div>
             </div>
           <% end %>
         </div>
       </div>
+      <div class="summary-header header-margin">
+        <span class="head"><strong>Past bookings</strong></span>
+      </div>
       <div class="summary-header">
-        <span class="head">Past bookings</span>
+        <div class="header-details hidden-xs hidden-sm">
+          <div class="column summary-name">Name</div>
+          <div class="column summary-location">Location</div>
+          <div class="column summary-date">Date</div>
+          <div class="column summary-buttons">Options</div>
+        </div>
       </div>
       <div class="summary">
         <div class="summary-details">
@@ -56,7 +63,7 @@
                  <%= booking.date_start.strftime("%b %e, %l:%M %p")  %>
               </p>
               <div class="column summary-buttons">
-                <%= link_to("Details", booking_path(booking), method: "get", class: "button-blue") %>
+                <%= link_to("Booking details", booking_path(booking), method: "get", class: "button-blue details-margin") %>
                 <%= link_to 'Leave a Review', new_user_review_path(booking.user_id), class: "button-blue" %>
               </div>
             </div>
