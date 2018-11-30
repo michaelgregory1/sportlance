@@ -9,9 +9,14 @@
       <%= simple_form_for [@user, @review] do |f| %>
         <div>
           <%= f.error_notification %>
-          <%= f.input :body, required: true %>
-          <%= f.label :rating, required: true %>
-          <%= f.select :rating, [ 1, 2, 3, 4, 5]%>
+          <%= f.label :body, 'Write your review' %>
+          <%= f.input :body, required: true, label: false %>
+          <%= f.input :rating, input_html: { class: "hidden", id: "star-selector" } %>
+          <span class="glyphicon glyphicon-star-empty star"></span>
+          <span class="glyphicon glyphicon-star-empty star"></span>
+          <span class="glyphicon glyphicon-star-empty star"></span>
+          <span class="glyphicon glyphicon-star-empty star"></span>
+          <span class="glyphicon glyphicon-star-empty star"></span>
         </div>
         <div class="review_buttons">
           <%= f.submit "Add review", class: "button-blue" %>
